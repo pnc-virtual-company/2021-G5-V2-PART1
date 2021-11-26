@@ -11,7 +11,3 @@
 | POST        | /books        |  The route to create a new book |
 | PUT         | /books/{id}        | The route to update a book by given id |
 | DELETE      | /books/{id}        | The route to delete a book|
-### 2. Route Updated By:
-
----
-<i>@Student Name: <b> Rady Y</b></i>
