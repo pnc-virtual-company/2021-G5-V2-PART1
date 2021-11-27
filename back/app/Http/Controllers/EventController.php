@@ -77,7 +77,7 @@ class EventController extends Controller
             'start_date' => 'required',
             'end_at' => 'required',
             'end_date' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:1999',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
         ]);
 
         // Move image to storage

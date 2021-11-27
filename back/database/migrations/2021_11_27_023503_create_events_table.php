@@ -22,9 +22,9 @@ class CreateEventsTable extends Migration
             $table->string('city');
             $table->string('link_join');
             $table->string('start_at');
-            $table->date('start_date');
+            $table->string('start_date');
             $table->string('end_at');
-            $table->date('end_date');
+            $table->string('end_date');
             $table->string('start_at');
             $table->string('image');
             $table->timestamps();

@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,26 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// Route events
+
+Route::get("/users", [UserController::class, 'users']);
+Route::get("/users/{users_id}", [UserController::class, 'show']);
+
+
+Route::post("/users", [UserController::class, 'signup']);
+
+
+
+
+
+
+// Route events
+
+Route::get("/events", [EventController::class, 'index']);
+Route::get("/events/{id}", [EventController::class, 'show']);
+
+Route::post("/events", [EventController::class, 'store']);
+Route::put("/events/{id}", [EventController::class, 'update']);
+Route::delete("/events/{id}", [EventController::class, 'destroy']);
