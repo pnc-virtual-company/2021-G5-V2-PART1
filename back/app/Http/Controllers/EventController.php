@@ -14,7 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Event::orderBy('id', 'desc')->get();
+        return Event::with(['category'])->latest()->get();
     }
 
     /**
@@ -27,7 +27,13 @@ class EventController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:1999',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
+            'body'=>'required',
+            'link_join'=>'required',
+            'start_at'=>'required',
+            'start_date'=>'required',
+            'end_at'=>'required',
+            'end_date'=>'required',
         ]);
 
         // Move image to storage
@@ -48,7 +54,7 @@ class EventController extends Controller
         $event->image = $request->file('image')->hashName();
         $event->save();
 
-        return response()->json(['message' => 'created'], 201);
+        return response()->json(['events'=>$event,'message' => 'Events created successfull'], 201);
     }
 
     /**
@@ -59,7 +65,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        return Event::with('user')->findOrFail($id);
+        return Event::with(['category'])->findOrFail($id);
     }
 
     /**
@@ -98,7 +104,7 @@ class EventController extends Controller
         $event->image = $request->file('image')->hashName();
         $event->save();
 
-        return response()->json(['message' => 'updated'], 200);
+        return response()->json(['events'=>$event,'message' => 'Events updated successfully'], 200);
     }
 
     /**
@@ -111,7 +117,7 @@ class EventController extends Controller
     {
         $event = Event::destroy($id);
         if ($event == 1){
-            return response()->json(['message' => 'deleted successfully'], 200);
+            return response()->json(['events'=>$event,'message' => 'deleted successfully'], 200);
         }else {
             return response()->json(['message' => 'Cannot deleted no id'], 404);
         }
