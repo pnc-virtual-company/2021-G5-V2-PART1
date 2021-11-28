@@ -14,7 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Event::orderBy('event_id', 'desc')->get();
+        return Event::orderBy('id', 'desc')->get();
     }
 
     /**
@@ -36,9 +36,9 @@ class EventController extends Controller
         // Add to database
         $event = new Event();
         $event->user_id = $request->user_id;
+        $event->category_id = $request->category_id;
         $event->title = $request->title;
         $event->body = $request->body;
-        $event->category = $request->category;
         $event->city = $request->city;
         $event->link_join = $request->link_join;
         $event->start_at = $request->start_at;
@@ -59,7 +59,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        return event::with('user')->findOrFail($id);
+        return Event::with('user')->findOrFail($id);
     }
 
     /**
@@ -88,7 +88,7 @@ class EventController extends Controller
         $event->user_id = $request->user_id;
         $event->title = $request->title;
         $event->body = $request->body;
-        $event->category = $request->category;
+        $event->category_id = $request->category_id;
         $event->city = $request->city;
         $event->link_join = $request->link_join;
         $event->start_at = $request->start_at;

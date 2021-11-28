@@ -9,5 +9,8 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
-    protected $primaryKey = 'category_id';
+    // protected $primaryKey = 'category_id';
+    // public function Event(){
+    //     return $this->hasMany(Event::class);
+    // }
 }

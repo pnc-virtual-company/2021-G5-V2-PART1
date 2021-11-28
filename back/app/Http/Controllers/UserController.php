@@ -65,4 +65,6 @@ class UserController extends Controller
             'token' => $token,
         ]);
     }
+
+    
 }

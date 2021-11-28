@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return Category::orderBy('id', 'desc')->get();
     }
 
     /**
@@ -24,7 +25,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        // Add to database
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+
+        return response()->json(['message' => 'created'], 201);
     }
 
     /**
@@ -35,7 +45,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return Category::with('category')->findOrFail($id);
     }
 
     /**
@@ -47,7 +57,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        // Add to database
+        $category = Category::findOrFail($id);
+        $category->name = $request->name;
+        $category->save();
+
+        return response()->json(['message' => 'created'], 201);
     }
 
     /**
@@ -58,6 +77,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::destroy($id);
+        if ($category == 1){
+            return response()->json(['message' => 'deleted successfully'], 200);
+        }else {
+            return response()->json(['message' => 'Cannot deleted no id'], 404);
+        }
     }
 }
