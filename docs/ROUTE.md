@@ -6,7 +6,10 @@
 
 | HTTP REQUEST| ROUTES              | DESCRIPTION |
 | :---        | :----               | :--- |
-| GET         | /events             | The route for get all events   |
+| POST        | /signin             | The route to signin exits users |
+| POST        | /signup             | The route to signup create new users |
+| POST        | /signout            | The route to logout from each user |
+| GET         | /events             | The route to get all events  |
 | GET         | /events/{id}        | The route to get a event by given id |
 | POST        | /events             | The route to create a new event |
 | PUT         | /events/{id}        | The route to update a event by given id |
