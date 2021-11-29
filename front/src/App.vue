@@ -1,5 +1,7 @@
 <template>
-<h2>Hello</h2>
+  <sign-up></sign-up>
+  <sign-in></sign-in>
+  
 </template>
 
 <script>
