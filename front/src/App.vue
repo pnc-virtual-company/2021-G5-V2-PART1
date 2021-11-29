@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <login-form></login-form>
 </template>
 
@@ -10,16 +9,6 @@ export default {
   },
   methods: {},
 };
-=======
-<h2>Hello</h2>
-</template>
-
-<script>
-
-export default {
-  
-}
->>>>>>> 7546ac893c4a5f58ba44e89cfdaf50c777b618f2
 </script>
 
 <style scoped>
