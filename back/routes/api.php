@@ -28,8 +28,8 @@ Route::get("/users", [UserController::class, 'users']);
 Route::get("/users/{id}", [UserController::class, 'show']);
 
 
-Route::post("/users/signup", [UserController::class, 'signup']);
-Route::post("/users/login", [UserController::class, 'login']);
+Route::post("/signup", [UserController::class, 'signup']);
+Route::post("/login", [UserController::class, 'login']);
 
 
 

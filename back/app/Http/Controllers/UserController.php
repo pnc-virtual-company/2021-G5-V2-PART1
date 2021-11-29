@@ -44,7 +44,6 @@ class UserController extends Controller
         // Create Token
         $token = $user->createToken('mytoken')->plainTextToken;
         $user = User::where('email',$request->email)->first();
-
         return response()->json([
             'user' => $user,
             'token' => $token,
