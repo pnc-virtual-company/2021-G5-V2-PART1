@@ -22,8 +22,8 @@ class UserController extends Controller
             'gender' => 'required',
             'date_of_birth' => 'required',
             'email' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
             'password' => 'required'
+            // 'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
         ]);
 
         if(User::where('email',$request->email)->exists()){
@@ -31,16 +31,16 @@ class UserController extends Controller
         }
         else{
             // Move image to storage
-            $request->file('image')->store('public/images/users');
+            // $request->file('image')->store('public/images/users');
             // create User
             $user = new User();
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
             $user->gender = $request->gender;
             $user->date_of_birth = $request->date_of_birth;
-            $user->image = $request->file('image')->hashName();;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
+            // $user->image = $request->file('image')->hashName();
     
             $user->save();
 
@@ -84,6 +84,5 @@ class UserController extends Controller
         ]);
     }
 
-    
 }
 

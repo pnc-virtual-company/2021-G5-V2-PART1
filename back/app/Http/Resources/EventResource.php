@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Controllers\CategoryController;
+use App\Models\Category;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class EventResource extends JsonResource
@@ -24,7 +26,6 @@ class EventResource extends JsonResource
             'start_date'=>$this->start_date,
             'end_at'=>$this->end_at,
             'end_date'=>$this->end_date,
-            'image'=>$this->image
         ];
     }
 }

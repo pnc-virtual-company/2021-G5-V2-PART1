@@ -15,7 +15,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return EventResource::collection(Event::with(['category'])->latest()->get());
+        return Event::with(['category'])->latest()->get();
          
     }
 
@@ -29,17 +29,17 @@ class EventController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
             'body'=>'required',
             'link_join'=>'required',
             'start_at'=>'required',
             'start_date'=>'required',
             'end_at'=>'required',
             'end_date'=>'required',
+            // 'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
         ]);
 
         // Move image to storage
-        $request->file('image')->store('public/images/events');
+        // $request->file('image')->store('public/images/events');
 
         // Add to database
         $event = new Event();
@@ -53,7 +53,7 @@ class EventController extends Controller
         $event->start_date = $request->start_date;
         $event->end_at = $request->end_at;
         $event->end_date = $request->end_date;
-        $event->image = $request->file('image')->hashName();
+        // $event->image = $request->file('image')->hashName();
         $event->save();
 
         return response()->json(['events'=>$event,'message' => 'Events created successfull'], 201);
@@ -96,11 +96,11 @@ class EventController extends Controller
             'start_date' => 'required',
             'end_at' => 'required',
             'end_date' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
+            // 'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
         ]);
 
         // Move image to storage
-        $request->file('image')->store('public/images/events');
+        // $request->file('image')->store('public/images/events');
 
         // Add to database
         $event = Event::findOrFail($id);
@@ -114,7 +114,7 @@ class EventController extends Controller
         $event->start_date = $request->start_date;
         $event->end_at = $request->end_at;
         $event->end_date = $request->end_date;
-        $event->image = $request->file('image')->hashName();
+        // $event->image = $request->file('image')->hashName();
         $event->save();
 
         return response()->json(['events'=>$event,'message' => 'Events updated successfully'], 200);
