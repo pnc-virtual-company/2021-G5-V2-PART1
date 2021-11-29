@@ -1,28 +1,33 @@
 <template>
-<<<<<<< HEAD
-  <login-form></login-form>
+  
+    <login-form></login-form>
+  
+  
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
-    return {};
+    return {
+      API_URL: "http://127.0.0.1:8080/api/events",
+      events: [],
+    };
   },
-  methods: {},
+ 
+  methods: {
+    
+  },
+  mounted(){
+    axios.get(this.API_URL).then((response) => {
+      this.events = response.data.data;
+      console.log(response.data)
+    })
+  }
+
 };
-=======
-<h2>Hello</h2>
-</template>
-
-<script>
-
-export default {
-  
-}
->>>>>>> 7546ac893c4a5f58ba44e89cfdaf50c777b618f2
 </script>
 
 <style scoped>
-
 
 </style>
