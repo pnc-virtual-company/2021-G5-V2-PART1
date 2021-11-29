@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
-    // protected $primaryKey = 'category_id';
-    // public function Event(){
-    //     return $this->hasMany(Event::class);
-    // }
+    protected $fillable = ['name','image'];
+    protected $hidden = ['created_at', 'updated_at'];
+    public function categoryManyEvents(){
+        return $this->hasMany(Event::class);
+    }
 }
