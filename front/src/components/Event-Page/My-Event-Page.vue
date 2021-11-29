@@ -23,7 +23,7 @@
           </button>
         </div>
         <!--================================|-CARD-|================================-->
-        <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-4 me-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-2 me-2 mb-4">
           <div class="col">
             <div class="card h-100">
               <div class="card-body">
@@ -76,92 +76,6 @@
               </div>
             </div>
           </div>
-
-          <!-- <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">All Event</h5>
-                <p class="card-text">Hello</p>
-              </div>
-              <div class="card-footer">
-                <small>12-Nov-2021/23-Dec-2021</small>
-                 <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
-                </button>
-                <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Categories</h5>
-                <p class="card-text">Hello</p>
-              </div>
-              <div class="card-footer">
-                <small>12-Nov-2021/23-Dec-2021</small>
-                 <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
-                </button>
-                <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Members</h5>
-                <p class="card-text">Hello</p>
-              </div>
-              <div class="card-footer">
-                <small>12-Nov-2021/23-Dec-2021</small>
-                 <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
-                </button>
-                <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Users</h5>
-                <p class="card-text">Hello</p>
-              </div>
-              <div class="card-footer">
-                <small>12-Nov-2021/23-Dec-2021</small>
-                 <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
-                </button>
-                <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Actions</h5>
-                <p class="card-text">Hello</p>
-              </div>
-              <div class="card-footer">
-                <small>12-Nov-2021/23-Dec-2021</small>
-                 <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
-                </button>
-                <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
@@ -267,7 +181,7 @@ span {
   border-bottom: 2px solid #f96233;
 }
 .card:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .card-title {

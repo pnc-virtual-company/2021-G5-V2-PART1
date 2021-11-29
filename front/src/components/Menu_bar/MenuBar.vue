@@ -2,13 +2,14 @@
   <header>
     <div id="progressbar"></div>
     <div id="scrollPath"></div>
+    <!--================|-MAIN CLASS-|=================-->
     <div class="wrapper">
       <!--================|-NAVBAR-LEFT-|================-->
       <div class="navbar-left">
         <div class="user-info">
           <!--================|-USER-PROFILE-|================-->
           <div class="profile">
-            <img src="../../assets/user_male_icon.png" alt="" />
+            <img src="../../assets/man_icon.png" alt="" />
           </div>
           <!--================|-USERNAME-|================-->
           <div class="username">
@@ -18,7 +19,6 @@
         <!--================|-BUTTON ADD-|================-->
         <div class="button-add">
           <button class="button-event">ADD EVENT +</button>
-          <!-- <button class="button-member">ADD MEMBER +</button> -->
           <button class="button-category">ADD CATEGORY +</button>
         </div>
         <!--================|-MENU-|================-->
@@ -35,10 +35,10 @@
                   ><i class="fa fa-calendar" aria-hidden="true"></i> My Event
                 </router-link>
               </li>
-                <li>
+              <li>
                 <router-link to="/all-events"
-                  ><i class="fa fa-users" aria-hidden="true"></i>
-                  All Event</router-link
+                  ><i class="fa fa-users" aria-hidden="true"></i> All
+                  Event</router-link
                 >
               </li>
               <li>
@@ -62,64 +62,47 @@
               <li>
                 <router-link to="/"
                   ><i class="fa fa-address-book" aria-hidden="true"></i>
-                  Actions</router-link
-                >
-              </li>
-              <li>
-                <router-link to="/"
-                  ><i class="fa fa-sign-in" aria-hidden="true"></i> Sign Up
-                </router-link>
-              </li>
-              <li>
-                <router-link to="/"
-                  ><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out
+                  Actions
                 </router-link>
               </li>
             </ul>
           </nav>
         </div>
+        <!--===============|-BTN-SIGN IN & SIGN UP-|================-->
+        <div class="main-sign-btn">
+          <router-link to="/"
+            ><button class="sign-up-btn">
+              <i class="fas fa-user-plus"></i> Sign Up
+            </button>
+          </router-link>
+          <router-link to="/"
+            ><button class="sign-out-btn">
+              <i class="fas fa-sign-out-alt"></i> Sign Out
+            </button>
+          </router-link>
+        </div>
       </div>
-      <!--================================|-NAVBAR-RIGHT-|================================-->
+      <!--===============|-NAVBAR-RIGHT-|================-->
       <div class="navbar-right">
-        <div class="nav-search d-flex">
-          <input
-            type="text"
-            class="search mt-2 ms-3 w-25"
-            placeholder=" Search"
-          />
-          <button class="btn ms-1 h-50 mt-2">
-            <img src="../../assets/searching_icon.png" alt="" />
-          </button>
+        <div class="main-page">
+          <div class="content-left">
+            <img src="../../assets/menu.png" alt="">
+          </div>
+          <div class="content-right">
+            <input type="text" class="search ms-3" placeholder=" Search" />
+            <button class="btn">
+              <img src="../../assets/searching_icon.png" alt="" />
+            </button>
+          </div>
         </div>
         <!--================================|-BOOTSTRAP-CARD-|================================-->
-        <div class="row row-cols-1 row-cols-md-2 g-4 mt-1 ms-2 me-2">
-          
+        <div class="row row-cols-1 row-cols-md-2 g-4 mt-0 ms-2 me-2 mb-3">
           <div class="col">
             <div class="card h-100">
               <div class="card-body">
-                <router-link to="/events"><h5 class="card-title">My Event</h5></router-link>
-                <p class="card-text">Hello</p>
-              </div>
-              <div class="card-footer">
-                <small>12-Nov-2021/23-Dec-2021</small>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                <router-link to="/all-events"><h5 class="card-title">All Event</h5> </router-link>
-                <p class="card-text">Hello</p>
-              </div>
-              <div class="card-footer">
-              <small>12-Nov-2021/23-Dec-2021</small>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                 <router-link to="/categories"><h5 class="card-title">Categories</h5></router-link>
+                <router-link to="/events"
+                  ><h5 class="card-title">My Event</h5></router-link
+                >
                 <p class="card-text">Hello</p>
               </div>
               <div class="card-footer">
@@ -130,7 +113,9 @@
           <div class="col">
             <div class="card h-100">
               <div class="card-body">
-                 <router-link to="/members"><h5 class="card-title">Members</h5></router-link>
+                <router-link to="/all-events"
+                  ><h5 class="card-title">All Event</h5>
+                </router-link>
                 <p class="card-text">Hello</p>
               </div>
               <div class="card-footer">
@@ -141,7 +126,9 @@
           <div class="col">
             <div class="card h-100">
               <div class="card-body">
-                 <router-link to="/users"><h5 class="card-title">Users</h5></router-link>
+                <router-link to="/categories"
+                  ><h5 class="card-title">Categories</h5></router-link
+                >
                 <p class="card-text">Hello</p>
               </div>
               <div class="card-footer">
@@ -152,40 +139,66 @@
           <div class="col">
             <div class="card h-100">
               <div class="card-body">
-                 <router-link to="/allevents"><h5 class="card-title">Actions</h5></router-link>
+                <router-link to="/members"
+                  ><h5 class="card-title">Members</h5></router-link
+                >
                 <p class="card-text">Hello</p>
               </div>
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
               </div>
             </div>
-          </div> -->
-        
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <router-link to="/users"
+                  ><h5 class="card-title">Users</h5></router-link
+                >
+                <p class="card-text">Hello</p>
+              </div>
+              <div class="card-footer">
+                <small>12-Nov-2021/23-Dec-2021</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <router-link to="/allevents"
+                  ><h5 class="card-title">Actions</h5></router-link
+                >
+                <p class="card-text">Hello</p>
+              </div>
+              <div class="card-footer">
+                <small>12-Nov-2021/23-Dec-2021</small>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </header>
 </template>
 
-<!--================================|-SCRIPT-|================================-->
+<!--=====================|-SCRIPT DEFAULT-|=====================-->
 <script>
 export default {
   data() {
-    return {
-      
-    }
+    return {};
   },
 };
 </script>
 
-<!--================================|-STYLE CSS-|================================-->
+<!--========================|-STYLE CSS-|=======================-->
 <style >
-::-webkit-scrollbar
-{
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-SCROLLBAR STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
+::-webkit-scrollbar {
   width: 0px;
 }
-#scrollPath
-{
+#scrollPath {
   position: fixed;
   top: 0;
   right: 0;
@@ -193,8 +206,7 @@ export default {
   background: #f96233;
   border-radius: 30px;
 }
-#progressbar
-{
+#progressbar {
   position: fixed;
   top: 0;
   right: 0;
@@ -202,20 +214,17 @@ export default {
   background: linear-gradient(to top, #008aff, #00ffe7);
   animation: animate 5s linear infinite;
 }
-@keyframes animate
-{
-  0%, 100%
-  {
+@keyframes animate {
+  0%,
+  100% {
     filter: hue-rotate(0deg);
   }
-  50%
-  {
+  50% {
     filter: hue-rotate(360deg);
   }
 }
-#progressbar::before
-{
-  content: '';
+#progressbar::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -224,9 +233,8 @@ export default {
   background: linear-gradient(to top, #008aff, #00ffe7);
   filter: blur(30px);
 }
-#progressbar::after
-{
-  content: '';
+#progressbar::after {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -236,30 +244,61 @@ export default {
   filter: blur(30px);
 }
 
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-MAIN CLASS-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
 .wrapper {
   display: flex;
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
 }
-/* =================|-NAVBAR-LEFT-|=================*/
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-NAVBAR LEFT-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
 .navbar-left {
   width: 25%;
-  background: #83878b;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   box-sizing: border-box;
   padding: 5px;
 }
 .navbar-right {
   display: block;
   width: 75%;
-  background-image: url(../../assets/laptop.jpg);
+  height: 100%;
+  overflow: scroll;
+  background-image: url(../../assets/sunset.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;
 }
-
-/* =================|-USER PROFILE & NAME-|=================*/
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-BG LINEAR GRADIENT-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
+.main-page {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  padding: 25px;
+  display: flex;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-USER INFO STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
 .user-info {
   display: block;
   box-sizing: border-box;
@@ -267,8 +306,8 @@ export default {
 }
 .profile img {
   text-align: center;
-  width: 80px;
-  height: 80px;
+  width: 110px;
+  height: 110px;
   box-sizing: border-box;
 }
 .username h3 {
@@ -280,7 +319,9 @@ export default {
   font-size: 20px;
 }
 
-/* =================|-BUTTON ADD-|=================*/
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-BUTTON ADD EVENT OR CATE-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
 .button-add {
   display: block;
   text-align: center;
@@ -299,13 +340,6 @@ export default {
   border-top: 2px solid #f96233;
 }
 .button-event {
-  background: #004f6c;
-  border: none;
-  width: 40vh;
-  height: 7vh;
-  box-sizing: border-box;
-}
-.button-member {
   background: #004f6c;
   border: none;
   width: 40vh;
@@ -335,7 +369,44 @@ export default {
   border-top: 2px solid #004f6c;
 }
 
-/* =================|-NAVBAR UL LI-|=================*/
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-BUTTON SIGN IN & OUT-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
+.main-sign-btn {
+  display: block;
+  text-align: center;
+}
+.main-sign-btn button {
+  margin: 3px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: rgba(93, 87, 50, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  color: #c5ced8;
+  border-radius: 0px 15px 0px 15px;
+  border-bottom: 2px solid #f96233;
+  border-top: 2px solid #f96233;
+}
+.sign-up-btn,
+.sign-out-btn {
+  background: #004f6c;
+  border: none;
+  width: 20vh;
+  height: 7vh;
+  box-sizing: border-box;
+}
+.sign-up-btn:hover {
+  background: #0000ff;
+}
+.sign-out-btn:hover {
+  background: #ff0000;
+}
+
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-MENU UL LI STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
 .links {
   font-family: "Roboto Slab", serif;
   font-size: 18px;
@@ -355,8 +426,7 @@ ul li a {
   text-decoration: none;
   color: #2c2827;
 }
-a
-{
+a {
   text-decoration: none;
   color: #c5ced8;
 }
@@ -375,27 +445,64 @@ span {
   font-weight: 900;
   border-bottom: #f96233 3px solid;
 }
-
-/* =================|-INUT SEARCH-|=================*/
-.nav-search {
-  box-sizing: border-box;
-  position: relative;
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-SEARCH STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
+.content-left
+{
+  justify-content: flex-start;
 }
-::placeholder {
-  color: #c5ced8;
+.content-left img
+{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
-.nav-search input {
+.content-right input
+{
   background: #004f6c;
   border-radius: 0px 15px 0px 15px;
   color: #f96233;
   border: none;
   border-bottom: 2px solid #f96233;
 }
+.content-right .search
+{
+  background: #02445c;
+  width: 50vh;
+  height: 49px;
+  border: none;
+  border-radius: 0px 0px 0px 15px;
+  border-bottom: 2px solid #f96233;
+}
+.content-right .btn {
+  background: #02445c;
+  color: #c5ced8;
+  height: 49px;
+  border-radius: 0px 15px 0px 0px;
+  border-bottom: 2px solid #f96233;
+}
+.content-right .btn:hover {
+  background: #f96233;
+}
+
+.main-page span {
+  color: #000;
+  cursor: pointer;
+}
+.main-page span:hover {
+  color: #f96233;
+  transform: calc(1.1);
+  cursor: pointer;
+}
+::placeholder {
+  color: #c5ced8;
+}
 /* =================|-BUTTON SEARCH-|=================*/
 .btn {
   background: #004f6c;
   color: #c5ced8;
-  border-radius: 0px 15px 0px 15px;
+  border-radius: 0px 15px 0px 0px;
   border-bottom: 2px solid #f96233;
 }
 .btn:hover {
@@ -419,7 +526,8 @@ span {
   border-bottom: 2px solid #f96233;
 }
 .card:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+  background: #004f6c;
 }
 
 .card-title {
@@ -435,7 +543,9 @@ span {
 small {
   color: #b9c2ca;
 }
-
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-RESPONSIVE STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
 @media (max-width: 880px) {
   .wrapper {
     display: block;
@@ -443,6 +553,9 @@ small {
   .navbar-left {
     width: 100%;
     height: auto;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
   }
   .navbar-right {
     width: 100%;
@@ -450,8 +563,14 @@ small {
   }
   .profile img {
     text-align: center;
-    width: 70px;
-    height: 70px;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    transition: all 1.2s ease;
+    cursor: pointer;
+  }
+  .profile img:hover {
+    transform: scale(1.1);
   }
   .button-add {
     display: block;
@@ -460,8 +579,8 @@ small {
 
   .button-add button {
     margin: 2px;
-    font-weight: 200;
-    font-size: 13px;
+    font-weight: 700;
+    font-size: 17px;
   }
   .button-event,
   .button-member,
@@ -469,28 +588,26 @@ small {
     background: #004f6c;
     border: none;
     width: 70vh;
-    height: 5vh;
+    height: 7vh;
     box-sizing: border-box;
   }
   .links {
     font-family: "Roboto Slab", serif;
-    font-size: 15px;
-    /* font-weight: 200; */
+    font-size: 20px;
     color: #004f6c;
   }
-  .links nav {
+  .links nav ul li a {
     box-sizing: border-box;
+    color: #000;
+  }
+
+  .navbar-right .main-page {
+    border-radius: 10px;
   }
 
   .nav-search,
   .search input {
     width: 250%;
   }
-}
-
-header {
-  margin: 0;
-  padding: 0;
-  font-family: "Ubuntu", sans-serif;
 }
 </style>
