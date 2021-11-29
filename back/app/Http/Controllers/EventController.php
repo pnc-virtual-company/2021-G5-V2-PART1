@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\EventResource;
 use App\Models\Event;
 
 class EventController extends Controller
@@ -14,7 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Event::with(['category'])->latest()->get();
+        return EventResource::collection(Event::with(['category'])->latest()->get());
+         
     }
 
     /**
@@ -58,6 +60,17 @@ class EventController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search($title)
+    {
+        return Event::where('title','like', '%'.$title.'%')->get();
+    }
+    
+     /**
      * Display the specified resource.
      *
      * @param  int  $id

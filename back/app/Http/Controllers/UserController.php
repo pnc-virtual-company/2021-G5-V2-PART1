@@ -48,7 +48,7 @@ class UserController extends Controller
             #2|PS1Cov8xwU17j104zPDQuN7T5pmHleHJr9ibDN17 : thin
             #3|3lD2L6gQqMNjchvbuXcgg3NQhvnz0ZfA8Gc09PQh : phearak
             #4|2k0zXnFB07DrFZ3zhRGuk9f5i7VRjKxmXZQdxWLF : sophorn
-            #5|K60hPQZZxEkM4byu5sReZf7oPwlYHvaUudTNx3Pz : chum
+            #6|aso9ajaXRFcV6YM2sfDPhFpKITnmi0i9kYakmSre : chum
             // Create Token
             $token = $user->createToken('mytoken')->plainTextToken;
            

@@ -21,39 +21,39 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-// Route events
-
+// Route users================================================================
+// public
 Route::get("/users", [UserController::class, 'users']);
 Route::get("/users/{id}", [UserController::class, 'show']);
-
-
-Route::post("signup", [UserController::class, 'signup']);
+// prave
+Route::post("/signup", [UserController::class, 'signup']);
 Route::post("/signin", [UserController::class, 'login']);
+//==============================================================================
 
-
-
-Route::group(['middleware' => ['auth:sanctum']], function () {
-
-   
-    Route::post('/signout', [UserController::class, 'signout']);
-});
-
-
-// Route events
-
+// Public route events==========================================================
 Route::get("/events", [EventController::class, 'index']);
 Route::get("/events/{id}", [EventController::class, 'show']);
-
-Route::post("/events", [EventController::class, 'store']);
-Route::put("/events/{id}", [EventController::class, 'update']);
-Route::delete("/events/{id}", [EventController::class, 'destroy']);
+Route::get("/events/search/{title}", [EventController::class, 'search']);
+//==============================================================================
 
 // Route Category
-Route::get("/categories", [CategoryController::class, 'index']);
-Route::get("/categories/{id}", [CategoryController::class, 'show']);
-Route::get("/categories/search/{name}", [CategoryController::class, 'search']);
+    // Public route Category
+    Route::get("/categories", [CategoryController::class, 'index']);
+    Route::get("/categories/{id}", [CategoryController::class, 'show']);
+    Route::get("/categories/search/{name}", [CategoryController::class, 'search']);
+//================================================================================
 
-Route::post("/categories", [CategoryController::class, 'store']);
-Route::put("/categories/{id}", [CategoryController::class, 'update']);
-Route::delete("/categories/{id}", [CategoryController::class, 'destroy']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    // Route events
+    // Praivate route events
+    Route::post("/events", [EventController::class, 'store']);
+    Route::put("/events/{id}", [EventController::class, 'update']);
+    Route::delete("/events/{id}", [EventController::class, 'destroy']);
+
+    // Praivate route Category
+    Route::post("/categories", [CategoryController::class, 'store']);
+    Route::put("/categories/{id}", [CategoryController::class, 'update']);
+    Route::delete("/categories/{id}", [CategoryController::class, 'destroy']);
+
+    Route::post('/signout', [UserController::class, 'signout']);
+});
