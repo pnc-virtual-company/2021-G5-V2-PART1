@@ -14,7 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Event::orderBy('event_id', 'desc')->get();
+        return Event::with(['category'])->latest()->get();
     }
 
     /**
@@ -27,7 +27,13 @@ class EventController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:1999',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
+            'body'=>'required',
+            'link_join'=>'required',
+            'start_at'=>'required',
+            'start_date'=>'required',
+            'end_at'=>'required',
+            'end_date'=>'required',
         ]);
 
         // Move image to storage
@@ -36,9 +42,9 @@ class EventController extends Controller
         // Add to database
         $event = new Event();
         $event->user_id = $request->user_id;
+        $event->category_id = $request->category_id;
         $event->title = $request->title;
         $event->body = $request->body;
-        $event->category = $request->category;
         $event->city = $request->city;
         $event->link_join = $request->link_join;
         $event->start_at = $request->start_at;
@@ -48,7 +54,7 @@ class EventController extends Controller
         $event->image = $request->file('image')->hashName();
         $event->save();
 
-        return response()->json(['message' => 'created'], 201);
+        return response()->json(['events'=>$event,'message' => 'Events created successfull'], 201);
     }
 
     /**
@@ -59,7 +65,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        return event::with('user')->findOrFail($id);
+        return Event::with(['category'])->findOrFail($id);
     }
 
     /**
@@ -77,7 +83,7 @@ class EventController extends Controller
             'start_date' => 'required',
             'end_at' => 'required',
             'end_date' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:1999',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
         ]);
 
         // Move image to storage
@@ -88,7 +94,7 @@ class EventController extends Controller
         $event->user_id = $request->user_id;
         $event->title = $request->title;
         $event->body = $request->body;
-        $event->category = $request->category;
+        $event->category_id = $request->category_id;
         $event->city = $request->city;
         $event->link_join = $request->link_join;
         $event->start_at = $request->start_at;
@@ -98,7 +104,7 @@ class EventController extends Controller
         $event->image = $request->file('image')->hashName();
         $event->save();
 
-        return response()->json(['message' => 'updated'], 200);
+        return response()->json(['events'=>$event,'message' => 'Events updated successfully'], 200);
     }
 
     /**
@@ -111,7 +117,7 @@ class EventController extends Controller
     {
         $event = Event::destroy($id);
         if ($event == 1){
-            return response()->json(['message' => 'deleted successfully'], 200);
+            return response()->json(['events'=>$event,'message' => 'deleted successfully'], 200);
         }else {
             return response()->json(['message' => 'Cannot deleted no id'], 404);
         }
