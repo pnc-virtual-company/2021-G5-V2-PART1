@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get("/users", [UserController::class, 'users']);
 Route::get("/users/{id}", [UserController::class, 'show']);
 // prave
-Route::post("signup", [UserController::class, 'signup']);
+Route::post("/signup", [UserController::class, 'signup']);
 Route::post("/signin", [UserController::class, 'login']);
 //==============================================================================
 
