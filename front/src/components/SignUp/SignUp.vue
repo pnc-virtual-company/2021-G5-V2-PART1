@@ -149,6 +149,8 @@ export default {
   justify-content: center;
   background: #004f6c;
   border-radius: 10px 0 0 10px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 900;
 }
 .pn-logo {
   margin-top: 35%;
@@ -159,6 +161,7 @@ input {
 .form {
   border-radius: 0 10px 10px 0;
   background: #005c7d;
+  font-family: "Roboto Slab", serif;
 }
 ::placeholder {
   color: #fff;

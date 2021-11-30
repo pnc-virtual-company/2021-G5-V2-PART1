@@ -1,12 +1,17 @@
 <template>
+ <sign-in></sign-in>
   <sign-up> </sign-up>
   <!-- <router-view>
   </router-view> -->
 </template>
 
-<script>
 
+<script>
+import SignUp from './components/SignUp/SignUp.vue'
 export default {
+  components:{
+    'sign-up':SignUp
+  },
   mounted() {
    
   
