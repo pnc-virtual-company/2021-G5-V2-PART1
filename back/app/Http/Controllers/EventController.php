@@ -29,6 +29,7 @@ class EventController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'image' => 'image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
             'body'=>'required',
             'link_join'=>'required',
             'start_at'=>'required',
@@ -37,12 +38,20 @@ class EventController extends Controller
             'end_date'=>'required',
             // 'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
         ]);
+        $event = new Event();
+
+        if($request->image !== null){
+            $event->image = $request->file('image')->hashName();
+            $request->file('image')->store('public/images/events');
+        }
+        else{
+            $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
+            $event->image = $img;
+        }
 
         // Move image to storage
-        // $request->file('image')->store('public/images/events');
 
         // Add to database
-        $event = new Event();
         $event->user_id = $request->user_id;
         $event->category_id = $request->category_id;
         $event->title = $request->title;
@@ -53,7 +62,6 @@ class EventController extends Controller
         $event->start_date = $request->start_date;
         $event->end_at = $request->end_at;
         $event->end_date = $request->end_date;
-        // $event->image = $request->file('image')->hashName();
         $event->save();
 
         return response()->json(['events'=>$event,'message' => 'Events created successfull'], 201);
@@ -67,7 +75,7 @@ class EventController extends Controller
      */
     public function search($title)
     {
-        return Event::where('title','like', '%'.$title.'%')->get();
+        return Event::with('category')->where('title','like', '%'.$title.'%')->get();
     }
     
      /**
@@ -96,14 +104,22 @@ class EventController extends Controller
             'start_date' => 'required',
             'end_at' => 'required',
             'end_date' => 'required',
-            // 'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:1999',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
         ]);
 
-        // Move image to storage
-        // $request->file('image')->store('public/images/events');
+        $event = Event::findOrFail($id);
+        if($request->image !== null){
+            // Move image to storage
+            $event->image = $request->file('image')->hashName();
+            $request->file('image')->store('public/images/events');
+        }
+        else{
+            $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
+            $event->image = $img;
+        }
+
 
         // Add to database
-        $event = Event::findOrFail($id);
         $event->user_id = $request->user_id;
         $event->title = $request->title;
         $event->body = $request->body;
@@ -114,7 +130,6 @@ class EventController extends Controller
         $event->start_date = $request->start_date;
         $event->end_at = $request->end_at;
         $event->end_date = $request->end_date;
-        // $event->image = $request->file('image')->hashName();
         $event->save();
 
         return response()->json(['events'=>$event,'message' => 'Events updated successfully'], 200);

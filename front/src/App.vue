@@ -1,29 +1,21 @@
 <template>
-    <login-form></login-form>
-    <sign-up></sign-up>
-
+ <sign-in></sign-in>
+  <sign-up> </sign-up>
+  <!-- <router-view>
+  </router-view> -->
 </template>
 
-<script>
-import axios from 'axios';
-export default {
-  data() {
-    return {
-      API_URL: "http://127.0.0.1:8080/api/events",
-      events: [],
-    };
-  },
- 
-  methods: {
-    
-  },
-  mounted(){
-    axios.get(this.API_URL).then((response) => {
-      this.events = response.data.data;
-      console.log(response.data)
-    })
-  }
 
+<script>
+import SignUp from './components/SignUp/SignUp.vue'
+export default {
+  components:{
+    'sign-up':SignUp
+  },
+  mounted() {
+   
+  
+  },
 };
 </script>
 

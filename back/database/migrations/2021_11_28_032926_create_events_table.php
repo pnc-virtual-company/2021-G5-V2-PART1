@@ -25,7 +25,7 @@ class CreateEventsTable extends Migration
             $table->string('start_date');
             $table->string('end_at');
             $table->string('end_date');
-            // $table->string('image');
+            $table->string('image')->nullbele();
             $table->timestamps();
         });
     }
