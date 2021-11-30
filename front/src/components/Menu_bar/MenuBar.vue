@@ -216,6 +216,7 @@ export default {
 }
 #progressbar {
   position: fixed;
+  border-radius: 10px;
   top: 0;
   right: 0;
   width: 10px;
@@ -302,9 +303,9 @@ export default {
   display: flex;
 
   overflow: hidden;
-  position:fixed;
+  /* position:fixed; */
   transition: 0.4s;
-  z-index: 100;
+  /* z-index: 100; */
 }
 @keyframes gradient {
   0% {
@@ -440,6 +441,12 @@ ul li a {
   text-decoration: none;
   color: #2c2827;
 }
+.links a.active
+{
+  background: #0000ff;
+  width: 20%;
+  height: 20%;
+}
 a {
   text-decoration: none;
   color: #c5ced8;
@@ -475,7 +482,6 @@ span {
   border-radius: 0px 15px 0px 15px;
   color: #b9c2ca;
   border: none;
-  border-bottom: 2px solid #f96233;
   font-family: "Roboto Slab", serif;
 }
 .content-right {
@@ -487,7 +493,6 @@ span {
   height: 49px;
   border: none;
   border-radius: 0px 0px 0px 15px;
-  border-bottom: 2px solid #f96233;
 }
 .content-right .btn {
   background: #02445c;
