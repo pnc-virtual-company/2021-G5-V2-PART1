@@ -13,12 +13,12 @@
             <img src="../../assets/searching_icon.png" />
           </button>
           <button 
-            class="btn ms-5 h-50 mt-2"
+            class="btn ms-1 h-50 mt-2"
             type="button"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
           >
-            Create New Categories
+            Create Categories
             <img src="../../assets/add_circle_create_expand_icon.png" />
           </button>
         </div>
@@ -28,15 +28,15 @@
             <div class="card h-100">
               <div class="card-body">
                 <h5 class="card-title">My Event</h5>
-                <p class="card-text">Hello</p>
+                <p class="card-text">Virtual Company PART-2 Group-5</p>
               </div>
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
                 <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
+                  <i class="fa fa-edit"></i>
                 </button>
                 <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
+                  <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -109,14 +109,6 @@ img {
   width: 30px;
   height: 30px;
 }
-
-span {
-  padding: 10px;
-  font-family: "Roboto Slab", serif;
-  font-weight: 900;
-  border-bottom: #f96233 3px solid;
-}
-
 /* =================|-INUT SEARCH-|=================*/
 .nav-search {
   box-sizing: border-box;
@@ -244,15 +236,9 @@ small {
     box-sizing: border-box;
   }
 
-  .nav-search,
-  .search input {
-    width: 250%;
+  .nav-search {
+    width: 150%;
+    display: block;
   }
-}
-
-header {
-  margin: 0;
-  padding: 0;
-  font-family: "Ubuntu", sans-serif;
 }
 </style>

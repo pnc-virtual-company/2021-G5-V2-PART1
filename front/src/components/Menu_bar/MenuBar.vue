@@ -27,7 +27,7 @@
             <ul>
               <li>
                 <router-link to="/menubars"
-                  ><i class="fa fa-home" aria-hidden="true"></i> Home
+                  ><i class="fa fa-home" aria-hidden="true"></i> Dashboard
                 </router-link>
               </li>
               <li>
@@ -84,39 +84,42 @@
       </div>
       <!--===============|-NAVBAR-RIGHT-|================-->
       <div class="navbar-right">
-        <div class="main-page">
+        <div class="main-page mb-5" id="navbar">
           <div class="content-left">
-            <img src="../../assets/menu.png" alt="">
+            <img src="../../assets/menu.png" alt="" />
           </div>
           <div class="content-right">
             <input type="text" class="search ms-3" placeholder=" Search" />
-            <button class="btn">
+            <button class="btn mb-1">
               <img src="../../assets/searching_icon.png" alt="" />
             </button>
           </div>
         </div>
         <!--================================|-BOOTSTRAP-CARD-|================================-->
-        <div class="row row-cols-1 row-cols-md-2 g-4 mt-0 ms-2 me-2 mb-3">
+        <div class="row row-cols-1 row-cols-md-2 g-4 mt-5 ms-2 me-2 mb-3">
           <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                <router-link to="/events"
-                  ><h5 class="card-title">My Event</h5></router-link
-                >
-                <p class="card-text">Hello</p>
+            <router-link to="/events">
+              <div class="card h-100">
+                <div class="card-body d-flex">
+                  <img src="../../assets/event_month_icon.png" alt="">
+                  <h5 class="card-title ms-3 mt-2">My Event</h5>
+                  <!-- <p class="card-text">Hello</p> -->
+                </div>
+                <div class="card-footer">
+                  <small>12-Nov-2021/23-Dec-2021</small>
+                </div>
               </div>
-              <div class="card-footer">
-                <small>12-Nov-2021/23-Dec-2021</small>
-              </div>
-            </div>
+            </router-link>
           </div>
+
           <div class="col">
             <div class="card h-100">
-              <div class="card-body">
+              <div class="card-body d-flex">
+                 <img src="../../assets/event_month_icon.png" alt="">
                 <router-link to="/all-events"
-                  ><h5 class="card-title">All Event</h5>
+                  ><h5 class="card-title ms-3 mt-2">All Event</h5>
                 </router-link>
-                <p class="card-text">Hello</p>
+                <!-- <p class="card-text">Hello</p> -->
               </div>
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
@@ -125,11 +128,12 @@
           </div>
           <div class="col">
             <div class="card h-100">
-              <div class="card-body">
+              <div class="card-body d-flex">
+                  <img src="../../assets/category_icon.png" alt="">
                 <router-link to="/categories"
-                  ><h5 class="card-title">Categories</h5></router-link
+                  ><h5 class="card-title ms-3 mt-2">Categories</h5></router-link
                 >
-                <p class="card-text">Hello</p>
+                <!-- <p class="card-text">Hello</p> -->
               </div>
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
@@ -138,11 +142,12 @@
           </div>
           <div class="col">
             <div class="card h-100">
-              <div class="card-body">
+              <div class="card-body d-flex">
+                  <img src="../../assets/members_team_icon.png" alt="">
                 <router-link to="/members"
-                  ><h5 class="card-title">Members</h5></router-link
+                  ><h5 class="card-title ms-3 mt-2">Members</h5></router-link
                 >
-                <p class="card-text">Hello</p>
+                <!-- <p class="card-text">Hello</p> -->
               </div>
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
@@ -151,11 +156,12 @@
           </div>
           <div class="col">
             <div class="card h-100">
-              <div class="card-body">
+              <div class="card-body d-flex">
+                 <img src="../../assets/users_icon.png" alt="">
                 <router-link to="/users"
-                  ><h5 class="card-title">Users</h5></router-link
+                  ><h5 class="card-title ms-3 mt-2">Users</h5></router-link
                 >
-                <p class="card-text">Hello</p>
+                <!-- <p class="card-text">Hello</p> -->
               </div>
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
@@ -164,11 +170,12 @@
           </div>
           <div class="col">
             <div class="card h-100">
-              <div class="card-body">
+              <div class="card-body d-flex">
+                <img src="../../assets/action_icon.png" alt="">
                 <router-link to="/allevents"
-                  ><h5 class="card-title">Actions</h5></router-link
+                  ><h5 class="card-title ms-3 mt-2">Actions</h5></router-link
                 >
-                <p class="card-text">Hello</p>
+                <!-- <p class="card-text">Hello</p> -->
               </div>
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
@@ -182,6 +189,7 @@
 </template>
 
 <!--=====================|-SCRIPT DEFAULT-|=====================-->
+
 <script>
 export default {
   data() {
@@ -263,27 +271,40 @@ export default {
   animation: gradient 15s ease infinite;
   box-sizing: border-box;
   padding: 5px;
+
+  overflow: scroll;
+  position:fixed;
+  transition: 0.4s;
+  z-index: 100;
+  height: 100%;
 }
 .navbar-right {
   display: block;
   width: 75%;
   height: 100%;
-  overflow: scroll;
   background-image: url(../../assets/sunset.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;
+  float: left;
+  margin-left: 25%;
 }
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-BG LINEAR GRADIENT-|-=-=-=-=-=-=-=-=-=-=-= |
 */
 .main-page {
+  width: 100%;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
-  padding: 25px;
+  padding: 10px;
   display: flex;
+
+  overflow: hidden;
+  position:fixed;
+  transition: 0.4s;
+  z-index: 100;
 }
 @keyframes gradient {
   0% {
@@ -358,17 +379,11 @@ export default {
   border-bottom: 2px solid #004f6c;
   border-top: 2px solid #004f6c;
 }
-.button-member:hover {
-  background: #f96233;
-  border-bottom: 2px solid #004f6c;
-  border-top: 2px solid #004f6c;
-}
 .button-category:hover {
   background: #f96233;
   border-bottom: 2px solid #004f6c;
   border-top: 2px solid #004f6c;
 }
-
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-BUTTON SIGN IN & OUT-|-=-=-=-=-=-=-=-=-=-=-= |
 */
@@ -403,7 +418,6 @@ export default {
 .sign-out-btn:hover {
   background: #ff0000;
 }
-
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-MENU UL LI STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
 */
@@ -448,26 +462,26 @@ span {
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-SEARCH STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
 */
-.content-left
-{
+.content-left {
   justify-content: flex-start;
 }
-.content-left img
-{
+.content-left img {
   width: 50px;
   height: 50px;
   cursor: pointer;
 }
-.content-right input
-{
+.content-right input {
   background: #004f6c;
   border-radius: 0px 15px 0px 15px;
-  color: #f96233;
+  color: #b9c2ca;
   border: none;
   border-bottom: 2px solid #f96233;
+  font-family: "Roboto Slab", serif;
 }
-.content-right .search
-{
+.content-right {
+  float: left;
+}
+.content-right .search {
   background: #02445c;
   width: 50vh;
   height: 49px;
@@ -485,18 +499,9 @@ span {
 .content-right .btn:hover {
   background: #f96233;
 }
-
-.main-page span {
-  color: #000;
-  cursor: pointer;
-}
-.main-page span:hover {
-  color: #f96233;
-  transform: calc(1.1);
-  cursor: pointer;
-}
 ::placeholder {
   color: #c5ced8;
+  font-family: "Roboto Slab", serif;
 }
 /* =================|-BUTTON SEARCH-|=================*/
 .btn {
@@ -513,6 +518,12 @@ span {
   font-family: "Roboto Slab", serif;
   font-weight: 800;
   font-size: 15px;
+  /* background-image: url(../../assets/sunset.jpg); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  margin-top: 20%;
 }
 .card {
   background: #004f6c;
@@ -524,6 +535,11 @@ span {
     rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
   cursor: pointer;
   border-bottom: 2px solid #f96233;
+}
+.card-body img
+{
+  width: 50px;
+  height: 50px;
 }
 .card:hover {
   transform: scale(1.1);
@@ -546,22 +562,34 @@ small {
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-RESPONSIVE STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
 */
-@media (max-width: 880px) {
-  .wrapper {
+@media (max-width: 880px) 
+{
+  .wrapper 
+  {
     display: block;
   }
-  .navbar-left {
+  .navbar-left 
+  {
     width: 100%;
     height: auto;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
+
+    overflow: scroll;
+    position:sticky;
+    transition: 0.4s;
+    z-index: 100;
+    height: 100%;
   }
-  .navbar-right {
+  .navbar-right 
+  {
     width: 100%;
     height: auto;
+    margin: auto;
   }
-  .profile img {
+  .profile img 
+  {
     text-align: center;
     width: 120px;
     height: 120px;
@@ -569,45 +597,51 @@ small {
     transition: all 1.2s ease;
     cursor: pointer;
   }
-  .profile img:hover {
+  .profile img:hover 
+  {
     transform: scale(1.1);
   }
-  .button-add {
+  .button-add 
+  {
     display: block;
     text-align: center;
   }
 
-  .button-add button {
+  .button-add button 
+  {
     margin: 2px;
     font-weight: 700;
     font-size: 17px;
   }
   .button-event,
   .button-member,
-  .button-category {
+  .button-category 
+  {
     background: #004f6c;
     border: none;
     width: 70vh;
     height: 7vh;
     box-sizing: border-box;
   }
-  .links {
+  .links 
+  {
     font-family: "Roboto Slab", serif;
     font-size: 20px;
     color: #004f6c;
   }
-  .links nav ul li a {
+  /* .links nav a.active
+  {
+    background: #0000ff;
+  } */
+  .links nav ul li a
+  {
     box-sizing: border-box;
     color: #000;
   }
 
-  .navbar-right .main-page {
+  /* .navbar-right .main-page 
+  {
     border-radius: 10px;
-  }
-
-  .nav-search,
-  .search input {
-    width: 250%;
-  }
+  } */
 }
 </style>

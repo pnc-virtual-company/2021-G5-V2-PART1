@@ -4,7 +4,7 @@
       <img
         src="../../assets/pnc-logo.png"
       />
-      <p>VC-PART-1-GROUP-5 &copy; 2021</p>
+      <p>VC-PART-2-GROUP-5 &copy; 2021</p>
     </div>
     <div class="footer-center">
       <div>
@@ -30,9 +30,9 @@
         class="footer-company-about"
         style="font-family: 'Battambang', cursive"
       >
-        <span style="font-family: 'Battambang', cursive">About Our Team</span>
+        <span>About Our Team</span>
         We are a student at Passerellesnumeriques Cambodia (PNC) &amp;
-        WEB-DEVILOPER.
+        WEB-DEVILOPER, WEB-PROGRAMER.
       </p>
      <div class="footer-icons">
         <a href=""><i class="fab fa-facebook-square"></i></a>
@@ -53,19 +53,21 @@ body {
 }
 
 .footer-distributed {
-  background-color: #044c66;
+  background-color: #1a1f20;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
-  width: 100%;
+  width: 75%;
+  float: left;
+  justify-content: flex-end;
   text-align: left;
   font: bold 16px sans-serif;
   padding: 20px 20px;
   font-family: "Roboto Slab", serif;
+  margin-left: 25%;
 }
-.footer-distributed .footer-left
+.footer-distributed .footer-left p
 {
-  margin-left: 4%;
-  margin-top: 3%;
+  font-size: 20px;
 }
 .footer-distributed .footer-left img
 {
@@ -80,7 +82,7 @@ body {
 }
 
 .footer-distributed .footer-left {
-  width: 30%;
+  width: 28%;
 }
 
 .footer-distributed .footer-links {
@@ -213,6 +215,8 @@ body {
 @media (max-width: 880px) {
   .footer-distributed {
     font: bold 14px sans-serif;
+    width: 100%;
+    margin: auto;
   }
 
   .footer-distributed .footer-left,
