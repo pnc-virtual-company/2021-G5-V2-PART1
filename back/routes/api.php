@@ -43,7 +43,6 @@ Route::get("/events/search/{title}", [EventController::class, 'search']);
     Route::get("/categories/search/{name}", [CategoryController::class, 'search']);
 //================================================================================
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
     // Route events
     // Praivate route events
     Route::post("/events", [EventController::class, 'store']);
@@ -55,5 +54,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put("/categories/{id}", [CategoryController::class, 'update']);
     Route::delete("/categories/{id}", [CategoryController::class, 'destroy']);
 
-    Route::post('/signout', [UserController::class, 'signout']);
-});
+    // Route::post('/signout', [UserController::class, 'signout']);
+
