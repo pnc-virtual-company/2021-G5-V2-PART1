@@ -1,20 +1,14 @@
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from "vue-router";
+// import { createRouter, createWebHistory } from "vue-router";
 import App from './App.vue'
-import Singup from './components/Sign-Up/Singup.vue'
 
+import Signup from './components/Sign-Up/Singup.vue'
 
 
 const app = createApp(App);
-app.component('sign-up', Singup)
+app.component('sign-up', Signup)
 
 
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-   
-  ],
-});
-app.use(router)
 app.mount('#app')
+
+

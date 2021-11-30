@@ -96,7 +96,7 @@
             type="submit"
             @click="Signup"
             class="btn text-white float-end"
-            value="Login now !"
+            value="Login"
           />
       </div>
     </form>
@@ -147,9 +147,11 @@ export default {
 .logo {
   display: flex;
   justify-content: center;
-  align-items: center;
   background: #004f6c;
   border-radius: 10px 0 0 10px;
+}
+.pn-logo {
+  margin-top: 35%;
 }
 input {
   background: #006d95;
