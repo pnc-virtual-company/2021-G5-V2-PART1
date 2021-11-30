@@ -5,7 +5,9 @@
        </div>
        <div class="h6">
            <h6>PNC-VC2</h6>
-           <h6>Event Me</h6>
+           <h6>Event Me
+            <i class="far fa-calendar-alt"></i>
+           </h6>
        </div>
         <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>

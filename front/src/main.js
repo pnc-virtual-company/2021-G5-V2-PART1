@@ -1,20 +1,20 @@
 import { createApp } from 'vue'
+import { createRouter, createWebHistory } from "vue-router";
 import App from './App.vue'
-<<<<<<< HEAD
-import SignUp from './components/Sign-Up/SignUp.vue'
-import SignIn from "./components/Sign-Up/SignIn.vue"
+import Singup from './components/Sign-Up/Singup.vue'
 
 
 
 const app = createApp(App);
-app.component('sign-up', SignUp)
-app.component('sign-in', SignIn)
-=======
-// import 'bootstrap/dist/css/bootstrap.min.css'
-import LoginFormed from "./components/LoginForm/login.vue";
+app.component('sign-up', Singup)
 
-const app = createApp(App);
 
-app.component("login-form", LoginFormed);
->>>>>>> 955ee8c69a89ec1b5ca4a591353860c2324308a0
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+   
+  ],
+});
+app.use(router)
 app.mount('#app')

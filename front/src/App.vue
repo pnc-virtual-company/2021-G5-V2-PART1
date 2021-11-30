@@ -1,11 +1,17 @@
 <template>
-  <login-form></login-form>
+  <sign-up> </sign-up>
+  <!-- <router-view>
+  </router-view> -->
 </template>
 
 <script>
-export default {
 
-}
+export default {
+  mounted() {
+   
+  
+  },
+};
 </script>
 
 <style>
