@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 
 export default {
 date(){
@@ -20,10 +20,11 @@ date(){
   }
 },
 mounted(){
-  axios.get('http://eventme.com:3000/api/users')
-      .then((res=>{
-        console.log(res.data);
-      }))
+  // axios.get('http://eventme.com:3000/api/users')
+  //     .then((res=>{
+  //       console.log(res.data);
+  //     }))
+      
 }
 };
 </script>
