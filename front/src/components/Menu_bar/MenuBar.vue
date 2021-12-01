@@ -435,17 +435,11 @@ export default {
   text-decoration: none;
 }
 .links ul li {
-  margin-bottom: 10px;
+  margin-bottom: 22px;
 }
 ul li a {
   text-decoration: none;
   color: #2c2827;
-}
-.links a.active
-{
-  background: #0000ff;
-  width: 20%;
-  height: 20%;
 }
 a {
   text-decoration: none;
@@ -454,6 +448,9 @@ a {
 .links ul li a:hover {
   color: #f96233;
   cursor: pointer;
+  background: #b9c2ca;
+  padding: 10px;
+  border-radius: 5px;
 }
 img {
   width: 30px;

@@ -12,11 +12,11 @@
           <button class="btn ms-1 h-50 mt-2">
             <img src="../../assets/searching_icon.png" />
           </button>
-          <button 
+          <button
             class="btn ms-1 h-50 mt-2"
             type="button"
             data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
+            data-bs-target="#create-category"
           >
             Create Categories
             <img src="../../assets/add_circle_create_expand_icon.png" />
@@ -32,7 +32,12 @@
               </div>
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
-                <button class="action-edit ms-4">
+                <button
+                  class="action-edit ms-4"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#update-category"
+                >
                   <i class="fa fa-edit"></i>
                 </button>
                 <button class="action-remove ms-2">
@@ -41,10 +46,45 @@
               </div>
             </div>
           </div>
-          <!--================================|-MODAL-|================================-->
+          <!--================================|-MODAL CREATE CATEGORY-|================================-->
           <div
             class="modal fade"
-            id="staticBackdrop"
+            id="create-category"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">
+                    Create New Categories
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <input type="text" placeholder="Enter hear..." />
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn" data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button type="button" class="btn">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--================================|-MODAL UPDATE CATEGORY-|================================-->
+          <div
+            class="modal fade"
+            id="update-category"
             data-bs-backdrop="static"
             data-bs-keyboard="false"
             tabindex="-1"
