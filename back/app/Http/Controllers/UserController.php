@@ -22,7 +22,7 @@ class UserController extends Controller
             'gender' => 'required',
             'date_of_birth' => 'required',
             'email' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:1999',
+            'image' => 'image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
             'password' => 'required'
         ]);
 
@@ -33,13 +33,14 @@ class UserController extends Controller
             $user = new User();
 
             if($request->image !== null){
-                $user->image = $request->file('image')->hashName();
+                $user->image = $request->image;
                 $request->file('image')->store('public/images/users');
             }
             else{
                 $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
                 $user->image = $img;
             }
+           
             
             
             // create User

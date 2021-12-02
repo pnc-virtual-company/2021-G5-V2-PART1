@@ -68,9 +68,9 @@
           </div>
         </div>
       </div>
-      <!-- <div class="mb-3">
-        <input type="file" class="form-control" id="exampleInputEmail1" name="image" />
-      </div> -->
+      <div class="mb-3">
+          <input type="file" @change="fileImg" class="form-control" id="exampleInputEmail1"/>
+      </div>
       <div class="mb-3">
         <input
           type="email"
@@ -91,15 +91,15 @@
           v-model="password"
         />
       </div>
-      <router-link to="/">
-      <div class="add">
+      <router-link to="/signup">
+        <div class="add">
           <input
             type="submit"
             @click="Signup"
             class="btn text-white float-end"
             value="Create now"
           />
-      </div>
+        </div>
       </router-link>
     </form>
   </div>
@@ -109,12 +109,12 @@ import axios from "axios";
 export default {
   data() {
     return {
-      API: "http://127.0.0.1:8000/api",
+      API: "http://eventme.com:3000/api",
       first_name: "",
       last_name: "",
       gender: "",
       date_of_birth: "",
-      image: "",
+      image: null,
       email: "",
       password: "",
     };
@@ -130,26 +130,30 @@ export default {
         email: this.email,
         password: this.password,
       };
-      console.log(user)
-
-      axios.post(this.API + "/signup", user)
-      .then((res) => {
+    
+      console.log(user);
+      axios.post(this.API + "/signup", user).then((res) => {
         console.log(res.data);
       });
-      this.first_name = ''
-      this.last_name  = ''
-      this.gender = ''
-      this.date_of_birth = ''
-      this.email = ''
-      this.password = ''
-      this.image = ''
+      // this.first_name = "";
+      // this.last_name = "";
+      // this.gender = "";
+      // this.date_of_birth = "";
+      // this.email = "";
+      // this.password = "";
+      // this.image = "";
     },
+    fileImg(e){
+     this.image =  e.target.files[0].name; 
+    },
+      
+
   },
-  // mounted() {
-  //   axios.get(this.API + "/users").then((res) => {
-  //     console.log(res.data);
-  //   });
-  // },
+  mounted() {
+    axios.get(this.API + "/users").then((res) => {
+      console.log(res.data);
+    });
+  },
 };
 </script>
 
