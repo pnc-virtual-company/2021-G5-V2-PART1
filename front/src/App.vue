@@ -16,7 +16,6 @@ import axios from 'axios';
 export default {
 date(){
   return{
-
   }
 },
 mounted(){
