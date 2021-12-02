@@ -128,8 +128,7 @@ export default {
         email: this.email,
         password: this.password,
       };
-      console.log(File)
-
+      console.log(user);
       axios.post(this.API + "/signup", user).then((res) => {
         console.log(res.data);
       });

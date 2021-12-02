@@ -1,21 +1,19 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from "vue-router";
 import App from './App.vue'
-import Login from './components/LoginForm/Login.vue' 
-
-
-
+import login from './components/LoginForm/login.vue'
+import signup from './components/SignUp/signup.vue';
+const app = createApp(App);
+app.component('login', login);
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/SignUp', component: SignUp},  
+    {path: '/', component:login},
+    {path: '/signup', component:signup}
   ],
 });
 
-
-const app = createApp(App);
-app.component('sign-in', Login)
 app.use(router)
-
+app.mount("#app")
 

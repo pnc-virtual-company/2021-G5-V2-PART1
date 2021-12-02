@@ -24,9 +24,8 @@ class User extends Authenticatable
         'date_of_birth',
         'email',
         'password',
-        // 'image',
+        'image',
     ];
-protected $primaryKey = 'user_id';
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -38,7 +37,7 @@ protected $primaryKey = 'user_id';
         'created_at',
         'updated_at'
     ];
-protected $primaryKey = 'user_id';
+    protected $primaryKey = 'user_id';
     /**
      * The attributes that should be cast.
      *
@@ -48,7 +47,8 @@ protected $primaryKey = 'user_id';
         'email_verified_at' => 'datetime',
     ];
 
-    public function events(){
+    public function events()
+    {
         return $this->hasMany(Event::class);
     }
 }

@@ -1,5 +1,5 @@
 <template>
-  <form class="form">
+  <form class="form" @submit.prevent>
     <div class="img m-auto w-25">
       <img src="../../assets/logo-pnc.png" alt="" class="w-100" />
     </div>
@@ -31,27 +31,60 @@
     <div>
       <p>
         Already have an account?
-        <router-link to="/SignUp">Create Now</router-link>
+        <router-link to="/signup">Create Now</router-link>
       </p>
     </div>
     <div class="add">
-      <input type="button" class="btn login text-white" value="Login now!" />
+      <input
+        type="button"
+        class="btn login text-white"
+        value="Login now!"
+        @click="login()"
+      />
     </div>
   </form>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
+      API_USERS: "http://127.0.0.1:8000/api",
       email: "",
       password: "",
+      users: [],
+      messageError: null,
     };
   },
-  methods: {},
+  methods: {
+    login() {
+      let user_login = {
+        email: this.email,
+        password: this.password,
+      };
+      console.log(user_login);
+      axios.post(this.API_USERS+"/signin", user_login).then((res) => {
+        console.log(res.data);
+        this.$router.push('/events');
+      })
+      .catch(error => {
+          let errorStatus = error.response.data.message;
+          if(error.response) {
+              this.messageError = errorStatus;
+              console.log(this.messageError)
+          }
+      })
+    },
+  },
+  mounted() {
+    axios.get(this.API_USERS + "/users").then((res) => {
+      console.log(res.data);
+      this.users = res.data;
+    });
+  },
 };
 </script>
-
 
 <style scoped>
 form {
@@ -67,8 +100,7 @@ form {
 input {
   background-color: #006d95;
 }
-::placeholder
-{
+::placeholder {
   color: aliceblue;
 }
 .add {
