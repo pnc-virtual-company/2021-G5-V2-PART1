@@ -48,7 +48,7 @@ protected $primaryKey = 'user_id';
         'email_verified_at' => 'datetime',
     ];
 
-    public function events(){
+    public function event(){
         return $this->hasMany(Event::class);
     }
 }

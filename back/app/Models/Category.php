@@ -10,7 +10,7 @@ class Category extends Model
     use HasFactory;
     protected $fillable = ['name','image'];
     protected $hidden = ['created_at', 'updated_at'];
-    public function categoryManyEvents(){
+    public function event(){
         return $this->hasMany(Event::class);
     }
 }
