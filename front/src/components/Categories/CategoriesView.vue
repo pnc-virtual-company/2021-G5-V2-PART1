@@ -1,5 +1,6 @@
 <template>
   <header>
+    <form action="#">
     <div class="wrapper">
       <!--================================|-NAVBAR-RIGHT-|================================-->
       <div class="navbar-right">
@@ -36,6 +37,7 @@
         </div>
       </div>
     </div>
+    </form>
   </header>
 </template>
 
@@ -43,7 +45,7 @@
 import axios from "axios";
 
 import CategoriesCard from "./CategoriesCard.vue";
-const url = "http://127.0.0.1:8000/api/categories"
+const url = "http://localhost:3000/api/categories"
 
 export default {
   components: {
@@ -62,12 +64,7 @@ export default {
         this.categories = res.data;
     })
     },
-    // createCategory(cat_name){
-    //   let name = {category:cat_name};
-    //   axios.post(url, name).then(res=>{
-    //     this.categories = res.data.category;
-    //   })
-    // },
+    
     createCategory(name){
       const addCat ={
         id: new Date().toISOString(),
@@ -80,6 +77,7 @@ export default {
     },
 
     deleteCagegories(cagegoriesId){
+     
       console.log(cagegoriesId)
       axios.delete(url+"/"+cagegoriesId).then((res) => {
   
@@ -89,6 +87,9 @@ export default {
       
     },
 
+    
+
+    
   
   },
   mounted() {

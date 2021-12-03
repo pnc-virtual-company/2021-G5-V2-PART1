@@ -1,18 +1,19 @@
 <template>
   <header>
+    <form action="#">
     <div class="col">
       <div class="card h-100">
         <div class="card-body">
           <h5 class="card-title">{{ category.name }}</h5>
-          <p class="card-text">Virtual Company PART-2 Group-5</p>
+         
         </div>
         <div class="card-footer">
-          <small>12-Nov-2021/23-Dec-2021</small>
+          
           <button
             class="action-edit ms-4"
             type="button"
             data-bs-toggle="modal"
-            data-bs-target="#update-category"
+            data-bs-target="#staticBackdrop"
           >
             <i class="fa fa-edit"></i>
           </button>
@@ -41,7 +42,8 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
+            
+            <h5 class="modal-title" id="staticBackdropLabel" >
               Create New Categories
             </h5>
             <button
@@ -58,7 +60,7 @@
             <button type="button" class="btn" data-bs-dismiss="modal">
               Close
             </button>
-            <button type="button" class="btn" @click="addCategory">
+            <button type="button" class="btn" data-bs-dismiss="modal" @click="addCategory">
               Submit
             </button>
           </div>
@@ -96,54 +98,14 @@
             <button type="button" class="btn" data-bs-dismiss="modal">
               Cancel
             </button>
-            <button type="button" class="btn" @click="$emit('delete-categories', category.id)">Remove</button>
+            <button type="button" class="btn" data-bs-dismiss="modal" @click="$emit('delete-categories', category.id)">Remove</button>
           </div>
         </div>
 
         <!--================================|-MODAL-UPDATE-|================================-->
- <div
-      class="modal fade"
-      id="update-category"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-              Update Categories
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            You want to update categories?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">
-              Cancel
-            </button>
-            <button type="button" class="btn"
-            >Update
-            </button>
-          </div>
-          
-        </div>
-        
       </div>
     </div>
-
-
-        
-      </div>
-    </div>
+    </form>
   </header>
 </template>
 
@@ -155,7 +117,6 @@ export default {
     return {
       name: "",
 
-   
     };
   },
   methods: {
