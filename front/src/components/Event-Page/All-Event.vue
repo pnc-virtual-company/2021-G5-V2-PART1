@@ -24,10 +24,10 @@
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
                  <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
+                   <i class="fa fa-edit"></i>
                 </button>
                 <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
+                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -41,10 +41,10 @@
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
                  <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
+                   <i class="fa fa-edit"></i>
                 </button>
                 <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
+                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -58,10 +58,10 @@
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
                  <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
+                   <i class="fa fa-edit"></i>
                 </button>
                 <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
+                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -75,10 +75,10 @@
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
                  <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
+                   <i class="fa fa-edit"></i>
                 </button>
                 <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
+                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -92,10 +92,10 @@
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
                  <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
+                   <i class="fa fa-edit"></i>
                 </button>
                 <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
+                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -109,10 +109,10 @@
               <div class="card-footer">
                 <small>12-Nov-2021/23-Dec-2021</small>
                  <button class="action-edit ms-4">
-                  EDIT <i class="fa fa-edit"></i>
+                   <i class="fa fa-edit"></i>
                 </button>
                 <button class="action-remove ms-2">
-                  REMOVE <i class="fa fa-trash" aria-hidden="true"></i>
+                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
