@@ -18,7 +18,10 @@
         </div>
         <!--================|-BUTTON ADD-|================-->
         <div class="button-add">
-          <button class="button-event">ADD EVENT +</button>
+          <router-link to="/events"
+                  ><button class="button-event">ADD EVENT +</button>
+          </router-link>
+          
           <button class="button-category">ADD CATEGORY +</button>
         </div>
         <!--================|-MENU-|================-->
