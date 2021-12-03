@@ -27,30 +27,21 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
         ]);
         $category = new Category();
         // check exist already category name
         if (Category::where('name', $request->name)->exists()) {
             return response()->json(['message' => 'The category name ' . $request->name . ' is already exist!']);
-        } else {
-            if($request->image !== null){
-                $category->image = $request->file('image')->hashName();
-                $request->file('image')->store('public/images/categories');
-            }
-            else{
-                $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
-                $category->image = $img;
-            }
+        } 
     
-            // Add to database
-            $category->name = $request->name;
+        // Add to database
+        $category->name = $request->name;
             
-            $category->save();
-            // Move image to storage
+        $category->save();
+        // Move image to storage
     
-            return response()->json(['category' => $category,'message' => 'categories created successfully'], 201);
-        }
+        return response()->json(['category' => $category,'message' => 'categories created successfully'], 201);
+        
     }
 
     /**
@@ -86,18 +77,9 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999'
         ]);
         
         $category = Category::findOrFail($id);
-        if($request->image !== null){
-            $category->image = $request->file('image')->hashName();
-            $request->file('image')->store('public/images/categories');
-        }
-        else{
-            $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
-            $category->image = $img;
-        }
 
         // Add to database
         $category->name = $request->name;
