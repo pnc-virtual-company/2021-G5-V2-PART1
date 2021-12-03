@@ -2,6 +2,7 @@
   <section>
 
     <!-- <menu-bar></menu-bar> -->
+    
 
     <router-view>
     </router-view>  
@@ -11,7 +12,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 
 export default {
 date(){
@@ -19,11 +20,6 @@ date(){
 
   }
 },
-mounted(){
-  axios.get('http://eventme.com:3000/api/users')
-      .then((res=>{
-        console.log(res.data);
-      }))
-}
+
 };
 </script>

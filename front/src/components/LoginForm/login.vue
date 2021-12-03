@@ -1,5 +1,5 @@
 <template>
-  <form class="form" @submit.prevent>
+  <form class="form" @submit.prevent="LoginUser">
     <div class="img m-auto w-25">
       <img src="../../assets/logo-pnc.png" alt="" class="w-100" />
     </div>
@@ -38,21 +38,25 @@
     </div>
 <router-link to="/menu-bar">
     <div class="add">
-      <input type="button" class="btn login text-white" value="Login now!" />
+      <input type="button"  @click="LoginUser" class="btn login text-white" value="Login now!" />
     </div>
 </router-link>
   </form>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-      email: "",
-      password: "",
+            
+            
     };
   },
-  methods: {},
+  methods: {
+    
+  },
+  
 };
 </script>
 

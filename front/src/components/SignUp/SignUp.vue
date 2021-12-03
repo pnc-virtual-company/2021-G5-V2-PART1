@@ -145,11 +145,11 @@ export default {
       this.image = ''
     },
   },
-  // mounted() {
-  //   axios.get(this.API + "/users").then((res) => {
-  //     console.log(res.data);
-  //   });
-  // },
+  mounted() {
+    axios.get(this.API + "/users").then((res) => {
+      console.log(res.data);
+    });
+  },
 };
 </script>
 

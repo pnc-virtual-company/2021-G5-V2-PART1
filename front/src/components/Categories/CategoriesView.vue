@@ -12,7 +12,7 @@
           <button class="btn ms-1 h-50 mt-2">
             <img src="../../assets/searching_icon.png" />
           </button>
-          <button 
+          <button
             class="btn ms-1 h-50 mt-2"
             type="button"
             data-bs-toggle="modal"
@@ -24,58 +24,15 @@
         </div>
         <!--================================|-BOOTSTRAP-CARD-|================================-->
         <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-2 me-2 mb-4">
-          <div class="col">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">My Event</h5>
-                <p class="card-text">Virtual Company PART-2 Group-5</p>
-              </div>
-              <div class="card-footer">
-                <small>12-Nov-2021/23-Dec-2021</small>
-                <button class="action-edit ms-4">
-                  <i class="fa fa-edit"></i>
-                </button>
-                <button class="action-remove ms-2">
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <!--================================|-MODAL-|================================-->
-          <div
-            class="modal fade"
-            id="staticBackdrop"
-            data-bs-backdrop="static"
-            data-bs-keyboard="false"
-            tabindex="-1"
-            aria-labelledby="staticBackdropLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel">
-                    Create New Categories
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <input type="text" placeholder="Enter hear..." />
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn" data-bs-dismiss="modal">
-                    Close
-                  </button>
-                  <button type="button" class="btn">Submit</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          
+          <category-card
+            v-for="category of categories"
+            :key="category.id"
+            :category="category"
+            @add-categories="createCategory"
+            :categories="category" 
+            @delete-categories="deleteCagegories"
+          ></category-card>
         </div>
       </div>
     </div>
@@ -83,7 +40,62 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+
+import CategoriesCard from "./CategoriesCard.vue";
+const url = "http://127.0.0.1:8000/api/categories"
+
+export default {
+  components: {
+    "category-card": CategoriesCard,
+  },
+  data() {
+    return {
+      categories: [],
+      
+    };
+  },
+  methods: {
+    
+    getCategories() {
+      axios.get(url).then((res) => {
+        this.categories = res.data;
+    })
+    },
+    // createCategory(cat_name){
+    //   let name = {category:cat_name};
+    //   axios.post(url, name).then(res=>{
+    //     this.categories = res.data.category;
+    //   })
+    // },
+    createCategory(name){
+      const addCat ={
+        id: new Date().toISOString(),
+        name: name
+      };
+      axios.post(url,addCat).then((response) => {
+      
+      this.categories.push(response.data.category);
+    })
+    },
+
+    deleteCagegories(cagegoriesId){
+      console.log(cagegoriesId)
+      axios.delete(url+"/"+cagegoriesId).then((res) => {
+  
+        console.log(res.data);
+        this.getCategories();
+    })
+      
+    },
+
+  
+  },
+  mounted() {
+    this.getCategories()
+    
+  },
+};
 </script>
 
 <style scoped>
@@ -98,8 +110,8 @@ export default {};
 .navbar-right {
   display: block;
   width: 100%;
-  background-image: url(../../assets/category.jpg);
-  /* background: #c5ced8; */
+  height: 100vh;
+  background-image: url(../../assets/sunset.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
