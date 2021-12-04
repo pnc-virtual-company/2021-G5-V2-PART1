@@ -36,11 +36,10 @@
         <router-link to="/signup">Create Now</router-link>
       </p>
     </div>
-<router-link to="/menu-bar">
     <div class="add">
-      <input type="button" class="btn login text-white" value="Login now!" />
+      <input type="button" @click="$emit('displayHome')" class="btn login text-white" value="Login now!" />
     </div>
-</router-link>
+
   </form>
 </template>
 
@@ -52,6 +51,7 @@ export default {
       password: "",
     };
   },
+  emit:['displayHome'],
   methods: {},
 };
 </script>
