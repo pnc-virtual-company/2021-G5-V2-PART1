@@ -1,6 +1,7 @@
 <template>
   <!--========================|-NAVBAR SEARCH-|=======================-->
-  <nav class="navbar navbar-light bg-light">
+  <div class="card">
+    <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand">Users</a>
       <form class="d-flex">
@@ -34,6 +35,8 @@
   <!--========================|-FOOTER STYLE-|=======================-->
 
   <!--========================|-STYLE CSS-|=======================-->
+  </div>
+  
 </template>
 
 <script>
