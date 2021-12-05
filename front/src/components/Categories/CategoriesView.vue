@@ -8,11 +8,9 @@
           <input
             type="text"
             class="search mt-2 ms-4 w-25"
-            placeholder=" Search"
+            placeholder=" Search" v-model="name" v-on:keyup.prevent="searchName"
           />
-          <button class="btn ms-1 h-50 mt-2">
-            <img src="../../assets/searching_icon.png" />
-          </button>
+          
           <button
             class="btn ms-1 h-50 mt-2"
             type="button"
@@ -24,7 +22,7 @@
           </button>
         </div>
         <!--================================|-BOOTSTRAP-CARD-|================================-->
-        <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-2 me-2 mb-4">
+      <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-2 me-2 mb-4">
           
           <category-card
             v-for="category of categories"
@@ -54,6 +52,7 @@ export default {
   data() {
     return {
       categories: [],
+      name: ""
       
     };
   },
@@ -87,7 +86,17 @@ export default {
       
     },
 
-    
+    searchName() {
+      if(this.name !== '') {
+        axios.get(url + "/search/" + this.name).then(res => {
+        this.categories = res.data;
+        
+        })
+      }else {
+        this.getCategory();
+      }
+      
+    }
 
     
   
