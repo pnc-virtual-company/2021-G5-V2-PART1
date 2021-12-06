@@ -1,196 +1,49 @@
 <template>
-  <!--========================|-NAVBAR SEARCH-|=======================-->
-  <section>
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <!-- <a class="navbar-brand">My Event</a> -->
-        <form class="d-flex">
+  <header>
+    <form action="#">
+    <div class="wrapper">
+      <!--================================|-NAVBAR-RIGHT-|================================-->
+      <div class="navbar-right">
+        <div class="nav-search d-flex">
           <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
+            type="text"
+            class="search mt-2 ms-4 w-25"
+            placeholder=" Search" v-model="name" v-on:keyup.prevent="searchName"
           />
-          <button class="btn btn-warning" type="button">
-            <img src="@/assets/search_searching_icon.png" />
-          </button>
+          
           <button
-            class="btn btn-warning ms-2"
+            class="btn ms-1 h-50 mt-2"
             type="button"
             data-bs-toggle="modal"
-            data-bs-target="#create-myevent"
+            data-bs-target="#staticBackdrop"
           >
-            <img src="@/assets/create_new_plus_icon.png" />
+            Create Categories
+            <img src="../../assets/add_circle_create_expand_icon.png" />
           </button>
-        </form>
-      </div>
-    </nav>
-    <!--========================|-CARD STYLE-|=======================-->
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-      <div class="col">
-        <div class="card">
-          <img src="@/assets/category_icon.png" class="card-img-top" alt="" />
-          <div class="card-body">
-            <h5 class="card-title">My Event</h5>
-            <p class="card-text">Hello World.</p>
-          </div>
-          <div class="card-footer">
-            <small>12-Dec-2021/20-Nov-2021</small>
-            <button
-              class="btn-event-edit ms-5"
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#edit-myevent"
-            >
-              Edit <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
-            <button
-              class="btn-event-remove ms-2"
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#remove-myevent"
-            >
-              Delete <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
-          </div>
+        </div>
+        <!--================================|-BOOTSTRAP-CARD-|================================-->
+      <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-2 me-2 mb-4">
+          
+          <category-card
+            v-for="category of categories"
+            :key="category.id"
+            :category="category"
+            @add-categories="createCategory"
+            @delete-categories="deleteCagegories"
+            @editCategory="UpdateCategory"
+          ></category-card>
         </div>
       </div>
     </div>
-    <!--========================|-MODAL-|=======================-->
-    <!-- MODAL CREATE -->
-    <div
-      class="modal fade"
-      id="create-myevent"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-              Create New Event
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter Hear..."
-            />
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-outline-light"
-              data-bs-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <button type="button" class="btn btn-outline-warning">
-              Submit
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- MODAL POP UP EDIT -->
-    <div
-      class="modal fade"
-      id="edit-myevent"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Update Event</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter Hear..."
-            />
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-outline-light"
-              data-bs-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <button type="button" class="btn btn-outline-warning">
-              Update
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- MODAL POP UP REMOVE -->
-    <div
-      class="modal fade"
-      id="remove-myevent"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Remove Event</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">You want to remove this event?</div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-outline-light"
-              data-bs-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <button type="button" class="btn btn-outline-warning">
-              Remove
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </form>
+  </header>
 </template>
 
 <script>
-// ~~~~~~~~~~~~~~~~~~~~~~|-IMPORT AXIOS-|~~~~~~~~~~~~~~~~~~~~~~ //
 import axios from "axios";
 
 import CategoriesCard from "./CategoriesCard.vue";
-const url = "http://localhost:3000/api/categories";
+const url = "http://localhost:3000/api/categories"
 
 export default {
   components: {
@@ -199,135 +52,225 @@ export default {
   data() {
     return {
       categories: [],
-      name: "",
+      name: ""
+      
     };
   },
   methods: {
+    
     getCategories() {
       axios.get(url).then((res) => {
         this.categories = res.data;
-      });
+    })
     },
-
-    createCategory(name) {
-      const addCat = {
+    
+    createCategory(name){
+      const addCat ={
         id: new Date().toISOString(),
-        name: name,
+        name: name
       };
-      axios.post(url, addCat).then((response) => {
-        this.categories.push(response.data.category);
-      });
+      axios.post(url,addCat).then((response) => {
+      
+      this.categories.push(response.data.category);
+    })
     },
 
-    deleteCagegories(cagegoriesId) {
-      console.log(cagegoriesId);
+    deleteCagegories(cagegoriesId){
+     
+      console.log(cagegoriesId)
       axios.delete(url + "/" + cagegoriesId).then((res) => {
+  
         console.log(res.data);
         this.getCategories();
-      });
+      })
+      
     },
+
+
+
     searchName() {
-      if (this.name !== "") {
-        axios.get(url + "/search/" + this.name).then((res) => {
-          this.categories = res.data;
-        });
-      } else {
-        this.getCategory();
+      if(this.name !== '') {
+        axios.get(url + "/search/" + this.name).then(res => {
+        this.categories = res.data;
+        
+        })
+      }else {
+        this.getCategories();
       }
+      
     },
+    UpdateCategory(id,title){
+      axios.put(url+"/"+id, {name: title}).then(res=>{
+        console.log(res.data);
+        this.getCategories();
+      })
+      
+    }
+
+    
+  
   },
   mounted() {
+
     this.getCategories();
+    
   },
 };
 </script>
 
-
-
-<!--========================|-STYLE CSS-|=======================-->
 <style scoped>
-/* 
-| -=-=-=-=-=-=-=-=-=-=-=|-NAVBAR BAR SEARCH STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
-*/
-.navbar {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
 }
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+/* =================|-NAVBAR-LEFT-|=================*/
 
-/* 
-| -=-=-=-=-=-=-=-=-=-=-=|-CARD STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
-*/
-.card-body .card-title {
-  font-weight: 800;
+.navbar-right {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background-image: url(../../assets/sunset.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
 }
-.col {
+img {
+  width: 30px;
+  height: 30px;
+}
+/* =================|-INUT SEARCH-|=================*/
+.nav-search {
+  box-sizing: border-box;
+  position: relative;
+}
+::placeholder {
+  color: #c5ced8;
+}
+.nav-search input {
+  background: #004f6c;
+  border-radius: 0px 15px 0px 15px;
+  color: #f96233;
+  border: none;
+  border-bottom: 2px solid #f96233;
+}
+/* =================|-BUTTON SEARCH-|=================*/
+.btn {
+  background: #004f6c;
+  color: #c5ced8;
+  border-radius: 0px 15px 0px 15px;
+  border-bottom: 2px solid #f96233;
+}
+.btn:hover {
+  background: #f96233;
+}
+/* =================|-ROW CARD BOOTSTRAP-|=================*/
+.row {
   font-family: "Roboto Slab", serif;
+  font-weight: 800;
+  font-size: 15px;
 }
 .card {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-  cursor: pointer;
+  background: #004f6c;
+  border-radius: 0px 15px 0px 15px;
+  color: #c5ced8;
+  overflow: hidden;
+  transition: all 1.2s ease;
   box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
     rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
+  cursor: pointer;
+  border-bottom: 2px solid #f96233;
 }
 .card:hover {
-  transition: all 1.2s ease;
-  background: #004f6c;
-  color: aliceblue;
+  transform: scale(1.1);
 }
-.col img {
-  width: 10%;
-  height: 10%;
-}
-/* 
-| -=-=-=-=-=-=-=-=-=-=-=|-BG LINEAR GRADIENT-|-=-=-=-=-=-=-=-=-=-=-= |
-*/
-.btn img {
-  width: 30px;
-  height: 30px;
-}
-/* 
-| -=-=-=-=-=-=-=-=-=-=-=|-MODAL STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
-*/
-.modal-content {
-  /* background: var(--sidebar-item-header); */
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+
+.card-title {
   font-family: "Roboto Slab", serif;
+  font-weight: 900;
+  font-size: 20px;
 }
-/* 
-| -=-=-=-=-=-=-=-=-=-=-=|-BUTTON STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
-*/
-.btn-event-edit,
-.btn-event-remove {
+
+.card-footer {
+  background: #02445c;
+}
+
+/* =================|-BUTTON EDIT & DELETE-|=================*/
+.action-edit {
+  background: #c5ced8;
   border: none;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 5px;
 }
-.card-footer img {
-  width: 30px;
-  height: 30px;
+.action-edit:hover {
+  background: orange;
 }
-.btn-event-edit:hover {
-  background: #23a6d5;
+.action-remove {
+  background: #c5ced8;
+  border: none;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 5px;
 }
-.btn-event-remove:hover {
-  background: #ff0000;
+.action-remove:hover {
+  background: red;
+}
+
+small {
+  color: #b9c2ca;
+}
+/* =================|-MODAL-|=================*/
+.modal-dialog {
+  background: #004f6c;
+}
+.modal-header h5 {
+  font-size: 20px;
+  font-weight: 900;
+}
+.modal-body input {
+  width: 100%;
+  border: none;
+  border-bottom: solid #f96233 2px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #004f6c;
+}
+.modal-body ::placeholder {
+  color: #004f6c;
+}
+
+@media (max-width: 880px) {
+  .wrapper {
+    display: block;
+  }
+  .navbar-left {
+    width: 100%;
+    height: auto;
+  }
+  .navbar-right {
+    width: 100%;
+    height: auto;
+  }
+  .profile img {
+    text-align: center;
+    width: 70px;
+    height: 70px;
+  }
+  .links {
+    font-family: "Roboto Slab", serif;
+    font-size: 15px;
+    color: #004f6c;
+  }
+  .links nav {
+    box-sizing: border-box;
+  }
+
+  .nav-search {
+    width: 150%;
+    display: block;
+  }
 }
 </style>
