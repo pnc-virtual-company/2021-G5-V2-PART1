@@ -27,9 +27,10 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        info($request->all());
         $request->validate([
             'title' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
             'body'=>'required',
             'link_join'=>'required',
             'start_at'=>'required',
@@ -38,17 +39,18 @@ class EventController extends Controller
             'end_date'=>'required',
         ]);
         $event = new Event();
-
-        if($request->image !== null){
+        
+        if($request->file('image') !== NULL){
+            $imageFullName = $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/images/events', $imageFullName);
             $event->image = $request->file('image')->hashName();
-            $request->file('image')->store('public/images/events');
-        }
-        else{
+
+        }else{
             $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
             $event->image = $img;
         }
 
-        // Move image to storage
+        //Move image to storage
 
         // Add to database
         $event->user_id = $request->user_id;
@@ -75,6 +77,7 @@ class EventController extends Controller
     public function search($title)
     {
         return Event::with('category')->where('title','like', '%'.$title.'%')->get();
+        
     }
     
      /**

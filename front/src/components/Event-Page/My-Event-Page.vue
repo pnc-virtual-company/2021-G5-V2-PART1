@@ -42,7 +42,8 @@
             </div>
           </div>
           <!--================================|-MODAL-|================================-->
-          <div
+          <form @submit.prevent="handleSubmit">
+            <div
             class="modal fade"
             id="staticBackdrop"
             data-bs-backdrop="static"
@@ -79,32 +80,38 @@
                 </div>
                 </div>
                 <div class="modal-body">
-                  <input type="text" placeholder="Enter title..." />
+                  <input type="text" placeholder="Enter title..." v-model="title"/>
                 </div>
                 <div class="modal-body">
-                      <input type="file"/>
+                      <div>
+                        <img v-show="imageUrl" :src="imageUrl" class="w-48 h-48 object-cover">
+                      </div>
+                      <input type="file" accept="image/*" @change="handleImageSelected"/>
                   </div>
                 <div class="dateTime">
                     <div class="modal-body">
-                      <input type="date" placeholder="Start date..." />
+                      <input type="date" placeholder="Start date..." v-model="start_date"/>
                     </div>
                     <div class="modal-body">
-                      <input type="time" placeholder="At..." />
+                      <input type="time" placeholder="At..." v-model="start_at"/>
                     </div>
                 </div>
                 <div class="dateTime">
                     <div class="modal-body">
-                      <input type="date" placeholder="End date..." />
+                      <input type="date" placeholder="End date..." v-model="end_date"/>
                     </div>
                     <div class="modal-body">
-                      <input type="time" placeholder="At..." />
+                      <input type="time" placeholder="At..." v-model="end_at"/>
                     </div>
+                </div>
+                <div class="modal-body">
+                  <input type="text" placeholder="link join..." v-model="link_join"/>
                 </div>
                 
                 <div class="modal-body">
                   <div class="datalist-holder">
                     <br />
-                    <input list="country" name="country" class="datalist-input" />
+                    <input list="country" name="country" class="datalist-input" v-model="city"/>
                     <datalist id="country">
                         <option value="Afghanistan" />
                         <option value="Albania" />
@@ -127,17 +134,18 @@
                 </div>
                 </div>
                 <div class="modal-body">
-                  <input type="text" placeholder="Description..." />
+                  <input type="text" placeholder="Description..." v-model="body"/>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn" data-bs-dismiss="modal">
                     Close
                   </button>
-                  <button type="button" class="btn">Submit</button>
+                  <button type="submit" class="btn">Submit</button>
                 </div>
               </div>
             </div>
           </div>
+          </form>
         </div>
       </div>
     </div>
@@ -145,7 +153,57 @@
 </template>
 
 <script>
+import axios from "axios";
+import { useImageupload } from "../../composables/useImageUpload"
+import { ref } from '@vue/reactivity';
+
 export default {
+  name: 'Image',
+  
+
+  setup() {
+    let images = ref([]);
+    let { imageFile, imageUrl, handleImageSelected, } = useImageupload();
+
+    function handleSubmit(){
+      let fileUpload = new FormData();
+      fileUpload.append('image', imageFile.value);
+      fileUpload.append('user_id', this.user_id);
+      fileUpload.append('category_id', this.category_id);
+      fileUpload.append('title', this.title);
+      fileUpload.append('body', this.body);
+      fileUpload.append('city', this.city);
+      fileUpload.append('link_join', this.link_join);
+      fileUpload.append('start_at', this.start_at);
+      fileUpload.append('start_date', this.start_at);
+      fileUpload.append('end_at', this.end_at);
+      fileUpload.append('end_date', this.end_date);
+
+
+      axios.post('http://127.0.0.1:8000/api/events', fileUpload)
+      .then((response)=> {
+        console.log(response);
+        images.value = response.data.images;
+      })
+    }
+
+    return {
+      handleImageSelected,
+      imageUrl,
+      handleSubmit,
+      imageFile,
+      user_id: 1,
+      title: '',
+      category_id: '',
+      start_at: '',
+      end_at: '',
+      start_date: '',
+      end_date: '',
+      link_join: '',
+      body: '',
+      city: '',
+    }
+  }
 
 };
 
