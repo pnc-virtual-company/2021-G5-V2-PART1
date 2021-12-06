@@ -1,10 +1,9 @@
 <template>
 <section>
-
   <!--========================|-NAVBAR SEARCH-|=======================-->
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-      <!-- <a class="navbar-brand">All Event</a> -->
+      <!-- <a class="navbar-brand">Categories</a> -->
       <form class="d-flex">
         <input
           class="form-control me-2"
@@ -13,37 +12,42 @@
           aria-label="Search"
         />
         <button class="btn btn-warning" type="submit">
-            <img src="../../assets/search_searching_icon.png"/>
+          <img src="@/assets/search_searching_icon.png" />
         </button>
         <button class="btn btn-warning ms-2" type="submit">
-             <img src="../../assets/create_new_plus_icon.png"/>
+          <img src="@/assets/create_new_plus_icon.png" />
         </button>
       </form>
     </div>
   </nav>
-
   <!--========================|-CARD STYLE-|=======================-->
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
       <div class="card">
-        <img src="../../assets/category_icon.png" class="card-img-top" alt="" />
+        
+        <img src="@/assets/category_icon.png" class="card-img-top" alt="" />
         <div class="card-body">
           <h5 class="card-title">My Event</h5>
           <p class="card-text">Hello World.</p>
+          <button class="btn-details ms-2" type="button">
+            <img src="@/assets/details_icon.png" />
+          </button>
+           <button class="btn-update ms-2" type="button">
+            <img src="@/assets/pen_edit_pencil_icon.png" />
+          </button>
+           <button class="btn-delete ms-2" type="button">
+            <img src="@/assets/trash_basket_multimedia_icon.png" />
+          </button>
         </div>
       </div>
     </div>
   </div>
-
-  <!--========================|-FOOTER STYLE-|=======================-->
-
-  <!--========================|-STYLE CSS-|=======================-->
 </section>
 </template>
 
 <script>
 export default {
-//   name: 'HelloWorld'
+  //   name: 'HelloWorld'
   // props: {
   //   msg: String
   // }
@@ -82,7 +86,7 @@ export default {
   font-family: 'Roboto Slab', serif;
 }
 .card {
-  background: #20de;
+  background: #e73c7e;
   color: #fff;
   margin-top: 15px;
   margin-left: 15px;
@@ -106,16 +110,51 @@ export default {
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-BG LINEAR GRADIENT-|-=-=-=-=-=-=-=-=-=-=-= |
 */
-.btn img
-{
-    width: 30px;
-    height: 30px;
+.btn img {
+  width: 30px;
+  height: 30px;
 }
-/* .navbar-brand 
-{
+.navbar-brand {
   font-family: 'Roboto Slab', serif;
   font-weight: 800;
   background: rgba(37, 228, 12, 0.404);
   padding: 5px;
-} */
+}
+
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-BTN DETAIL EDIT DELETE-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
+.btn-details, .btn-update, .btn-delete
+{
+  width: 30%;
+  border: none;
+}
+
+.btn-details img
+{
+  width: 30px;
+  height: 30px;
+}
+.btn-update img
+{
+  width: 30px;
+  height: 30px;
+}
+.btn-delete img
+{
+  width: 30px;
+  height: 30px;
+}
+
+
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-RESPONSIVE-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
+@media (max-width: 880px) {
+  .navbar .container-fluid
+  {
+    display: block;
+  }
+}
+
 </style>
