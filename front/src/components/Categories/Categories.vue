@@ -12,10 +12,10 @@
           aria-label="Search"
         />
         <button class="btn btn-warning" type="submit">
-          <img src="../../assets/search_searching_icon.png" />
+          <img src="@/assets/search_searching_icon.png" />
         </button>
         <button class="btn btn-warning ms-2" type="submit">
-          <img src="../../assets/create_new_plus_icon.png" />
+          <img src="@/assets/create_new_plus_icon.png" />
         </button>
       </form>
     </div>
@@ -24,18 +24,18 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
       <div class="card">
-        <img src="../../assets/category_icon.png" class="card-img-top" alt="" />
+        <img src="@/assets/category_icon.png" class="card-img-top" alt="" />
         <div class="card-body">
           <h5 class="card-title">My Event</h5>
           <p class="card-text">Hello World.</p>
           <button class="btn-details ms-2" type="button">
-            <img src="../../assets/details_icon.png" />
+            <img src="@/assets/details_icon.png" />
           </button>
            <button class="btn-update ms-2" type="button">
-            <img src="../../assets/pen_edit_pencil_icon.png" />
+            <img src="@/assets/pen_edit_pencil_icon.png" />
           </button>
            <button class="btn-delete ms-2" type="button">
-            <img src="../../assets/trash_basket_multimedia_icon.png" />
+            <img src="@/assets/trash_basket_multimedia_icon.png" />
           </button>
         </div>
       </div>

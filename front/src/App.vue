@@ -1,33 +1,25 @@
 <script>
-import Sidebar from '@/components/sidebar/Sidebar'
-import { sidebarWidth } from '@/components/sidebar/state'
+import Sidebar from "@/components/sidebar/Sidebar";
+import { sidebarWidth } from "@/components/sidebar/state";
 
 export default {
   data() {
-    return {
-      
-    }
+    return {};
   },
-  components: { Sidebar},
-  methods: {
-    
-  },
+  components: { Sidebar },
+  methods: {},
   setup() {
-    return { sidebarWidth }
-  }
-}
+    return { sidebarWidth };
+  },
+};
 </script>
 <template>
-<section>
-  <Sidebar />
-  <div :style="{ 'margin-left': sidebarWidth }">
-    <router-view />
-  </div>
-
-
-
-
-</section>
+  <section>
+    <Sidebar />
+    <div :style="{ 'margin-left': sidebarWidth }">
+      <router-view />
+    </div>
+  </section>
 </template>
 
 <style>
