@@ -12,7 +12,7 @@
             aria-label="Search"
           />
           <button class="btn btn-warning" type="button">
-            <img src="../assets/search_searching_icon.png" />
+            <img src="@/assets/search_searching_icon.png" />
           </button>
           <button
             class="btn btn-warning ms-2"
@@ -20,7 +20,7 @@
             data-bs-toggle="modal"
             data-bs-target="#create-myevent"
           >
-            <img src="../assets/create_new_plus_icon.png" />
+            <img src="@/assets/create_new_plus_icon.png" />
           </button>
         </form>
       </div>

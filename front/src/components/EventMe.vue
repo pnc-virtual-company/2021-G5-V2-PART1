@@ -3,7 +3,7 @@
   <!--========================|-NAVBAR SEARCH-|=======================-->
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand">Home</a>
+      <!-- <a class="navbar-brand">Home</a> -->
       <form class="d-flex">
         <input
           class="form-control me-2"
@@ -11,7 +11,9 @@
           placeholder="Search"
           aria-label="Search"
         />
-        <button class="btn btn-outline-light" type="submit">Search</button>
+        <button class="btn btn-outline-light" type="submit">
+             <img src="@/assets/search_searching_icon.png" />
+        </button>
       </form>
     </div>
   </nav>
@@ -21,7 +23,7 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
       <div class="card-1">
-        <img src="../assets/event_month_icon.png" class="card-img-top" alt="" />
+        <img src="@/assets/event_month_icon.png" class="card-img-top mt-2" alt="" />
         <div class="card-body">
           <h5 class="card-title">My Event</h5>
           <p class="card-text">Hello World.</p>
@@ -30,7 +32,7 @@
     </div>
     <div class="col">
       <div class="card-2">
-        <img src="../assets/event_month_icon.png" class="card-img-top" alt="" />
+        <img src="@/assets/event_month_icon.png" class="card-img-top mt-2" alt="" />
         <div class="card-body">
           <h5 class="card-title">All Event</h5>
           <p class="card-text">Hello World.</p>
@@ -39,7 +41,7 @@
     </div>
     <div class="col">
       <div class="card-3">
-        <img src="../assets/event_month_icon.png" class="card-img-top" alt="" />
+        <img src="@/assets/category_settings_icon.png" class="card-img-top mt-2" alt="" />
         <div class="card-body">
           <h5 class="card-title">Categories</h5>
           <p class="card-text">Hello World.</p>
@@ -48,7 +50,7 @@
     </div>
     <div class="col">
       <div class="card-4">
-        <img src="../assets/event_month_icon.png" class="card-img-top" alt="" />
+        <img src="@/assets/users_icon.png" class="card-img-top mt-2" alt="" />
         <div class="card-body">
           <h5 class="card-title">User</h5>
           <p class="card-text">Hello World.</p>
@@ -57,7 +59,7 @@
     </div>
     <div class="col">
       <div class="card-5">
-        <img src="../assets/event_month_icon.png" class="card-img-top" alt="" />
+        <img src="@/assets/members_team_icon.png" class="card-img-top mt-2" alt="" />
         <div class="card-body">
           <h5 class="card-title">Members</h5>
           <p class="card-text">Hello World.</p>
@@ -66,7 +68,7 @@
     </div>
     <div class="col">
       <div class="card-6">
-        <img src="../assets/event_month_icon.png" class="card-img-top" alt="" />
+        <img src="@/assets/action_icon.png" class="card-img-top mt-2" alt="" />
         <div class="card-body">
           <h5 class="card-title">Action</h5>
           <p class="card-text">Hello World.</p>
@@ -75,7 +77,7 @@
     </div>
     <div class="col">
       <div class="card-7">
-        <img src="../assets/event_month_icon.png" class="card-img-top" alt="" />
+        <img src="@/assets/image_icon.png" class="card-img-top mt-2" alt="" />
         <div class="card-body">
           <h5 class="card-title">Images</h5>
           <p class="card-text">Hello World.</p>
@@ -265,11 +267,14 @@ export default {
   width: 10%;
   height: 10%;
 }
+.btn img {
+  width: 30px;
+  height: 30px;
+}
 .navbar-brand
 {
   font-family: 'Roboto Slab', serif;
   font-weight: 800;
-  background: rgba(37, 228, 12, 0.404);
   padding: 5px;
 }
 /* 

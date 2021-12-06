@@ -4,7 +4,7 @@
   <!--========================|-NAVBAR SEARCH-|=======================-->
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand">All Event</a>
+      <!-- <a class="navbar-brand">All Event</a> -->
       <form class="d-flex">
         <input
           class="form-control me-2"
@@ -111,11 +111,11 @@ export default {
     width: 30px;
     height: 30px;
 }
-.navbar-brand 
+/* .navbar-brand 
 {
   font-family: 'Roboto Slab', serif;
   font-weight: 800;
   background: rgba(37, 228, 12, 0.404);
   padding: 5px;
-}
+} */
 </style>

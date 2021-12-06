@@ -3,7 +3,7 @@
   <!--========================|-NAVBAR SEARCH-|=======================-->
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand">Categories</a>
+      <!-- <a class="navbar-brand">Categories</a> -->
       <form class="d-flex">
         <input
           class="form-control me-2"

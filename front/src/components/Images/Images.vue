@@ -2,7 +2,7 @@
   <section>
     <nav class="navbar navbar-light bg-info">
       <div class="container-fluid">
-        <a class="navbar-brand">Images</a>
+        <a class="navbar-brand">THE PICTURE OUR TEAM</a>
       </div>
     </nav>
     <div class="wrapper mt-3">
@@ -49,8 +49,6 @@
     </div>
   </section>
 </template>
-
-
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
 /* 

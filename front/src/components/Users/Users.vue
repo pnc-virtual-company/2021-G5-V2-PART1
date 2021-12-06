@@ -1,48 +1,52 @@
 <template>
-  <!--========================|-NAVBAR SEARCH-|=======================-->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand">Users</a>
-      <form class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-warning" type="submit">
-            <img src="../../assets/search_searching_icon.png"/>
-        </button>
-      </form>
-    </div>
-  </nav>
+  <section>
+    <!--========================|-NAVBAR SEARCH-|=======================-->
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <!-- <a class="navbar-brand">Users</a> -->
+        <form class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-warning" type="submit">
+            <img src="../../assets/search_searching_icon.png" />
+          </button>
+        </form>
+      </div>
+    </nav>
 
-  <!--========================|-CARD STYLE-|=======================-->
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card-1">
-        <img src="../../assets/man_icon.png" class="card-img-top mt-2" alt="" />
-        <div class="card-body">
-          <h5 class="card-title">Name: Chum</h5>
-          <p class="card-text">Hello World.</p>
-          <button class="btn-detail">More  <i class="fa fa-caret-square-down" aria-hidden="true"></i></button>
+    <!--========================|-CARD STYLE-|=======================-->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card-1">
+          <img
+            src="../../assets/man_icon.png"
+            class="card-img-top mt-2"
+            alt=""
+          />
+          <div class="card-body">
+            <h5 class="card-title">Name: Chum</h5>
+            <p class="card-text">Hello World.</p>
+            <button class="btn-detail">
+              More <i class="fa fa-caret-square-down" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!--========================|-FOOTER STYLE-|=======================-->
-
-  <!--========================|-STYLE CSS-|=======================-->
+  </section>
 </template>
 
 <script>
 export default {
-//   name: 'HelloWorld'
+  //   name: 'HelloWorld'
   // props: {
   //   msg: String
   // }
-}
+};
 </script>
 
 <!--========================|-STYLE CSS-|=======================-->
@@ -74,7 +78,7 @@ export default {
   font-weight: 800;
 }
 .col {
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
 }
 .card-1 {
   background: #23a6d5;
@@ -100,21 +104,12 @@ export default {
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-BG LINEAR GRADIENT-|-=-=-=-=-=-=-=-=-=-=-= |
 */
-.btn img
-{
-    width: 30px;
-    height: 30px;
+.btn img {
+  width: 30px;
+  height: 30px;
 }
-.navbar-brand 
-{
-  font-family: 'Roboto Slab', serif;
-  font-weight: 800;
-  background: rgba(37, 228, 12, 0.404);
-  padding: 5px;
-}
-.btn-detail
-{
-    width: 30%;
-    border: none;
+.btn-detail {
+  width: 30%;
+  border: none;
 }
 </style>
