@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/my-event',
     name: 'MyEvent',
-    component: () => import('../components/MyEvent.vue')
+    component: () => import('../components/AllEvent/MyEvent.vue')
   },
   {
     path: '/all-event',
@@ -27,7 +27,7 @@ const routes = [
   {
     path: '/categories',
     name: 'Categories',
-    component: () => import('../components/CategoriesCard.vue')
+    component: () => import('../components/Categories/CategoriesView.vue')
   },
   {
     path: '/users',

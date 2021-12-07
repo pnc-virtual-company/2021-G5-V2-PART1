@@ -187,30 +187,94 @@
 <script>
 
 // ~~~~~~~~~~~~~~~~~~~~~~|-IMPORT AXIOS-|~~~~~~~~~~~~~~~~~~~~~~ //
-import axios from 'axios'
-export default {
-  data() {
-    return {
-      Event_URL: '',
-      My_Events: []
-    }
-  },
-  methods: {
-    // **************|-GET EVENT-|************** //
-    getMyEvent() {
-       axios.post('Event_URL')
-      .then(function (response) {
-        this.Event_URL = response.data;
+// import axios from 'axios'
+// export default {
+//   data() {
+//     return {
+//       Event_URL: '',
+//       My_Events: []
+//     }
+//   },
+//   methods: {
+//     // **************|-GET EVENT-|************** //
+//     getMyEvent() {
+//        axios.post('Event_URL')
+//       .then(function (response) {
+//         this.Event_URL = response.data;
+//       })
+//       .catch(function (error) {
+//         alert(error);
+//       });
+//     }
+//   },
+//   mounted() {
+//     this.getMyEvent();
+//   },
+// };
+
+
+// import Dialog from './Dialog.vue'
+  import axios from 'axios';
+  const API_URL = 'http://127.0.0.1:8000/api/events';
+
+  export default {
+    // components: { Dialog},
+    data () {
+      return {
+        title: "",
+        city: "",
+        startdate: "",
+        enddate: "",
+        description: "",
+        photo: null,
+        // showDialog: false,
+        eventLists: []
+      }
+    },
+    methods: {
+      
+      Addevent() {
+        let newEvent = {
+          title: this.title,
+          city: this.city,
+          startdate: this.startdate,
+          enddate: this.enddate,
+          description: this.description,
+          photo: this.photo,
+        }
+        axios.post(API_URL, newEvent).then(res => {
+          this.eventLists.push(res.data.event);
+          console.log("created")
+        })
+
+      },
+
+      cancel() {
+        console.log('cancel')
+        // this.showDialog = false
+      },
+      confirm() {
+        console.log('confirm')
+        // this.showDialog = false
+      },
+      deleteEvent(id)
+ {
+        axios.delete(API_URL + "/" + id).then(res => {
+          console.log(res.data);
+          console.log("Deleted");
+        })
+      }
+    },
+
+    mounted() {
+      axios.get(API_URL).then(res => {
+        this.eventLists = res.data;
+        console.log(res.data);
       })
-      .catch(function (error) {
-        alert(error);
-      });
-    }
-  },
-  mounted() {
-    this.getMyEvent();
-  },
-};
+    },
+  }
+
+
 </script>
 
 <!--========================|-STYLE CSS-|=======================-->
