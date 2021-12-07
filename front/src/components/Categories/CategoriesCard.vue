@@ -13,9 +13,15 @@
             class="action-edit ms-4"
             type="button"
             data-bs-toggle="modal"
+<<<<<<< HEAD
             data-bs-target="#staticBackdrop"
           >
             <i class="fa fa-edit"></i>
+=======
+            data-bs-target="#update-category" @click="editAction(category.id, category.name)"
+          >
+          <i class="fa fa-edit"></i>
+>>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
           </button>
           <button
             class="action-remove ms-2"
@@ -23,7 +29,11 @@
             data-bs-toggle="modal"
             data-bs-target="#remove-category"
           >
+<<<<<<< HEAD
             <i class="fa fa-trash" aria-hidden="true"></i>
+=======
+            <i class="fa fa-trash" aria-hidden="true" @click="getId(category.id)"></i>
+>>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
           </button>
         </div>
       </div>
@@ -105,6 +115,46 @@
         <!--================================|-MODAL-UPDATE-|================================-->
       </div>
     </div>
+<<<<<<< HEAD
+=======
+
+     <!--================================|-MODAL-UPDATE-|================================-->
+    <div
+      class="modal fade"
+      id="update-category"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              Update Categories
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+              <input type="text" v-model="name" placeholder="Enter hear..." />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button type="button" class="btn" data-bs-dismiss="modal" @click="editCategory(category.id,name)">Update</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+>>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     </form>
   </header>
 </template>
@@ -112,21 +162,55 @@
 <script>
 export default {
   props: ["category"],
+<<<<<<< HEAD
   emits: ["add-categories", "delete-categories"],
   data() {
     return {
       name: "",
 
+=======
+  emits: ["add-categories", "delete-categories","editCategory"],
+  data() {
+    return {
+      name: "",
+      id_update: 0,
+      id_delete: 0
+>>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     };
   },
   methods: {
     
     addCategory() {
+<<<<<<< HEAD
       
       this.$emit("add-categories", this.name);
 
       this.name = "";
     },
+=======
+      this.$emit("add-categories", this.name);
+      this.name = "";
+    },
+    
+    editAction(id, title){
+      this.id_update = id;
+      this.name = title;
+      console.log(this.id_update);
+      console.log(this.name);
+    },
+
+    editCategory(id,name){
+      this.$emit("editCategory",id,name);
+      console.log(id);
+      this.name = "";
+    },
+    getId(id){
+      this.id_delete = id
+      console.log(id);
+    }
+
+   
+>>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     
     
   },

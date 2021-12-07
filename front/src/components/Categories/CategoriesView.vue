@@ -29,8 +29,13 @@
             :key="category.id"
             :category="category"
             @add-categories="createCategory"
+<<<<<<< HEAD
             :categories="category" 
             @delete-categories="deleteCagegories"
+=======
+            @delete-categories="deleteCagegories"
+            @editCategory="UpdateCategory"
+>>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
           ></category-card>
         </div>
       </div>
@@ -78,6 +83,7 @@ export default {
     deleteCagegories(cagegoriesId){
      
       console.log(cagegoriesId)
+<<<<<<< HEAD
       axios.delete(url+"/"+cagegoriesId).then((res) => {
   
         console.log(res.data);
@@ -86,6 +92,18 @@ export default {
       
     },
 
+=======
+      axios.delete(url + "/" + cagegoriesId).then((res) => {
+  
+        console.log(res.data);
+        this.getCategories();
+      })
+      
+    },
+
+
+
+>>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     searchName() {
       if(this.name !== '') {
         axios.get(url + "/search/" + this.name).then(res => {
@@ -93,16 +111,34 @@ export default {
         
         })
       }else {
+<<<<<<< HEAD
         this.getCategory();
       }
       
+=======
+        this.getCategories();
+      }
+      
+    },
+    UpdateCategory(id,title){
+      axios.put(url+"/"+id, {name: title}).then(res=>{
+        console.log(res.data);
+        this.getCategories();
+      })
+      
+>>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     }
 
     
   
   },
   mounted() {
+<<<<<<< HEAD
     this.getCategories()
+=======
+
+    this.getCategories();
+>>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     
   },
 };
