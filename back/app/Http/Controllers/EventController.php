@@ -27,9 +27,10 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        info($request);
         $request->validate([
             'title' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
             'body'=>'required',
             'link_join'=>'required',
             'start_at'=>'required',
@@ -39,7 +40,7 @@ class EventController extends Controller
         ]);
         $event = new Event();
 
-        if($request->image !== null){
+        if($request->file('image') !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
@@ -107,7 +108,7 @@ class EventController extends Controller
         ]);
 
         $event = Event::findOrFail($id);
-        if($request->image !== null){
+        if($request->file('image') !== null){
             // Move image to storage
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');

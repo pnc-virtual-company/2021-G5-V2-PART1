@@ -64,11 +64,6 @@ export default {
   justify-content: start;
   text-align: start;
 }
-/* .card-text strong img 
-{
-  width: 35px;
-  height: 35px;
-} */
 .card-footer {
   justify-content: start;
   background: #01465f;
