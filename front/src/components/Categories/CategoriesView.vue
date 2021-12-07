@@ -43,7 +43,7 @@
 import axios from "axios";
 
 import CategoriesCard from "./CategoriesCard.vue";
-const url = "http://127.0.0.1:3000/api/categories"
+const url = "http://127.0.0.1:8000/api/categories"
 
 export default {
   components: {
