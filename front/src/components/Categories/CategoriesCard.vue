@@ -13,15 +13,9 @@
             class="action-edit ms-4"
             type="button"
             data-bs-toggle="modal"
-<<<<<<< HEAD
-            data-bs-target="#staticBackdrop"
-          >
-            <i class="fa fa-edit"></i>
-=======
             data-bs-target="#update-category" @click="editAction(category.id, category.name)"
           >
           <i class="fa fa-edit"></i>
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
           </button>
           <button
             class="action-remove ms-2"
@@ -29,11 +23,7 @@
             data-bs-toggle="modal"
             data-bs-target="#remove-category"
           >
-<<<<<<< HEAD
-            <i class="fa fa-trash" aria-hidden="true"></i>
-=======
             <i class="fa fa-trash" aria-hidden="true" @click="getId(category.id)"></i>
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
           </button>
         </div>
       </div>
@@ -115,8 +105,6 @@
         <!--================================|-MODAL-UPDATE-|================================-->
       </div>
     </div>
-<<<<<<< HEAD
-=======
 
      <!--================================|-MODAL-UPDATE-|================================-->
     <div
@@ -154,7 +142,6 @@
         </div>
       </div>
     </div>
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     </form>
   </header>
 </template>
@@ -162,32 +149,17 @@
 <script>
 export default {
   props: ["category"],
-<<<<<<< HEAD
-  emits: ["add-categories", "delete-categories"],
-  data() {
-    return {
-      name: "",
-
-=======
   emits: ["add-categories", "delete-categories","editCategory"],
   data() {
     return {
       name: "",
       id_update: 0,
       id_delete: 0
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     };
   },
   methods: {
     
     addCategory() {
-<<<<<<< HEAD
-      
-      this.$emit("add-categories", this.name);
-
-      this.name = "";
-    },
-=======
       this.$emit("add-categories", this.name);
       this.name = "";
     },
@@ -210,7 +182,6 @@ export default {
     }
 
    
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     
     
   },

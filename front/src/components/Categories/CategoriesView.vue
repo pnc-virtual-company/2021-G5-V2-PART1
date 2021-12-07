@@ -29,13 +29,8 @@
             :key="category.id"
             :category="category"
             @add-categories="createCategory"
-<<<<<<< HEAD
-            :categories="category" 
-            @delete-categories="deleteCagegories"
-=======
             @delete-categories="deleteCagegories"
             @editCategory="UpdateCategory"
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
           ></category-card>
         </div>
       </div>
@@ -48,7 +43,7 @@
 import axios from "axios";
 
 import CategoriesCard from "./CategoriesCard.vue";
-const url = "http://localhost:3000/api/categories"
+const url = "http://127.0.0.1:3000/api/categories"
 
 export default {
   components: {
@@ -83,16 +78,6 @@ export default {
     deleteCagegories(cagegoriesId){
      
       console.log(cagegoriesId)
-<<<<<<< HEAD
-      axios.delete(url+"/"+cagegoriesId).then((res) => {
-  
-        console.log(res.data);
-        this.getCategories();
-    })
-      
-    },
-
-=======
       axios.delete(url + "/" + cagegoriesId).then((res) => {
   
         console.log(res.data);
@@ -103,7 +88,6 @@ export default {
 
 
 
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     searchName() {
       if(this.name !== '') {
         axios.get(url + "/search/" + this.name).then(res => {
@@ -111,11 +95,6 @@ export default {
         
         })
       }else {
-<<<<<<< HEAD
-        this.getCategory();
-      }
-      
-=======
         this.getCategories();
       }
       
@@ -126,19 +105,14 @@ export default {
         this.getCategories();
       })
       
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     }
 
     
   
   },
   mounted() {
-<<<<<<< HEAD
-    this.getCategories()
-=======
 
     this.getCategories();
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
     
   },
 };
