@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '@/components/LoginForm/login'
 
-
+// **********************|-ROUTE LINK-|********************** //
 const routes = [
   {
     path: '/',
@@ -22,27 +22,17 @@ const routes = [
   {
     path: '/all-event',
     name: 'AllEvent',
-    component: () => import('../components/AllEvent/AllEvent.vue')
+    component: () => import('../components/AllEvent/AllEvent-View.vue')
   },
   {
     path: '/categories',
     name: 'Categories',
-    component: () => import('../components/CategoriesCard.vue')
+    component: () => import('../components/Categories/Categories.vue')
   },
   {
     path: '/users',
     name: 'Users',
-    component: () => import('../components/Users/Users.vue')
-  },
-  {
-    path: '/members',
-    name: 'Members',
-    component: () => import('../components/Members/Member.vue')
-  },
-  {
-    path: '/actions',
-    name: 'Actions',
-    component: () => import('../components/Actions/Actions.vue')
+    component: () => import('../components/Users/Users-View.vue')
   },
   {
     path: '/images',
@@ -51,9 +41,9 @@ const routes = [
   }
 ]
 
+// **********************|-CREATE ROUTE LINK-|********************** //
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
 export default router

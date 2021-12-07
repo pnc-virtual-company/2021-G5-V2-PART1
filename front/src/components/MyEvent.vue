@@ -185,27 +185,27 @@
   </section>
 </template>
 <script>
-
 // ~~~~~~~~~~~~~~~~~~~~~~|-IMPORT AXIOS-|~~~~~~~~~~~~~~~~~~~~~~ //
-import axios from 'axios'
+import axios from "axios";
 export default {
   data() {
     return {
-      Event_URL: '',
-      My_Events: []
-    }
+      Event_URL: "",
+      My_Events: [],
+    };
   },
   methods: {
     // **************|-GET EVENT-|************** //
     getMyEvent() {
-       axios.post('Event_URL')
-      .then(function (response) {
-        this.Event_URL = response.data;
-      })
-      .catch(function (error) {
-        alert(error);
-      });
-    }
+      axios
+        .post("Event_URL")
+        .then(function (response) {
+          this.Event_URL = response.data;
+        })
+        .catch(function (error) {
+          alert(error);
+        });
+    },
   },
   mounted() {
     this.getMyEvent();
