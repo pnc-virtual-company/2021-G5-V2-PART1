@@ -27,7 +27,7 @@ const routes = [
   {
     path: '/categories',
     name: 'Categories',
-    component: () => import('../components/CategoriesCard.vue')
+    component: () => import('../components/Categories/Categories.vue')
   },
   {
     path: '/users',

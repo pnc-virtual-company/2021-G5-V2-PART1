@@ -31,15 +31,4 @@
   <div id="app"></div>
   <!-- built files will be auto injected -->
 </body>
-
-
-<!-- ===================|SCROLLBAR|=================== -->
-<script type="text/javascript">
-  let progress = document.getElementById('progressbar');
-  let totalHeight = document.body.scrollHeight - window.innerHeight;
-  window.onscroll = function () {
-    let progressHeight = (window.pageYOffset / totalHeight) * 100;
-    progress.style.height = progressHeight + "%"
-  }
-</script>
 </html>
