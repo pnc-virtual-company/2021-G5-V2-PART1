@@ -23,7 +23,7 @@
             data-bs-toggle="modal"
             data-bs-target="#remove-category"
           >
-            <i class="fa fa-trash" aria-hidden="true" @click="getId(category.id)"></i>
+            <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -44,7 +44,7 @@
           <div class="modal-header">
             
             <h5 class="modal-title" id="staticBackdropLabel" >
-              Create New Categories
+             here is  Create New Categories
             </h5>
             <button
               type="button"
@@ -176,11 +176,7 @@ export default {
       console.log(id);
       this.name = "";
     },
-    getId(id){
-      this.id_delete = id
-      console.log(id);
-    }
-
+    
    
     
     
