@@ -75,7 +75,7 @@ class EventController extends Controller
      */
     public function search($title)
     {
-        return Event::with('category')->where('title','like', '%'.$title.'%')->get();
+        return Event::with('category')->WHERE('title', 'like', '%'.$title.'%')->get();
     }
     
      /**
