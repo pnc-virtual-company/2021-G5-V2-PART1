@@ -105,9 +105,6 @@ export default {
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-BG LINEAR GRADIENT-|-=-=-=-=-=-=-=-=-=-=-= |
 */
-.row {
-  background: #2c3e50;
-}
 .btn img {
   width: 30px;
   height: 30px;

@@ -39,8 +39,6 @@ export default {
   },
 };
 </script>
-
-
 <!--========================|-STYLE CSS-|=======================-->
 <style scoped>
 /* 
@@ -74,17 +72,17 @@ export default {
   font-family: "Roboto Slab", serif;
 }
 .card-1 {
-  background: #006d95;
+  background: #417fbd;
+  color: #fff;
   margin-top: 15px;
   margin-left: 15px;
   margin-right: 15px;
   cursor: pointer;
   overflow: hidden;
-  border-radius: 0px 50px 0px 50px;
+  border-radius: 0px 15px 0px 15px;
   transition: all 1.2s ease;
   box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
     rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
-  color: yellow;
 }
 .card-1:hover {
   /* transform: scale(1.1); */
@@ -104,9 +102,9 @@ export default {
 .btn-detail {
   width: 70%;
   border: none;
-  background: #2bc50ca1;
+  background: #c5ced8;
   border-radius: 5px;
-  color: #fff;
+  /* color: #fff; */
   font-size: 18px;
 }
 .btn-detail:hover {

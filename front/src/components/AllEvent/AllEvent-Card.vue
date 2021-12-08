@@ -74,7 +74,7 @@ export default {
   font-family: "Roboto Slab", serif;
 }
 .card {
-  background: #006d95;
+  background: #417fbd;
   color: #fff;
   margin-top: 15px;
   margin-left: 15px;

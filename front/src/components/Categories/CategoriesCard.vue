@@ -1,160 +1,168 @@
 <template>
   <header>
     <form action="#">
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">{{ category.name }}</h5>
-         
-        </div>
-        <div class="card-footer">
-          
-          <button
-            class="action-edit ms-4"
-            type="button"
-            data-bs-toggle="modal"
-<<<<<<< HEAD
-            data-bs-target="#staticBackdrop"
-          >
-            <i class="fa fa-edit"></i>
-=======
-            data-bs-target="#update-category" @click="editAction(category.id, category.name)"
-          >
-          <i class="fa fa-edit"></i>
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
-          </button>
-          <button
-            class="action-remove ms-2"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#remove-category"
-          >
-<<<<<<< HEAD
-            <i class="fa fa-trash" aria-hidden="true"></i>
-=======
-            <i class="fa fa-trash" aria-hidden="true" @click="getId(category.id)"></i>
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!--================================|-MODAL-CREATE-|================================-->
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            
-            <h5 class="modal-title" id="staticBackdropLabel" >
-              Create New Categories
-            </h5>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ category.name }}</h5>
+          </div>
+          <div class="card-footer">
             <button
+              class="action-edit ms-4"
               type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <input type="text" v-model="name" placeholder="Enter hear..." />
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">
-              Close
+              data-bs-toggle="modal"
+              data-bs-target="#update-category"
+              @click="editAction(category.id, category.name)"
+            >
+              Edit <i class="fa fa-edit"></i>
             </button>
-            <button type="button" class="btn" data-bs-dismiss="modal" @click="addCategory">
-              Submit
+            <button
+              class="action-remove ms-2"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#remove-category"
+            >
+              Remove
+              <i
+                class="fa fa-trash"
+                aria-hidden="true"
+                @click="getId(category.id)"
+              ></i>
             </button>
           </div>
         </div>
       </div>
-    </div>
 
-    <!--================================|-MODAL-REMOVE-|================================-->
-    <div
-      class="modal fade"
-      id="remove-category"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-              Remove Categories
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            Are you sure that you want to remove category?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">
-              Cancel
-            </button>
-            <button type="button" class="btn" data-bs-dismiss="modal" @click="$emit('delete-categories', category.id)">Remove</button>
-          </div>
-        </div>
-
-        <!--================================|-MODAL-UPDATE-|================================-->
-      </div>
-    </div>
-<<<<<<< HEAD
-=======
-
-     <!--================================|-MODAL-UPDATE-|================================-->
-    <div
-      class="modal fade"
-      id="update-category"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-              Update Categories
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
+      <!--================================|-MODAL-CREATE-|================================-->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Create New Categories
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
               <input type="text" v-model="name" placeholder="Enter hear..." />
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">
-              Cancel
-            </button>
-            <button type="button" class="btn" data-bs-dismiss="modal" @click="editCategory(category.id,name)">Update</button>
-
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn"
+                data-bs-dismiss="modal"
+                @click="addCategory"
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
+
+      <!--================================|-MODAL-REMOVE-|================================-->
+      <div
+        class="modal fade"
+        id="remove-category"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Remove Categories
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              Are you sure that you want to remove category?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-bs-dismiss="modal">
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn"
+                data-bs-dismiss="modal"
+                @click="$emit('delete-categories', category.id)"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+
+          <!--================================|-MODAL-UPDATE-|================================-->
+        </div>
+      </div>
+
+      <!--================================|-MODAL-UPDATE-|================================-->
+      <div
+        class="modal fade"
+        id="update-category"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Update Categories
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <input type="text" v-model="name" placeholder="Enter hear..." />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-bs-dismiss="modal">
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn"
+                data-bs-dismiss="modal"
+                @click="editCategory(category.id, name)"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
   </header>
 </template>
@@ -162,57 +170,36 @@
 <script>
 export default {
   props: ["category"],
-<<<<<<< HEAD
-  emits: ["add-categories", "delete-categories"],
-  data() {
-    return {
-      name: "",
-
-=======
-  emits: ["add-categories", "delete-categories","editCategory"],
+  emits: ["add-categories", "delete-categories", "editCategory"],
   data() {
     return {
       name: "",
       id_update: 0,
-      id_delete: 0
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
+      id_delete: 0,
     };
   },
   methods: {
-    
     addCategory() {
-<<<<<<< HEAD
-      
       this.$emit("add-categories", this.name);
+      this.name = "";
+    },
 
-      this.name = "";
-    },
-=======
-      this.$emit("add-categories", this.name);
-      this.name = "";
-    },
-    
-    editAction(id, title){
+    editAction(id, title) {
       this.id_update = id;
       this.name = title;
       console.log(this.id_update);
       console.log(this.name);
     },
 
-    editCategory(id,name){
-      this.$emit("editCategory",id,name);
+    editCategory(id, name) {
+      this.$emit("editCategory", id, name);
       console.log(id);
       this.name = "";
     },
-    getId(id){
-      this.id_delete = id
+    getId(id) {
+      this.id_delete = id;
       console.log(id);
-    }
-
-   
->>>>>>> 17d860d58fff5f1020846048f2e219b996c08a86
-    
-    
+    },
   },
 };
 </script>
@@ -228,7 +215,6 @@ export default {
 .navbar-right {
   display: block;
   width: 100%;
-  background-image: url(../../assets/category.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -270,28 +256,26 @@ img {
   font-size: 15px;
 }
 .card {
-  background: #004f6c;
+  background: #417fbd;
   border-radius: 0px 15px 0px 15px;
-  color: #c5ced8;
+  color: #fff;
   overflow: hidden;
   transition: all 1.2s ease;
   box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
     rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
   cursor: pointer;
-  border-bottom: 2px solid #f96233;
+  border: 3px solid #0088cc;
 }
 .card:hover {
   transform: scale(1.1);
 }
-
 .card-title {
   font-family: "Roboto Slab", serif;
   font-weight: 900;
   font-size: 20px;
 }
-
 .card-footer {
-  background: #02445c;
+  background: #417fbd;
 }
 
 /* =================|-BUTTON EDIT & DELETE-|=================*/
