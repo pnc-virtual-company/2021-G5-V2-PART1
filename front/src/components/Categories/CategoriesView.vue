@@ -43,7 +43,7 @@
 import axios from "axios";
 
 import CategoriesCard from "./CategoriesCard.vue";
-const url = "http://127.0.0.1:8000/api/categories"
+const url = "http://localhost:3000/api/categories"
 
 export default {
   components: {
@@ -131,7 +131,7 @@ export default {
   display: block;
   width: 100%;
   height: 100vh;
-  /* background-image: url(../../assets/sunset.jpg); */
+ 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -141,7 +141,7 @@ img {
   width: 30px;
   height: 30px;
 }
-/* =================|-INUT SEARCH-|=================*/
+
 .nav-search {
   box-sizing: border-box;
   position: relative;

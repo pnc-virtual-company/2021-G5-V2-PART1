@@ -21,7 +21,7 @@
             class="action-remove ms-2"
             type="button"
             data-bs-toggle="modal"
-            data-bs-target="#remove-category"
+            data-bs-target="#remove-category" 
           >
             <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
@@ -118,7 +118,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">
-              Update Categories  update categories
+              Update Categories  
             </h5>
             <button
               type="button"
@@ -129,6 +129,9 @@
           </div>
           <div class="modal-body">
               <input type="text" v-model="name" placeholder="Enter hear..." />
+          </div>
+          <div class="modal-body">
+            Are you sure that you want to update category?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">
@@ -151,7 +154,7 @@ export default {
     return {
       name: "",
       id_update: 0,
-      id_delete: 0
+     
     };
   },
   methods: {
@@ -160,7 +163,11 @@ export default {
       this.$emit("add-categories", this.name);
       this.name = "";
     },
-    
+
+    deleteCategory(){
+      this.this.$emit("add-categories", this.id);
+    },
+
     editAction(id, title){
       this.id_update = id;
       this.name = title;
