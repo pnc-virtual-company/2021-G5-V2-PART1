@@ -101,11 +101,9 @@
             <button type="button" class="btn" data-bs-dismiss="modal" @click="$emit('delete-categories', category.id)">Remove</button>
           </div>
         </div>
-
         <!--================================|-MODAL-UPDATE-|================================-->
       </div>
     </div>
-
      <!--================================|-MODAL-UPDATE-|================================-->
     <div
       class="modal fade"
@@ -120,7 +118,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">
-              Update Categories
+              Update Categories  update categories
             </h5>
             <button
               type="button"
@@ -137,7 +135,6 @@
               Cancel
             </button>
             <button type="button" class="btn" data-bs-dismiss="modal" @click="editCategory(category.id,name)">Update</button>
-
           </div>
         </div>
       </div>
@@ -195,7 +192,7 @@ export default {
 .navbar-right {
   display: block;
   width: 100%;
-  background-image: url(../../assets/category.jpg);
+  /* background-image: url(@/assets/category.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
