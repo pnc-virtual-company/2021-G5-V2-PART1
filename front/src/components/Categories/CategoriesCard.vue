@@ -93,6 +93,7 @@
           </div>
           <div class="modal-body">
             Are you sure that you want to remove category?
+            yes i'm sure
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">
