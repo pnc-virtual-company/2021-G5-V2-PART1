@@ -31,11 +31,13 @@ export default {
       Categories
     </SidebarLink>
     <SidebarLink to="/users" icon="fas fa-user">Users</SidebarLink>
-    <SidebarLink to="/members" icon="fas fa-users">Member</SidebarLink>
-    <SidebarLink to="/actions" icon="fas fa-cogs">Action</SidebarLink>
     <SidebarLink to="/images" icon="fas fa-image">Images</SidebarLink>
+    <hr class="hr-1">
     <SidebarLink to="/sign-up" icon="fas fa-user-plus">Sign Up</SidebarLink>
-    <SidebarLink to="/" icon="fas fa-sign-out-alt" @click="$emit('displayLogin')"
+    <SidebarLink
+      to="/"
+      icon="fas fa-sign-out-alt"
+      @click="$emit('displayLogin')"
       >Sign Out</SidebarLink
     >
 
@@ -97,5 +99,16 @@ export default {
 .rotate-180 {
   transform: rotate(180deg);
   transition: 0.2s linear;
+}
+hr {
+  background-color: #fff;
+  padding: 0px;
+  margin: 10px;
+}
+
+hr.hr-1 {
+  border: 3px;
+  height: 2px;
+  background: linear-gradient(to right, rgba(238, 9, 9, 0), rgb(247, 244, 244), rgba(0, 0, 0, 0));
 }
 </style>

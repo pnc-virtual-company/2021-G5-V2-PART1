@@ -9,7 +9,7 @@ class Event extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'body', 'city', 'link_join', 'start_at', 'start_date', 'image', 'end_at', 'end_date'];
-    protected $hidden = ['created_at', 'updated_at', 'user_id','category_id'];
+    protected $hidden = ['created_at', 'updated_at'];
     public function user(){
         return $this->belongsTo(User::class);
     }

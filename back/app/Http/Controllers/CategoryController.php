@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::with('Event')->latest()->get();
+        return Category::with('events')->latest()->get();
     }
 
     /**
@@ -52,7 +52,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return Category::with('Event')->findOrFail($id);
+        return Category::with('events')->findOrFail($id);
     }
     /**
      * search the specified resource in storage.
@@ -63,7 +63,7 @@ class CategoryController extends Controller
      */
     public function search($name)
     {
-        return Category::with('Event')->where('name', 'like', '%' . $name . '%')->get();
+        return Category::with('events')->where('name', 'like', '%' . $name . '%')->get();
     }
 
     /**
