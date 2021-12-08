@@ -44,7 +44,7 @@
           <div class="modal-header">
             
             <h5 class="modal-title" id="staticBackdropLabel" >
-             here is  Create New Categories
+             here is  Create New Categories and 
             </h5>
             <button
               type="button"
