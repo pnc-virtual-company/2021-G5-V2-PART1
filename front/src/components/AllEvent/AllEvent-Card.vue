@@ -33,14 +33,11 @@
         </p>
       </div>
       <div class="card-footer">
-        <div class="btn-group" role="group" aria-label="Third group">
-          <button type="button" class="btn btn-light">
-            Quit <img src="@/assets/exit_icon.png" />
-          </button>
-        </div>
-        <div class="btn-group ms-2" role="group" aria-label="Third group">
-          <button type="button" class="btn btn-light">
-            Join <img src="@/assets/correct_icon.png" />
+        <div>
+          <button @click="toJoin">
+            {{ InOrOut ? "Quit" : "Join"}}
+            <img v-if="!InOrOut" src="@/assets/coo.png"/>
+            <img v-else src="@/assets/exit_icon.png" />
           </button>
         </div>
       </div>
@@ -51,6 +48,18 @@
 <script>
 export default {
   props: ["allevent"],
+
+  data() {
+    return {
+      InOrOut: false,
+      
+    };
+  },
+  methods: {
+    toJoin() {
+      this.InOrOut = !this.InOrOut;
+    },
+  }
 };
 </script>
 
@@ -64,6 +73,7 @@ export default {
   justify-content: start;
   text-align: start;
 }
+
 .card-footer {
   justify-content: start;
   background: #01465f;
@@ -102,4 +112,14 @@ export default {
   width: 30px;
   height: 30px;
 }
+
+button{
+  background: green;
+  border: none;
+  color: white;
+  border-radius: 15px;
+  width: 150px;
+  margin-left: 50px;
+}
+
 </style>

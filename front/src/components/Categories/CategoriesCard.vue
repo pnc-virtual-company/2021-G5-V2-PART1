@@ -199,7 +199,7 @@ export default {
 .navbar-right {
   display: block;
   width: 100%;
-  background-image: url(../../assets/category.jpg);
+  /* background-image: url(../../assets/category.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
