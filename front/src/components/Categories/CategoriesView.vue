@@ -43,7 +43,7 @@
 import axios from "axios";
 
 import CategoriesCard from "./CategoriesCard.vue";
-const url = "http://localhost:3000/api/categories"
+const url = "http://localhost:8000/api/categories"
 
 export default {
   components: {
@@ -65,7 +65,7 @@ export default {
     },
     
     createCategory(name){
-      const addCat ={
+      const addCat = {
         id: new Date().toISOString(),
         name: name
       };
