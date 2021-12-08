@@ -1,10 +1,10 @@
 <script>
-import SidebarLink from "./SidebarLink";
+import route_link from "./SidebarLink";
 import { collapsed, toggleSidebar, sidebarWidth } from "./state";
 
 export default {
   props: {},
-  components: { SidebarLink },
+  components: { "route-link": route_link },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },
@@ -22,23 +22,20 @@ export default {
       </span>
     </h1>
 
-    <SidebarLink to="/home" icon="fas fa-home">Home</SidebarLink>
-    <SidebarLink to="/my-event" icon="fas fa-calendar">My Event</SidebarLink>
-    <SidebarLink to="/all-event" icon="far fa-calendar-plus"
-      >All Event</SidebarLink
+    <route-link to="/home" icon="fas fa-home">Home</route-link>
+    <route-link to="/my-event" icon="fas fa-calendar">My Event</route-link>
+    <route-link to="/all-event" icon="far fa-calendar-plus"
+      >All Event</route-link
     >
-    <SidebarLink to="/categories" icon="fas fa-calendar-times">
+    <route-link to="/categories" icon="fas fa-calendar-times">
       Categories
-    </SidebarLink>
-    <SidebarLink to="/users" icon="fas fa-user">Users</SidebarLink>
-    <SidebarLink to="/images" icon="fas fa-image">Images</SidebarLink>
-    <hr class="hr-1">
-    <SidebarLink to="/sign-up" icon="fas fa-user-plus">Sign Up</SidebarLink>
-    <SidebarLink
-      to="/"
-      icon="fas fa-sign-out-alt"
-      @click="$emit('displayLogin')"
-      >Sign Out</SidebarLink
+    </route-link>
+    <route-link to="/users" icon="fas fa-user">Users</route-link>
+    <route-link to="/images" icon="fas fa-image">Images</route-link>
+    <hr class="hr-1" />
+    <route-link to="/sign-up" icon="fas fa-user-plus">Sign Up</route-link>
+    <route-link to="/" icon="fas fa-sign-out-alt" @click="$emit('displayLogin')"
+      >Sign Out</route-link
     >
 
     <span
@@ -109,6 +106,11 @@ hr {
 hr.hr-1 {
   border: 3px;
   height: 2px;
-  background: linear-gradient(to right, rgba(238, 9, 9, 0), rgb(247, 244, 244), rgba(0, 0, 0, 0));
+  background: linear-gradient(
+    to right,
+    rgba(238, 9, 9, 0),
+    rgb(247, 244, 244),
+    rgba(0, 0, 0, 0)
+  );
 }
 </style>
