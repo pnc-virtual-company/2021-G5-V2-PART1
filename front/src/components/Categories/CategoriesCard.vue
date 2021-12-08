@@ -1,6 +1,6 @@
 <template>
   <header>
-    <form action="#">
+   
       <div class="col">
         <div class="card h-100">
           <div class="card-body">
@@ -163,7 +163,7 @@
           </div>
         </div>
       </div>
-    </form>
+
   </header>
 </template>
 

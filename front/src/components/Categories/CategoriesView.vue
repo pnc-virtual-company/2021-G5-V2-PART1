@@ -1,45 +1,40 @@
 <template>
   <header>
-    <form action="#">
-      <div class="wrapper">
-        <!--================================|-NAVBAR-RIGHT-|================================-->
-        <div class="navbar-right">
-          <div class="nav-search d-flex">
-            <input
-              type="text"
-              class="search mt-2 ms-4 w-25"
-              placeholder=" Search"
-              v-model="name"
-              v-on:keyup.prevent="searchName"
-            />
-            <button class="btn ms-1 h-50 mt-2" type="button">
-              <img src="@/assets/searching_icon.png" />
-            </button>
-
-            <button
-              class="btn ms-1 h-50 mt-2"
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-            >
-              Create Categories
-              <img src="@/assets/add_circle_create_expand_icon.png" />
-            </button>
-          </div>
-          <!--================================|-BOOTSTRAP-CARD-|================================-->
-          <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-2 me-2 mb-4">
-            <category-card
-              v-for="category of categories"
-              :key="category.id"
-              :category="category"
-              @add-categories="createCategory"
-              @delete-categories="deleteCagegories"
-              @editCategory="UpdateCategory"
-            ></category-card>
-          </div>
-        </div>
+    <!--================================|-NAVBAR-RIGHT-|================================-->
+    <div class="navbar-right">
+      <div class="nav-search d-flex">
+        <input
+          type="text"
+          class="search mt-2 ms-4 w-25"
+          placeholder=" Search"
+          v-model="name"
+          v-on:keyup.prevent="searchName"
+        />
+        <button class="btn ms-1 h-50 mt-2" type="button">
+          <img src="@/assets/searching_icon.png" />
+        </button>
+        <button
+          class="btn ms-1 h-50 mt-2"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+        >
+          Create Categories
+          <img src="@/assets/add_circle_create_expand_icon.png" />
+        </button>
       </div>
-    </form>
+      <!--================================|-BOOTSTRAP-CARD-|================================-->
+      <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-2 me-2 mb-4">
+        <category-card
+          v-for="category of categories"
+          :key="category.id"
+          :category="category"
+          @add-categories="createCategory"
+          @delete-categories="deleteCagegories"
+          @editCategory="UpdateCategory"
+        ></category-card>
+      </div>
+    </div>
   </header>
 </template>
 

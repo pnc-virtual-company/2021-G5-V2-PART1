@@ -3,7 +3,6 @@
     <!--========================|-NAVBAR SEARCH-|=======================-->
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <!-- <a class="navbar-brand">Users</a> -->
         <form class="d-flex">
           <input
             class="form-control me-2"
@@ -25,13 +24,7 @@
     </nav>
 
     <!--========================|-CARD STYLE-|=======================-->
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-      <users-card
-        v-for="user of Users"
-        :key="user.id"
-        :user="user"
-      ></users-card>
-    </div>
+    <users-card v-for="user of Users" :key="user.id" :user="user"></users-card>
   </section>
 </template>
 
