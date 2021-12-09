@@ -1,171 +1,126 @@
 <template>
   <header>
-   
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">{{ category.name }}</h5>
-          </div>
-          <div class="card-footer">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ category.name }}</h5>
+        </div>
+        <div class="card-footer">
+          <button
+            class="action-edit ms-4"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#update-category"
+            @click="editAction(category.id, category.name)"
+          >
+            Edit <i class="fa fa-edit"></i>
+          </button>
+          <button
+            class="action-remove ms-2"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#remove-category"
+          >
+            Remove
+            <i
+              class="fa fa-trash"
+              aria-hidden="true"
+              @click="getId(category.id)"
+            ></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--================================|-MODAL-CREATE-|================================-->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              Create New Categories
+            </h5>
             <button
-              class="action-edit ms-4"
               type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#update-category"
-              @click="editAction(category.id, category.name)"
-            >
-              Edit <i class="fa fa-edit"></i>
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" v-model="name" placeholder="Enter hear..." />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-bs-dismiss="modal">
+              Close
             </button>
             <button
-              class="action-remove ms-2"
               type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#remove-category"
+              class="btn"
+              data-bs-dismiss="modal"
+              @click="addCategory"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--================================|-MODAL-REMOVE-|================================-->
+    <div
+      class="modal fade"
+      id="remove-category"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              Remove Categories
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Are you sure that you want to remove category?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn"
+              data-bs-dismiss="modal"
+              @click="$emit('delete-categories', category.id)"
             >
               Remove
-              <i
-                class="fa fa-trash"
-                aria-hidden="true"
-                @click="getId(category.id)"
-              ></i>
             </button>
           </div>
         </div>
-      </div>
 
-      <!--================================|-MODAL-CREATE-|================================-->
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
-                Create New Categories
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <input type="text" v-model="name" placeholder="Enter hear..." />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" data-bs-dismiss="modal">
-                Close
-              </button>
-              <button
-                type="button"
-                class="btn"
-                data-bs-dismiss="modal"
-                @click="addCategory"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
-        </div>
-<<<<<<< HEAD
-      </div>
-
-      <!--================================|-MODAL-REMOVE-|================================-->
-      <div
-        class="modal fade"
-        id="remove-category"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
-                Remove Categories
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              Are you sure that you want to remove category?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" data-bs-dismiss="modal">
-                Cancel
-              </button>
-              <button
-                type="button"
-                class="btn"
-                data-bs-dismiss="modal"
-                @click="$emit('delete-categories', category.id)"
-              >
-                Remove
-              </button>
-            </div>
-          </div>
-
-          <!--================================|-MODAL-UPDATE-|================================-->
-        </div>
-      </div>
-
-      <!--================================|-MODAL-UPDATE-|================================-->
-      <div
-        class="modal fade"
-        id="update-category"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
-                Update Categories
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <input type="text" v-model="name" placeholder="Enter hear..." />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" data-bs-dismiss="modal">
-                Cancel
-              </button>
-              <button
-                type="button"
-                class="btn"
-                data-bs-dismiss="modal"
-                @click="editCategory(category.id, name)"
-              >
-                Update
-              </button>
-            </div>
-=======
         <!--================================|-MODAL-UPDATE-|================================-->
       </div>
     </div>
-     <!--================================|-MODAL-UPDATE-|================================-->
+
+    <!--================================|-MODAL-UPDATE-|================================-->
     <div
       class="modal fade"
       id="update-category"
@@ -179,7 +134,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">
-              Update Categories  update categories
+              Update Categories
             </h5>
             <button
               type="button"
@@ -189,20 +144,27 @@
             ></button>
           </div>
           <div class="modal-body">
-              <input type="text" v-model="name" placeholder="Enter hear..." />
+            <input type="text" v-model="name" placeholder="Enter hear..." />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">
               Cancel
             </button>
-            <button type="button" class="btn" data-bs-dismiss="modal" @click="editCategory(category.id,name)">Update</button>
->>>>>>> 804d8eb091fd829e3ccef84c492af5a3c2e1ddec
+            <button
+              type="button"
+              class="btn"
+              data-bs-dismiss="modal"
+              @click="editCategory(category.id, name)"
+            >
+              Update
+            </button>
           </div>
         </div>
       </div>
-
+    </div>
   </header>
 </template>
+
 
 <script>
 export default {
@@ -240,6 +202,8 @@ export default {
   },
 };
 </script>
+
+
 <style scoped>
 .wrapper {
   display: flex;
@@ -252,10 +216,6 @@ export default {
 .navbar-right {
   display: block;
   width: 100%;
-<<<<<<< HEAD
-=======
-  /* background-image: url(@/assets/category.jpg); */
->>>>>>> 804d8eb091fd829e3ccef84c492af5a3c2e1ddec
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
