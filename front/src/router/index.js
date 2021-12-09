@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // **********************|-ROUTE LINK-|********************** //
 const routes = [
-  
   {
     path: '/home',
     name: 'Home',
@@ -12,7 +11,7 @@ const routes = [
   {
     path: '/my-event',
     name: 'MyEvent',
-    component: () => import('../components/AllEvent/MyEvent.vue')
+    component: () => import('../components/MyEvent.vue')
   },
   {
     path: '/all-event',
@@ -33,7 +32,12 @@ const routes = [
     path: '/images',
     name: 'Images',
     component: () => import('../components/Images/Images.vue')
-  }
+  },
+  {
+    path: '/:catchAll(.*)*',
+    name: "PageNotFound",
+    component: ()=>import('@/components/pages/404page.vue'),
+  },
 ]
 
 // **********************|-CREATE ROUTE LINK-|********************** //

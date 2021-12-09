@@ -1,60 +1,60 @@
+  <template>
+  <section>
+    <section v-if="start === 'welcome'">
+      <base-pnc>
+        <start-page @action="action"></start-page>
+      </base-pnc>
+    </section>
+    <section v-else-if="start === 'signin'">
+      <base-pnc>
+        <signin-form @action="action"> </signin-form>
+      </base-pnc>
+    </section>
+    <section v-else-if="start === 'signup'">
+      <base-pnc>
+        <signup-form @action="action"></signup-form>
+      </base-pnc>
+    </section>
+    <section v-else-if="start === 'myView'">
+      <Sidebar @action="action"> </Sidebar>
+      <div :style="{ 'margin-left': sidebarWidth }">
+        <router-view />
+      </div>
+    </section>
+  </section>
+</template>
+
+
+
 <script>
 import Sidebar from "@/components/sidebar/Sidebar";
 import { sidebarWidth } from "@/components/sidebar/state";
+
 export default {
   setup() {
     return { sidebarWidth };
   },
-  inject: ['users'],
   data() {
     return {
-      signin_form: null,
-      signup_form: null,
+      start: "welcome",
     };
   },
   components: { Sidebar },
   methods: {
-    home_page(status) {
-      if (status === 200) {
-        this.signin_form = !this.signin_form;
-        
-      }
+    action(act) {
+      this.start = act;
     },
-    signupForm() {
-      this.signin_form = !this.signin_form;
-      this.signup_form = !this.signup_form;
-    },
-    signup(){
-      this.signin_form = !this.signin_form;
-    }
   },
   mounted() {
-    if (window.localStorage.getItem("login") !== null) {
-      this.signin_form = !this.signin_form;
+    if (localStorage.getItem("signin") !== null) {
+      this.action("myView");
     }
   },
 };
 </script>
-  <template>
-  <section>
-    <div class="sign-from" v-if="signin_form === null">
-      <signin-form @user="home_page" @singup="signupForm"></signin-form>
-    </div>
-    <div class="signup-form" v-else-if="signup_form !== null">
-      <signup-form
-      @signup_user="signup"
-      ></signup-form>
-    </div>
-    <div class="sidebar" v-else>
-      <Sidebar></Sidebar>
-      <div :style="{ 'margin-left': sidebarWidth }">
-        <router-view @user_signout="signout"></router-view>
-      </div>
-    </div>
-  </section>
-</template>
+
 <style>
-#app {
+#app{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

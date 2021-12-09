@@ -50,7 +50,7 @@ export default {
   height: 1.5em;
   color: white;
   text-decoration: none;
-  margin: 2px 10px;
+  margin: 13px;
 }
 
 .link:hover {
