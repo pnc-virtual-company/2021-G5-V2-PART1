@@ -109,6 +109,7 @@
           </div>
           <div class="dateTime">
             <div class="modal-body">
+<<<<<<< HEAD
               <input
                 type="date"
                 placeholder="Start date..."
@@ -123,10 +124,14 @@
                 class="form-control"
                 v-model="start_at"
               />
+=======
+              <input type="datetime-local" placeholder="Start date..." class="form-control" v-model="start_date"/>
+>>>>>>> 8f8cd5d1474dc7ada59de203ee48e56d5a10d260
             </div>
           </div>
           <div class="dateTime">
             <div class="modal-body">
+<<<<<<< HEAD
               <input
                 type="date"
                 placeholder="End date..."
@@ -150,10 +155,18 @@
               class="form-control"
               v-model="link_join"
             />
+=======
+              <input type="datetime-local" placeholder="End date..." class="form-control" v-model="end_date"/>
+            </div>
+          </div>
+          <div class="modal-body">
+            <input type="alternate" placeholder="link join..." class="form-control" v-model="link_join"/>
+>>>>>>> 8f8cd5d1474dc7ada59de203ee48e56d5a10d260
           </div>
 
           <div class="modal-body">
             <div class="datalist-holder">
+<<<<<<< HEAD
               <input
                 list="country"
                 name="country"
@@ -401,6 +414,17 @@
                 <option value="Zambia" />
                 <option value="Zimbabwe" />
               </datalist>
+=======
+              <input list="country" name="country" class="datalist-input form-control" v-model="city" placeholder="Choose counrty..."/>
+                  <datalist id="country">
+                        <option value="Afghanistan" />
+                        <option value="Albania" />
+                        <option value="Algeria" />
+                        <option value="American Samoa" />
+                        <option value="Andorra" />
+                        <option value="Zimbabwe" />
+                  </datalist>
+>>>>>>> 8f8cd5d1474dc7ada59de203ee48e56d5a10d260
             </div>
           </div>
           <div class="modal-body">

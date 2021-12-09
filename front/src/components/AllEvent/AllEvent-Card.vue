@@ -122,11 +122,11 @@ export default {
   background: #8db8e29a;
   overflow: hidden;
   border-radius: var(--radius);
-  /* box-shadow: 12px 3px 8px 3px rgba(0, 0, 0, 0.3); */
+  box-shadow: 12px 3px 8px 3px rgba(0, 0, 0, 0.3);
   transition: 0.3s ease-in-out;
 }
 .box:hover {
-  /* box-shadow: 12px 3px 6px 4px rgba(0, 0, 0, 0.1); */
+  box-shadow: 12px 3px 6px 4px rgba(0, 0, 0, 0.1);
   transform: scale(1.01);
 }
 
