@@ -9,8 +9,21 @@
         </div>
       </div>
     </div>
-    <form class="form w-50 p-4 text-white" @submit.prevent>
-      <h3 class="mb-5">Register form</h3>
+    <form
+      method="POST"
+      enctype="multipart/form-data"
+      class="form w-50 p-4 text-white"
+      @submit.prevent
+    >
+      <h3 class="mb-4">Register form</h3>
+      <div
+        class="alert-danger p-2 rounded-3 mb-2"
+        role="alert"
+        v-show="show_txt_err"
+      >
+        <small> {{txt_err}}</small>
+      </div>
+
       <div class="mb-3">
         <input
           type="text"
@@ -68,9 +81,15 @@
           </div>
         </div>
       </div>
-      <div class="mb-3">
-          <input type="file" @change="fileImg" class="form-control" id="exampleInputEmail1"/>
-      </div>
+      <!-- <div class="mb-3">
+        <input
+          type="file"
+          @change="fileImg"
+          ref="file"
+          class="form-control"
+          id="exampleInputEmail1"
+        />
+      </div> -->
       <div class="mb-3">
         <input
           type="email"
@@ -91,11 +110,11 @@
           v-model="password"
         />
       </div>
-      <router-link to="/signup">
+      <router-link to="">
         <div class="add">
           <input
             type="submit"
-            @click="Signup"
+            @click="Signup()"
             class="btn text-white float-end"
             value="Create now"
           />
@@ -107,16 +126,18 @@
 <script>
 import axios from "axios";
 export default {
+  emits: ["signup_user"],
   data() {
     return {
-      API: "http://eventme.com:3000/api",
       first_name: "",
       last_name: "",
       gender: "",
       date_of_birth: "",
-      image: null,
+      image: "",
       email: "",
       password: "",
+      show_txt_err: false,
+      txt_err: null,
     };
   },
   methods: {
@@ -126,15 +147,31 @@ export default {
         last_name: this.last_name,
         gender: this.gender,
         date_of_birth: this.date_of_birth,
-        image: this.image,
+        // image: this.image,
         email: this.email,
         password: this.password,
       };
-    
-      console.log(user);
-      axios.post(this.API + "/signup", user).then((res) => {
-        console.log(res.data);
-      });
+   
+      console.log(user, this.image);
+      this.$emit("signup_user");
+      axios
+        .post("http://127.0.0.1:8000/api/signup", user)
+        .then((res) => {
+          if(res.status === 200){
+            let mess = confirm("Your user is created!");
+            if(mess){
+              window.location.reload();
+            }
+          }
+        })
+        .catch((err) => {
+          if(err.response.status === 422){
+            this.txt_err = "* All input is required!"
+          this.show_txt_err = true
+          console.log(err.response.data.message, "failure");
+          }
+        });
+
       // this.first_name = "";
       // this.last_name = "";
       // this.gender = "";
@@ -143,17 +180,18 @@ export default {
       // this.password = "";
       // this.image = "";
     },
-    fileImg(e){
-     this.image =  e.target.files[0].name; 
-    },
-      
-
+    // fileImg(e) {
+    //    const file = e.target.files[0];
+    //   let reader = new FileReader();
+    //   reader.onloadend = e =>{
+    //  this.image = e.target.result;
+    //   }
+    //   reader.readAsDataURL(file);
+    //   this.image = file;
+    
+    // },
   },
-  mounted() {
-    axios.get(this.API + "/users").then((res) => {
-      console.log(res.data);
-    });
-  },
+  mounted() {},
 };
 </script>
 

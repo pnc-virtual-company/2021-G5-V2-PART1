@@ -1,13 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '@/components/LoginForm/login'
 
 
 const routes = [
-  {
-    path: '/',
-    name: 'Login',
-    component: Login
-  },
+  
   {
     path: '/home',
     name: 'Home',
@@ -17,7 +12,7 @@ const routes = [
   {
     path: '/my-event',
     name: 'MyEvent',
-    component: () => import('../components/MyEvent.vue')
+    component: () => import('@/components/Myevent/MyEvent.vue')
   },
   {
     path: '/all-event',

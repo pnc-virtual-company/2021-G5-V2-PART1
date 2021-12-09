@@ -12,7 +12,7 @@
             aria-label="Search"
           />
           <button class="btn btn-warning" type="button">
-            <img src="../assets/search_searching_icon.png" />
+            <img src="@/assets/search_searching_icon.png" />
           </button>
           <button
             class="btn btn-warning ms-2"
@@ -20,7 +20,7 @@
             data-bs-toggle="modal"
             data-bs-target="#create-myevent"
           >
-            <img src="../assets/create_new_plus_icon.png" />
+            <img src="@/assets/create_new_plus_icon.png" />
           </button>
         </form>
       </div>
@@ -187,28 +187,18 @@
 <script>
 
 // ~~~~~~~~~~~~~~~~~~~~~~|-IMPORT AXIOS-|~~~~~~~~~~~~~~~~~~~~~~ //
-import axios from 'axios'
+
 export default {
   data() {
     return {
-      Event_URL: '',
       My_Events: []
     }
   },
   methods: {
     // **************|-GET EVENT-|************** //
-    getMyEvent() {
-       axios.post('Event_URL')
-      .then(function (response) {
-        this.Event_URL = response.data;
-      })
-      .catch(function (error) {
-        alert(error);
-      });
-    }
   },
   mounted() {
-    this.getMyEvent();
+    console.log(this.$router.currentRoute._value.path);
   },
 };
 </script>

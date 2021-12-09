@@ -3,10 +3,28 @@ import SidebarLink from "./SidebarLink";
 import { collapsed, toggleSidebar, sidebarWidth } from "./state";
 
 export default {
-  props: {},
-  components: { SidebarLink },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
+  },
+  data() {
+    return {
+      name: null
+    }
+  },
+  props: {},
+  emits: ["user_signout"],
+  components: { SidebarLink },
+  methods: {
+    signout() {
+      localStorage.removeItem("login");
+      window.location.reload();
+      window.location.href = "/login";
+    },
+  },
+  mounted() {
+    let u = localStorage.getItem('login');
+      let us = JSON.parse(u)
+     this.name = us.user.first_name;
   },
 };
 </script>
@@ -18,7 +36,7 @@ export default {
         <img src="@/assets/man_icon.png" alt="username" />
       </span>
       <span v-else>
-        <h2>Phearak</h2>
+        <h2>{{name}}</h2>
       </span>
     </h1>
 
@@ -34,11 +52,9 @@ export default {
     <SidebarLink to="/members" icon="fas fa-users">Member</SidebarLink>
     <SidebarLink to="/actions" icon="fas fa-cogs">Action</SidebarLink>
     <SidebarLink to="/images" icon="fas fa-image">Images</SidebarLink>
-    <SidebarLink to="/sign-up" icon="fas fa-user-plus">Sign Up</SidebarLink>
-    <SidebarLink to="/" icon="fas fa-sign-out-alt" @click="$emit('displayLogin')"
+    <SidebarLink to="/" icon="fas fa-sign-out-alt" @click="signout()"
       >Sign Out</SidebarLink
     >
-
     <span
       class="collapse-icon"
       :class="{ 'rotate-180': collapsed }"
