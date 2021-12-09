@@ -1,7 +1,7 @@
 <template>
   <form class="form" @submit.prevent>
     <div class="img m-auto w-25">
-      <img src="../../assets/logo-pnc.png" alt="" class="w-100" />
+      <img src="@/assets/logo-pnc.png" alt="" class="w-100" />
     </div>
     <div class="h6">
       <h6>PNC-VC2</h6>

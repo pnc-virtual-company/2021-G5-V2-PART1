@@ -8,13 +8,22 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    // ************************|-SEARCH USER-|************************ //
+    public function searchUser($name){
+        return User::where('first_name', 'like', '%' . $name . '%')->get();
+    }
+
+    // ************************|-GET ALL USER-|************************ //
     public function users(){
         return User::all();
     }
+
+    // ************************|-GET USER BY ID-|************************ //
     public function show($id){
         return User::findOrFail($id);
     }
-        # code...
+    
+    // ************************|-USER SIGN UP-|************************ //
     public function signup(Request $request){
         $request->validate([
             'first_name' => 'required',
@@ -22,7 +31,7 @@ class UserController extends Controller
             'gender' => 'required',
             'date_of_birth' => 'required',
             'email' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
             'password' => 'required'
         ]);
 
@@ -40,9 +49,6 @@ class UserController extends Controller
                 $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
                 $user->image = $img;
             }
-           
-            
-            
             // create User
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
@@ -68,12 +74,12 @@ class UserController extends Controller
     //     return response()->json(['message' => 'User logged out']);
     // }
  
-
+    // ************************|-USER LOGIN-|************************ //
     public function login(Request $request){
-        // Check email
+        // Check email |******************************
         $user = User::where('email',$request->email)->first();
 
-        // Check password
+        // Check password |**************************************
         if (!$user || !Hash::check($request->password, $user->password)){
             return response()->json(['message' => 'Bad login'], 401);
         }
@@ -87,4 +93,3 @@ class UserController extends Controller
         ]);
     }
 }
-
