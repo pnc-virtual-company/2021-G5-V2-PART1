@@ -121,6 +121,10 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   box-sizing: border-box;
 }
 img {
