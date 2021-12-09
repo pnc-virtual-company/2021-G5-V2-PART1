@@ -1,45 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ allevent.title }}</h5>
-        <p class="card-text">
-          <strong
-            ><img src="@/assets/clock_icon.png" alt="" /> Start At:</strong
-          >
-          {{ allevent.start_at }}
-        </p>
-        <p class="card-text mt-3">
-          <strong><img src="@/assets/clock_icon.png" alt="" /> End At:</strong>
-          {{ allevent.end_at }}
-        </p>
-        <p class="card-text mt-3">
-          <strong
-            ><img src="@/assets/calendar_icon.png" alt="" /> Start Date:</strong
-          >
-          {{ allevent.start_date }}
-        </p>
-        <p class="card-text mt-3">
-          <strong
-            ><img src="@/assets/calendar_icon.png" alt="" /> End Date:</strong
-          >
-          {{ allevent.end_date }}
-        </p>
-        <p class="card-text mt-3">
-          <strong
-            ><img src="@/assets/location_icon.png" alt="" /> City:</strong
-          >
-          {{ allevent.city }}
-        </p>
-      </div>
-      <div class="card-footer">
-        <div>
-          <button @click="toJoin">
-            {{ InOrOut ? "Quit" : "Join"}}
-            <img v-if="!InOrOut" src="@/assets/coo.png"/>
-            <img v-else src="@/assets/exit_icon.png" />
-=======
   <!--~~~~~~~~~~~~~~~~~~~~~~~|=HTML=|~~~~~~~~~~~~~~~~~~~~~~~-->
   <div class="box-container">
     <div class="box">
@@ -80,7 +39,6 @@
             {{ ifFollow ? "UNFOLLOW" : "FOLLOW" }}
             <i v-if="ifFollow" class="fas fa-minus-circle text-danger"></i>
             <i v-else class="far fa-plus-circle text-success"></i>
->>>>>>> be6fbd9c20e29d9a11bd29dc80e1c14c0f8a15ec
           </button>
         </div>
       </div>
@@ -128,20 +86,6 @@
 <script>
 export default {
   props: ["allevent"],
-<<<<<<< HEAD
-
-  data() {
-    return {
-      InOrOut: false,
-      
-    };
-  },
-  methods: {
-    toJoin() {
-      this.InOrOut = !this.InOrOut;
-    },
-  }
-=======
   data() {
     return {
       ifJoin: false,
@@ -156,7 +100,6 @@ export default {
       this.ifFollow = !this.ifFollow;
     },
   },
->>>>>>> be6fbd9c20e29d9a11bd29dc80e1c14c0f8a15ec
 };
 </script>
 
@@ -217,11 +160,6 @@ export default {
   border-radius: 50%;
 }
 
-<<<<<<< HEAD
-.card-footer {
-  justify-content: start;
-  background: #01465f;
-=======
 .profile-btns {
   display: flex;
   margin-top: 1rem;
@@ -264,7 +202,6 @@ export default {
 }
 .profile-name {
   display: flex;
->>>>>>> be6fbd9c20e29d9a11bd29dc80e1c14c0f8a15ec
   text-align: start;
   flex-direction: column;
 }
