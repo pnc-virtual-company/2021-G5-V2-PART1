@@ -74,7 +74,6 @@
             </div>
           </div>
         </div>
-<<<<<<< HEAD
       </div>
 
       <!--================================|-MODAL-REMOVE-|================================-->
@@ -161,42 +160,6 @@
                 Update
               </button>
             </div>
-=======
-        <!--================================|-MODAL-UPDATE-|================================-->
-      </div>
-    </div>
-     <!--================================|-MODAL-UPDATE-|================================-->
-    <div
-      class="modal fade"
-      id="update-category"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-              Update Categories  update categories
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-              <input type="text" v-model="name" placeholder="Enter hear..." />
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">
-              Cancel
-            </button>
-            <button type="button" class="btn" data-bs-dismiss="modal" @click="editCategory(category.id,name)">Update</button>
->>>>>>> 804d8eb091fd829e3ccef84c492af5a3c2e1ddec
           </div>
         </div>
       </div>
@@ -252,14 +215,6 @@ export default {
 .navbar-right {
   display: block;
   width: 100%;
-<<<<<<< HEAD
-  /* background-image: url(../../assets/category.jpg); */
-=======
-<<<<<<< HEAD
-=======
-  /* background-image: url(@/assets/category.jpg); */
->>>>>>> 804d8eb091fd829e3ccef84c492af5a3c2e1ddec
->>>>>>> be6fbd9c20e29d9a11bd29dc80e1c14c0f8a15ec
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

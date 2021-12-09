@@ -116,16 +116,9 @@ export default {
   display: block;
   width: 100%;
   height: 100vh;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> be6fbd9c20e29d9a11bd29dc80e1c14c0f8a15ec
-  /* background-image: url(../../assets/sunset.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
->>>>>>> 804d8eb091fd829e3ccef84c492af5a3c2e1ddec
   box-sizing: border-box;
 }
 img {
