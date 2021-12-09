@@ -1,49 +1,50 @@
 <template>
   <header>
-    <form action="#">
-    <div class="wrapper">
-      <!--================================|-NAVBAR-RIGHT-|================================-->
-      <div class="navbar-right">
-        <div class="nav-search d-flex">
-          <input
-            type="text"
-            class="search mt-2 ms-4 w-25"
-            placeholder=" Search" v-model="name" v-on:keyup.prevent="searchName"
-          />
-          
-          <button
-            class="btn ms-1 h-50 mt-2"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-          >
-            Create Categories
-            <img src="../../assets/add_circle_create_expand_icon.png" />
-          </button>
-        </div>
-        <!--================================|-BOOTSTRAP-CARD-|================================-->
+    <!--================================|-NAVBAR-RIGHT-|================================-->
+    <div class="navbar-right">
+      <div class="nav-search d-flex">
+        <input
+          type="text"
+          class="search mt-2 ms-4 w-25"
+          placeholder=" Search"
+          v-model="name"
+          v-on:keyup.prevent="searchName"
+        />
+        <button class="btn ms-1 h-50 mt-2" type="button">
+          <img src="@/assets/searching_icon.png" />
+        </button>
+        <button
+          class="btn ms-1 h-50 mt-2"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+        >
+          Create Categories
+          <img src="@/assets/add_circle_create_expand_icon.png" />
+        </button>
+      </div>
+      <!--================================|-BOOTSTRAP-CARD-|================================-->
       <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-2 me-2 mb-4">
-          
-          <category-card
-            v-for="category of categories"
-            :key="category.id"
-            :category="category"
-            @add-categories="createCategory"
-            @delete-categories="deleteCagegories"
-            @editCategory="UpdateCategory"
-          ></category-card>
-        </div>
+        <category-card
+          v-for="category of categories"
+          :key="category.id"
+          :category="category"
+          @add-categories="createCategory"
+          @delete-categories="deleteCagegories"
+          @editCategory="UpdateCategory"
+        ></category-card>
       </div>
     </div>
-    </form>
   </header>
 </template>
 
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~|~SCRIPT~|~~~~~~~~~~~~~~~~~~~~~~~~-->
 <script>
 import axios from "axios";
 
 import CategoriesCard from "./CategoriesCard.vue";
-const url = "http://localhost:3000/api/categories"
+const url = "http://127.0.0.1:8000/api/categories";
 
 export default {
   components: {
@@ -52,72 +53,57 @@ export default {
   data() {
     return {
       categories: [],
-      name: ""
-      
+      name: "",
     };
   },
   methods: {
-    
     getCategories() {
       axios.get(url).then((res) => {
         this.categories = res.data;
-    })
-    },
-    
-    createCategory(name){
-      const addCat ={
-        id: new Date().toISOString(),
-        name: name
-      };
-      axios.post(url,addCat).then((response) => {
-      
-      this.categories.push(response.data.category);
-    })
+      });
     },
 
-    deleteCagegories(cagegoriesId){
-     
-      console.log(cagegoriesId)
+    createCategory(name) {
+      const addCat = {
+        id: new Date().toISOString(),
+        name: name,
+      };
+      axios.post(url, addCat).then((response) => {
+        this.categories.push(response.data.category);
+      });
+    },
+
+    deleteCagegories(cagegoriesId) {
+      console.log(cagegoriesId);
       axios.delete(url + "/" + cagegoriesId).then((res) => {
-  
         console.log(res.data);
         this.getCategories();
-      })
-      
+      });
     },
-
-
 
     searchName() {
-      if(this.name !== '') {
-        axios.get(url + "/search/" + this.name).then(res => {
-        this.categories = res.data;
-        
-        })
-      }else {
+      if (this.name !== "") {
+        axios.get(url + "/search/" + this.name).then((res) => {
+          this.categories = res.data;
+        });
+      } else {
         this.getCategories();
       }
-      
     },
-    UpdateCategory(id,title){
-      axios.put(url+"/"+id, {name: title}).then(res=>{
+    UpdateCategory(id, title) {
+      axios.put(url + "/" + id, { name: title }).then((res) => {
         console.log(res.data);
         this.getCategories();
-      })
-      
-    }
-
-    
-  
+      });
+    },
   },
   mounted() {
-
     this.getCategories();
-    
   },
 };
 </script>
 
+<!--~~~~~~~~~~~~~~~~~~~~~~~~|~STYLE~|~~~~~~~~~~~~~~~~~~~~~~~~-->
 <style scoped>
 .wrapper {
   display: flex;
@@ -131,17 +117,13 @@ export default {
   display: block;
   width: 100%;
   height: 100vh;
- 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   box-sizing: border-box;
 }
 img {
   width: 30px;
   height: 30px;
 }
-
+/* =================|-INUT SEARCH-|=================*/
 .nav-search {
   box-sizing: border-box;
   position: relative;
@@ -171,30 +153,7 @@ img {
   font-family: "Roboto Slab", serif;
   font-weight: 800;
   font-size: 15px;
-}
-.card {
-  background: #004f6c;
-  border-radius: 0px 15px 0px 15px;
-  color: #c5ced8;
-  overflow: hidden;
-  transition: all 1.2s ease;
-  box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
-    rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
-  cursor: pointer;
-  border-bottom: 2px solid #f96233;
-}
-.card:hover {
-  transform: scale(1.1);
-}
-
-.card-title {
-  font-family: "Roboto Slab", serif;
-  font-weight: 900;
-  font-size: 20px;
-}
-
-.card-footer {
-  background: #02445c;
+  text-align: start;
 }
 
 /* =================|-BUTTON EDIT & DELETE-|=================*/
@@ -217,29 +176,6 @@ img {
 }
 .action-remove:hover {
   background: red;
-}
-
-small {
-  color: #b9c2ca;
-}
-/* =================|-MODAL-|=================*/
-.modal-dialog {
-  background: #004f6c;
-}
-.modal-header h5 {
-  font-size: 20px;
-  font-weight: 900;
-}
-.modal-body input {
-  width: 100%;
-  border: none;
-  border-bottom: solid #f96233 2px;
-  font-size: 20px;
-  font-weight: 800;
-  color: #004f6c;
-}
-.modal-body ::placeholder {
-  color: #004f6c;
 }
 
 @media (max-width: 880px) {

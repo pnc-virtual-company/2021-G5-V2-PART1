@@ -471,7 +471,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      Event_URL: 'http://127.0.0.1:8000/api/events',
+      Event_URL: 'http://localhost:8000/api/events',
       My_Events: [],
       imageFile: null,
       user_id: 1,

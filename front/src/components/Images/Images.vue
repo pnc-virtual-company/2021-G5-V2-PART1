@@ -1,9 +1,11 @@
 <template>
   <section>
-    <nav class="navbar navbar-light bg-info">
-      <div class="container-fluid">
-        <a class="navbar-brand">THE PICTURE OUR TEAM</a>
-      </div>
+    <nav class="navbar">
+      <a href="/home" class="btn">
+        <span class="text">Text</span>
+        <span class="flip-front">TEAM MEMBER</span>
+        <span class="flip-back">Back Home</span>
+      </a>
     </nav>
     <div class="wrapper">
       <div class="card mt-3">
@@ -48,12 +50,10 @@
       </div>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~|~HTML BUTTON~|~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    
+
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~|~HTML BUTTON~|~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
   </section>
 </template>
-
-
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
 /* 
@@ -63,6 +63,8 @@
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+  height: 50%;
+  padding: 40px;
 }
 @keyframes gradient {
   0% {
@@ -94,7 +96,7 @@
   flex-flow: row;
   flex-wrap: wrap;
   justify-content: center;
-  background: #2c3e50;
+  /* background: #2c3e50; */
 }
 .wrapper > * {
   margin: 0 1rem 2rem;
@@ -167,6 +169,86 @@
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~CSS BUTTON~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+body {
+  color: #313131;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: "Raleway", sans-serif;
+}
 
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: relative;
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.text {
+  padding: 0 50px;
+  visibility: hidden;
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: flat;
+  transform-style: flat;
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+
+.flip-front {
+  color: #313131;
+  border: 2px solid #313131;
+  background-color: transparent;
+  -webkit-transform: rotateX(0deg) translateZ(25px);
+  -ms-transform: rotateX(0deg) translateZ(25px);
+  -o-transform: rotateX(0deg) translateZ(25px);
+  transform: rotateX(0deg) translateZ(25px);
+}
+
+.flip-back {
+  color: #fff;
+  background-color: #313131;
+  border: 2px solid #313131;
+  -webkit-transform: rotateX(90deg) translateZ(25px);
+  -ms-transform: rotateX(90deg) translateZ(25px);
+  -o-transform: rotateX(90deg) translateZ(25px);
+  transform: rotateX(90deg) translateZ(25px);
+}
+
+.btn:hover .flip-front {
+  -webkit-transform: rotateX(-90deg) translateZ(25px);
+  -ms-transform: rotateX(-90deg) translateZ(25px);
+  -o-transform: rotateX(-90deg) translateZ(25px);
+  transform: rotateX(-90deg) translateZ(25px);
+}
+
+.btn:hover .flip-back {
+  -webkit-transform: rotateX(0deg) translateZ(25px);
+  -ms-transform: rotateX(0deg) translateZ(25px);
+  -o-transform: rotateX(0deg) translateZ(25px);
+  transform: rotateX(0deg) translateZ(25px);
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~CSS BUTTON~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 </style>

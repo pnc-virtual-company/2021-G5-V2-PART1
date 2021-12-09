@@ -1,7 +1,7 @@
 <template>
   <section>
     <!--========================|-NAVBAR SEARCH-|=======================-->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light">
       <div class="container-fluid">
         <!-- <a class="navbar-brand">Home</a> -->
         <form class="d-flex">
@@ -11,7 +11,7 @@
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-light" type="submit">
+          <button class="btn btn-warning" type="submit">
             <img src="@/assets/search_searching_icon.png" />
           </button>
         </form>
@@ -156,14 +156,14 @@ export default {
 }
 .col {
   font-family: "Roboto Slab", serif;
+  color: #fff;
 }
 .card-1 {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: #417fbd;
   margin-top: 15px;
   margin-left: 15px;
   margin-right: 15px;
+  border: 2px solid #fff;
   cursor: pointer;
   overflow: hidden;
   border-radius: 0px 15px 0px 15px;
@@ -172,12 +172,11 @@ export default {
     rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
 }
 .card-2 {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: #417fbd;
   margin-top: 15px;
   margin-left: 15px;
   margin-right: 15px;
+  border: 2px solid #fff;
   cursor: pointer;
   overflow: hidden;
   border-radius: 0px 15px 0px 15px;
@@ -186,12 +185,11 @@ export default {
     rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
 }
 .card-3 {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: #417fbd;
   margin-top: 15px;
   margin-left: 15px;
   margin-right: 15px;
+  border: 2px solid #fff;
   cursor: pointer;
   overflow: hidden;
   border-radius: 0px 15px 0px 15px;
@@ -200,12 +198,11 @@ export default {
     rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
 }
 .card-4 {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: #417fbd;
   margin-top: 15px;
   margin-left: 15px;
   margin-right: 15px;
+  border: 2px solid #fff;
   cursor: pointer;
   overflow: hidden;
   border-radius: 0px 15px 0px 15px;
@@ -214,12 +211,11 @@ export default {
     rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
 }
 .card-5 {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: #417fbd;
   margin-top: 15px;
   margin-left: 15px;
   margin-right: 15px;
+  border: 2px solid #fff;
   cursor: pointer;
   overflow: hidden;
   border-radius: 0px 15px 0px 15px;
@@ -228,12 +224,11 @@ export default {
     rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
 }
 .card-6 {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
   margin-top: 15px;
+  background: #417fbd;
   margin-left: 15px;
   margin-right: 15px;
+  border: 2px solid #fff;
   cursor: pointer;
   overflow: hidden;
   border-radius: 0px 15px 0px 15px;
@@ -242,12 +237,11 @@ export default {
     rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
 }
 .card-7 {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: #417fbd;
   margin-top: 15px;
   margin-left: 15px;
   margin-right: 15px;
+  border: 2px solid #fff;
   cursor: pointer;
   overflow: hidden;
   border-radius: 0px 15px 0px 15px;

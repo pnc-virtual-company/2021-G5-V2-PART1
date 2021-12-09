@@ -1,7 +1,7 @@
 <template>
   <section>
     <!--========================|-NAVBAR SEARCH-|=======================-->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light mb-4">
       <div class="container-fluid">
         <form class="d-flex">
           <input
