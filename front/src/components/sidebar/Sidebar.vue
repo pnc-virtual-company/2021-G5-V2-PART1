@@ -1,16 +1,3 @@
-<script>
-import route_link from "./SidebarLink";
-import { collapsed, toggleSidebar, sidebarWidth } from "./state";
-
-export default {
-  props: {},
-  components: { "route-link": route_link },
-  setup() {
-    return { collapsed, toggleSidebar, sidebarWidth };
-  },
-};
-</script>
-
 <template>
   <div class="sidebar" :style="{ width: sidebarWidth }">
     <h1>
@@ -18,10 +5,11 @@ export default {
         <img src="@/assets/man_icon.png" alt="username" />
       </span>
       <span v-else>
-        <h2>Phearak</h2>
+        <h1 class="text-uppercase p-4">{{username}}</h1>
+        <hr>
       </span>
     </h1>
-
+<div class="menu">
     <route-link to="/home" icon="fas fa-home">Home</route-link>
     <route-link to="/my-event" icon="fas fa-calendar">My Event</route-link>
     <route-link to="/all-event" icon="far fa-calendar-plus"
@@ -33,11 +21,11 @@ export default {
     <route-link to="/users" icon="fas fa-user">Users</route-link>
     <route-link to="/images" icon="fas fa-image">Images</route-link>
     <hr class="hr-1" />
-    <route-link to="/sign-up" icon="fas fa-user-plus">Sign Up</route-link>
-    <route-link to="/" icon="fas fa-sign-out-alt" @click="$emit('displayLogin')"
+    <route-link to="" icon="fas fa-sign-out-alt" @click="singout()"
       >Sign Out</route-link
     >
 
+</div>
     <span
       class="collapse-icon"
       :class="{ 'rotate-180': collapsed }"
@@ -47,6 +35,38 @@ export default {
     </span>
   </div>
 </template>
+<script>
+import route_link from "./SidebarLink";
+import { collapsed, toggleSidebar, sidebarWidth } from "./state";
+
+export default {
+  setup() {
+    return { collapsed, toggleSidebar, sidebarWidth };
+  },
+  props: {},
+  emits: ["action"],
+  data() {
+    return {
+      username: null,
+      name: null
+    }
+  },
+  components: { "route-link": route_link },
+  methods: {
+    singout(){
+      localStorage.removeItem("signin");
+      this.$emit("action", "signin")
+    }
+  },
+  mounted() {
+    let u = localStorage.getItem("signin")
+    this.name = JSON.parse(u)
+    this.username = this.name.user.first_name
+    console.log(u);
+  },
+};
+</script>
+
 
 <style>
 :root {
@@ -78,12 +98,7 @@ export default {
   width: 70px;
   height: 70px;
 }
-.sidebar h1 {
-  height: 2.5em;
-  font-size: 30px;
-  font-family: "Roboto Slab", serif;
-  font-weight: 800;
-}
+
 
 .collapse-icon {
   position: absolute;

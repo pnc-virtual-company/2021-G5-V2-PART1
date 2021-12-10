@@ -82,7 +82,7 @@ export default {
 .container {
   background: #fff;
   width: 100%;
-  min-height: 40vh;
+  min-height: 45vh;
   display: flex;
   justify-content: center;
   align-items: center;
