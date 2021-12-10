@@ -76,6 +76,8 @@
     </div>
 
     <!--================================|-MODAL-REMOVE-|================================-->
+  
+    <!--================================|-MODAL-REMOVE-|================================-->
     <div
       class="modal fade"
       id="remove-category"
@@ -98,7 +100,6 @@
               aria-label="Close"
             ></button>
           </div>
-<<<<<<< HEAD
           <div class="modal-body">
             Are you sure that you want to remove category?
           </div>
@@ -114,55 +115,8 @@
             >
               Remove
             </button>
-=======
-        </div>
-      </div>
-
-      <!--================================|-MODAL-REMOVE-|================================-->
-      <div
-        class="modal fade"
-        id="remove-category"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
-                Remove Categories
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              Are you sure that you want to remove category?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" data-bs-dismiss="modal">
-                Cancel
-              </button>
-              <button
-                type="button"
-                class="btn"
-                data-bs-dismiss="modal"
-                @click="$emit('delete-categories', category.id)"
-              >
-                Remove
-              </button>
-            </div>
->>>>>>> 8f8cd5d1474dc7ada59de203ee48e56d5a10d260
           </div>
         </div>
-
-<<<<<<< HEAD
-        <!--================================|-MODAL-UPDATE-|================================-->
       </div>
     </div>
 
@@ -204,47 +158,6 @@
             >
               Update
             </button>
-=======
-      <!--================================|-MODAL-UPDATE-|================================-->
-      <div
-        class="modal fade"
-        id="update-category"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
-                Update Categories
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <input type="text" v-model="name" placeholder="Enter hear..." />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" data-bs-dismiss="modal">
-                Cancel
-              </button>
-              <button
-                type="button"
-                class="btn"
-                data-bs-dismiss="modal"
-                @click="editCategory(category.id, name)"
-              >
-                Update
-              </button>
-            </div>
->>>>>>> 8f8cd5d1474dc7ada59de203ee48e56d5a10d260
           </div>
         </div>
       </div>

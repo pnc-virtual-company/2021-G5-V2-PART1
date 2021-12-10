@@ -43,11 +43,7 @@
 import axios from "axios";
 
 import CategoriesCard from "./CategoriesCard.vue";
-<<<<<<< HEAD
-const url = "http://localhost:8000/api/categories"
-=======
-const url = "http://127.0.0.1:8000/api/categories";
->>>>>>> e4a63b17b81eb57cb23c8685c2f4a92cc1bf59ac
+const url = "http://localhost:8000/api/categories";
 
 export default {
   components: {
@@ -65,13 +61,8 @@ export default {
         this.categories = res.data;
       });
     },
-<<<<<<< HEAD
-    
-    createCategory(name){
-=======
 
     createCategory(name) {
->>>>>>> e4a63b17b81eb57cb23c8685c2f4a92cc1bf59ac
       const addCat = {
         id: new Date().toISOString(),
         name: name,
@@ -125,12 +116,6 @@ export default {
   display: block;
   width: 100%;
   height: 100vh;
-<<<<<<< HEAD
-=======
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
->>>>>>> 8f8cd5d1474dc7ada59de203ee48e56d5a10d260
   box-sizing: border-box;
 }
 img {
