@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Events;
 use Illuminate\Http\Request;
-use App\Http\Resources\EventResource;
-use App\Models\Event;
 
-class EventController extends Controller
+class EventsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Event::with(['category'])->latest()->get();
-         
+        //
+        return Events::with(['user', 'categories'])->latest()->get();
     }
 
     /**
@@ -27,7 +26,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        info($request);
+        //
         $request->validate([
             'title' => 'required',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
@@ -38,22 +37,17 @@ class EventController extends Controller
             'end_at'=>'required',
             'end_date'=>'required',
         ]);
-        $event = new Event();
-
-        if($request->file('image') !== null){
+        $event = new Events();
+        if($request->image !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
         else{
-            $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
+            $img = 'https://res.cloudinary.com/eventboost/image/upload/v1594282851/website/wp/eventboost-twitter-card-home.jpg';
             $event->image = $img;
         }
-
-        // Move image to storage
-
-        // Add to database
         $event->user_id = $request->user_id;
-        $event->category_id = $request->category_id;
+        $event->categories_id = $request->categories_id;
         $event->title = $request->title;
         $event->body = $request->body;
         $event->city = $request->city;
@@ -64,7 +58,7 @@ class EventController extends Controller
         $event->end_date = $request->end_date;
         $event->save();
 
-        return response()->json(['events'=>$event,'message' => 'Events created successfull'], 201);
+        return response()->json(['events'=>$event,'message' => 'Events created successfully'], 201);
     }
 
     /**
@@ -73,20 +67,22 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function search($title)
-    {
-        return Event::with('category')->WHERE('title', 'like', '%'.$title.'%')->get();
-    }
-    
-     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        return Event::with(['category'])->findOrFail($id);
+        //
+        return Events::with(['users', 'categories'])->findOrFail($id);
+    }
+    function search($title)
+    {
+        $result = Events::where('title', 'LIKE', '%'. $title. '%')->get();
+
+        if(count($result)){
+         return Response()->json($result);
+        }
+        else
+        {
+        return Response()->json(['Result' => 'No Data not found'], 404);
+      }
     }
 
     /**
@@ -98,18 +94,19 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
         $request->validate([
             'title' => 'required',
-            'start_at' => 'required',
-            'start_date' => 'required',
-            'end_at' => 'required',
-            'end_date' => 'required',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
+            'body'=>'required',
+            'link_join'=>'required',
+            'start_at'=>'required',
+            'start_date'=>'required',
+            'end_at'=>'required',
+            'end_date'=>'required',
         ]);
-
-        $event = Event::findOrFail($id);
-        if($request->file('image') !== null){
-            // Move image to storage
+        $event = Events::with(['users', 'categories'])->findOrFail($id);
+        if($request->image !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
@@ -118,19 +115,16 @@ class EventController extends Controller
             $event->image = $img;
         }
 
-
-        // Add to database
         $event->user_id = $request->user_id;
+        $event->categories_id = $request->categories_id;
         $event->title = $request->title;
         $event->body = $request->body;
-        $event->category_id = $request->category_id;
         $event->city = $request->city;
         $event->link_join = $request->link_join;
         $event->start_at = $request->start_at;
         $event->start_date = $request->start_date;
         $event->end_at = $request->end_at;
         $event->end_date = $request->end_date;
-
         $event->save();
 
         return response()->json(['events'=>$event,'message' => 'Events updated successfully'], 200);
@@ -144,10 +138,12 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $event = Event::destroy($id);
-        if ($event == 1){
-            return response()->json(['events'=>$event,'message' => 'deleted successfully'], 200);
-        }else {
+        //
+        $event = Events::with(['users', 'categories'])->destroy($id);
+       
+        if ($event === 1) {
+            return response()->json(['message' => 'deleted successfully'], 200);
+        } else {
             return response()->json(['message' => 'Cannot deleted no id'], 404);
         }
     }
