@@ -23,9 +23,9 @@
       <h1><i class="far fa-check-circle mb-3"></i></h1>
       <slot></slot>
       <Base-btn
+        @click="$emit('signin','signin')"
         :btn_name="btn_name"
         class="float-end btn btn-warning mt-4 me-2"
-        @click="$emit('action', 'signin')"
       ></Base-btn>
     </section>
     <section v-if="action === 'exist'">
@@ -42,7 +42,7 @@
 <script>
 export default {
   props: ["action"],
-  emits: ["noData", "incorrect", "action"],
+  emits: ["noData", "incorrect", "signin"],
   data() {
     return {};
   },

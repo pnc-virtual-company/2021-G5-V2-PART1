@@ -116,7 +116,7 @@
       </Base-warning>
     </section>
     <section class="text-warning text-center" v-else-if="warning === 'created'">
-      <Base-warning :action="warning" @click="$emit('action', 'signin')">
+      <Base-warning :action="warning" @signin="signin">
         <h3 class="text-center">Your account was created!</h3>
         <div class="txt d-flex">
           <h5 class="text-start">Username</h5>
@@ -154,6 +154,9 @@ export default {
     signup_warning(warn) {
       this.warning = warn;
     },
+    signin(signin){
+      this.$emit("action", signin)
+    },
     user_signup() {
       if (
         this.first_name === "" ||
@@ -173,7 +176,6 @@ export default {
           email: this.email,
           password: this.password,
         };
-        console.log(user);
         axios
           .post("http://127.0.0.1:8000/api/signup", user)
           .then((res) => {
