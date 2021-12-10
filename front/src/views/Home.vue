@@ -3,18 +3,15 @@
 </template>
 
 <script>
-import EventMe from '@/components/EventMe.vue'
-// import MyEvent from '@/components/MyEvent.vue'
+import EventMe from "@/components/EventMe.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     EventMe,
-    // MyEvent,
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-
 </style>

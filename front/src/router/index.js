@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '@/components/LoginForm/login'
 
 // **********************|-ROUTE LINK-|********************** //
 const routes = [
   {
     path: '/',
-    name: 'Login',
-    component: Login
+    name: 'Home',
+    component: ()=>import('@/views/Home.vue')
   },
   {
     path: '/home',
@@ -38,7 +37,12 @@ const routes = [
     path: '/images',
     name: 'Images',
     component: () => import('../components/Images/Images.vue')
-  }
+  },
+  {
+    path: '/:catchAll(.*)*',
+    name: "PageNotFound",
+    component: ()=>import('@/components/pages/404page.vue'),
+  },
 ]
 
 // **********************|-CREATE ROUTE LINK-|********************** //

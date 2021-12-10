@@ -1,49 +1,52 @@
 <template>
-  <header>
-    <!--================================|-NAVBAR-RIGHT-|================================-->
-    <div class="navbar-right">
-      <div class="nav-search d-flex">
+  <section>
+    <!--================================|-NAVBAR SEARCH-|================================-->
+    <nav class="navbar">
+      <form class="d-flex">
         <input
+          class="form-control ms-4"
           type="text"
-          class="search mt-2 ms-4 w-25"
           placeholder=" Search"
+          aria-label="Search"
           v-model="name"
           v-on:keyup.prevent="searchName"
         />
-        <button class="btn ms-1 h-50 mt-2" type="button">
-          <img src="@/assets/searching_icon.png" />
+        <button
+          class="btn btn-warning ms-1"
+          type="button"
+          v-on:click.prevent="searchAllEvent"
+        >
+          <img src="@/assets/search_searching_icon.png" />
         </button>
         <button
-          class="btn ms-1 h-50 mt-2"
+          class="btn btn-warning ms-1"
           type="button"
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
         >
-          Create Categories
-          <img src="@/assets/add_circle_create_expand_icon.png" />
+          <img src="@/assets/create_new_plus_icon.png" />
         </button>
-      </div>
-      <!--================================|-BOOTSTRAP-CARD-|================================-->
-      <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-2 me-2 mb-4">
-        <category-card
-          v-for="category of categories"
-          :key="category.id"
-          :category="category"
-          @add-categories="createCategory"
-          @delete-categories="deleteCagegories"
-          @editCategory="UpdateCategory"
-        ></category-card>
-      </div>
+      </form>
+    </nav>
+    <!--================================|-BOOTSTRAP-CARD-|================================-->
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 ms-2 me-2 mb-4">
+      <category-card
+        v-for="category of categories"
+        :key="category.id"
+        :category="category"
+        @add-categories="createCategory"
+        @delete-categories="deleteCagegories"
+        @editCategory="UpdateCategory"
+      ></category-card>
     </div>
-  </header>
+  </section>
 </template>
-
 <!--~~~~~~~~~~~~~~~~~~~~~~~~|~SCRIPT~|~~~~~~~~~~~~~~~~~~~~~~~~-->
 <script>
 import axios from "axios";
 
 import CategoriesCard from "./CategoriesCard.vue";
-const url = "http://127.0.0.1:8000/api/categories";
+const url = "http://localhost:8000/api/categories";
 
 export default {
   components: {
@@ -104,58 +107,13 @@ export default {
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~|~STYLE~|~~~~~~~~~~~~~~~~~~~~~~~~-->
 <style scoped>
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  box-sizing: border-box;
-}
-/* =================|-NAVBAR-LEFT-|=================*/
-
-.navbar-right {
-  display: block;
-  width: 100%;
-  height: 100vh;
-
-  /* background-image: url(../../assets/sunset.jpg); */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-sizing: border-box;
+.navbar {
+  background: #004f6c;
 }
 img {
   width: 30px;
   height: 30px;
 }
-/* =================|-INUT SEARCH-|=================*/
-.nav-search {
-  box-sizing: border-box;
-  position: relative;
-}
-::placeholder {
-  color: #c5ced8;
-}
-.nav-search input {
-  background: #004f6c;
-  border-radius: 0px 15px 0px 15px;
-  color: #f96233;
-  border: none;
-  border-bottom: 2px solid #f96233;
-}
-/* =================|-BUTTON SEARCH-|=================*/
-.btn {
-  background: #004f6c;
-  color: #c5ced8;
-  border-radius: 0px 15px 0px 15px;
-  border-bottom: 2px solid #f96233;
-}
-.btn:hover {
-  background: #f96233;
-}
-/* =================|-ROW CARD BOOTSTRAP-|=================*/
 .row {
   font-family: "Roboto Slab", serif;
   font-weight: 800;

@@ -1,12 +1,14 @@
 <template>
   <section>
     <nav class="navbar">
+      <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~|~BACK HOME BUTTON~|~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
       <a href="/home" class="btn">
         <span class="text">Text</span>
         <span class="flip-front">TEAM MEMBER</span>
         <span class="flip-back">Back Home</span>
       </a>
     </nav>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~|~CARD OF IMAGE~|~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div class="wrapper">
       <div class="card mt-3">
         <figure class="card__thumbnail">
@@ -49,41 +51,18 @@
         </figure>
       </div>
     </div>
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~|~HTML BUTTON~|~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~|~HTML BUTTON~|~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
   </section>
 </template>
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
 /* 
-| -=-=-=-=-=-=-=-=-=-=-=|-BG LINEAR GRADIAN-|-=-=-=-=-=-=-=-=-=-=-= |
+| -=-=-=-=-=-=-=-=-=-=-=|-NAVBAR-|-=-=-=-=-=-=-=-=-=-=-= |
 */
 .navbar {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: #004f6c;
   height: 50%;
   padding: 40px;
 }
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-.navbar-brand {
-  font-family: "Roboto Slab", serif;
-  font-weight: 800;
-  background: rgba(37, 228, 12, 0.404);
-  padding: 5px;
-}
-
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-CARD IMAGE-|-=-=-=-=-=-=-=-=-=-=-= |
 */
@@ -96,7 +75,6 @@
   flex-flow: row;
   flex-wrap: wrap;
   justify-content: center;
-  /* background: #2c3e50; */
 }
 .wrapper > * {
   margin: 0 1rem 2rem;
@@ -168,17 +146,7 @@
   background-image: url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~CSS BUTTON~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-body {
-  color: #313131;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-family: "Raleway", sans-serif;
-}
-
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~BACK HOME BUTTON~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 a {
   text-decoration: none;
   display: inline-block;
@@ -218,8 +186,8 @@ a {
 }
 
 .flip-front {
-  color: #313131;
-  border: 2px solid #313131;
+  color: #fff;
+  border: 2px solid #fff;
   background-color: transparent;
   -webkit-transform: rotateX(0deg) translateZ(25px);
   -ms-transform: rotateX(0deg) translateZ(25px);
@@ -229,8 +197,8 @@ a {
 
 .flip-back {
   color: #fff;
-  background-color: #313131;
-  border: 2px solid #313131;
+  background-color: #ee7752;
+  border: 2px solid #fff;
   -webkit-transform: rotateX(90deg) translateZ(25px);
   -ms-transform: rotateX(90deg) translateZ(25px);
   -o-transform: rotateX(90deg) translateZ(25px);
