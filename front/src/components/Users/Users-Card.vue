@@ -1,6 +1,6 @@
 <template>
   <!--*************************|-*USER DETAIL*-|*************************-->
-  <div class="container">
+  <div class="container" v-if="user.first_name !==username_local">
     <div class="card">
       <div class="content">
         <div class="avatar">
@@ -35,6 +35,8 @@ export default {
   data() {
     return {
       detailsAreVisible: false,
+      username_local: null,
+      name: null
     };
   },
   methods: {
@@ -42,6 +44,11 @@ export default {
     toggleDetails() {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
+  },
+  mounted() {
+    let u = localStorage.getItem("signin")
+    this.name = JSON.parse(u)
+    this.username_local = this.name.user.first_name
   },
 };
 </script>

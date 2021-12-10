@@ -43,7 +43,8 @@ export default {
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },
-  props: {},
+  props: {
+  },
   emits: ["action"],
   data() {
     return {
