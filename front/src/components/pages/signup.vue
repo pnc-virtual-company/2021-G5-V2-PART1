@@ -116,7 +116,7 @@
       </Base-warning>
     </section>
     <section class="text-warning text-center" v-else-if="warning === 'created'">
-      <Base-warning :action="warning" @noData="signup_warning">
+      <Base-warning :action="warning" @click="$emit('action', 'signin')">
         <h3 class="text-center">Your account was created!</h3>
         <div class="txt d-flex">
           <h5 class="text-start">Username</h5>

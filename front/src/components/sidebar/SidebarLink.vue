@@ -9,11 +9,11 @@ export default {
     icon: { type: String, required: true },
   },
   setup(props) {
-    const route = useRoute();
-    const isActive = computed(() => route.path === props.to);
-    return { isActive, collapsed };
-  },
-};
+    const route = useRoute()
+    const isActive = computed(() => route.path === props.to)
+    return { isActive, collapsed, }
+  }
+}
 </script>
 
 <template>

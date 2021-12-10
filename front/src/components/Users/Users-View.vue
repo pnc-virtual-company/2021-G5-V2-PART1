@@ -24,7 +24,9 @@
     </nav>
 
     <!--========================|-CARD STYLE-|=======================-->
-    <users-card v-for="user of Users" :key="user.id" :user="user"></users-card>
+    <users-card v-for="user of Users" :key="user.id" :user="user"
+      
+    ></users-card>
   </section>
 </template>
 
@@ -46,6 +48,7 @@ export default {
     return {
       Users: [],
       user_name: "",
+      
     };
   },
   methods: {
@@ -72,6 +75,8 @@ export default {
   mounted() {
     this.getUsers();
     this.userName();
+    
+    
   },
 };
 </script>

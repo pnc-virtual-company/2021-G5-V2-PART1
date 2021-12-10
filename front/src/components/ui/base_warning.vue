@@ -42,7 +42,7 @@
 <script>
 export default {
   props: ["action"],
-  emits: ["noData", "incorrect"],
+  emits: ["noData", "incorrect", "action"],
   data() {
     return {};
   },
