@@ -1,7 +1,7 @@
 <template>
   <section>
     <!--========================|-NAVBAR SEARCH-|=======================-->
-    <nav class="navbar navbar-light bg-light mb-4">
+    <nav class="navbar mb-4">
       <div class="container-fluid">
         <form class="d-flex">
           <input
@@ -20,7 +20,10 @@
             <img src="@/assets/search_searching_icon.png" />
           </button>
           <!--========================|-SORT BY-|=======================-->
-          <select class="form-select ms-2 w-55" aria-label="Default select example">
+          <select
+            class="form-select ms-2 w-55"
+            aria-label="Default select example"
+          >
             <option selected>SORT BY:</option>
             <option value="1">ID</option>
             <option value="2">TITLE</option>
@@ -30,13 +33,11 @@
       </div>
     </nav>
     <!--========================|-LOOP DATA CARD-|=======================-->
-  
-      <all-event-card
-        v-for="allevent of All_Events"
-        :key="allevent.id"
-        :allevent="allevent"
-      ></all-event-card>
-
+    <all-event-card
+      v-for="allevent of All_Events"
+      :key="allevent.id"
+      :allevent="allevent"
+    ></all-event-card>
   </section>
 </template>
 
@@ -91,27 +92,13 @@ export default {
 | -=-=-=-=-=-=-=-=-=-=-=|-NAVBAR BAR SEARCH STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
 */
 .navbar {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  background: #004f6c;
 }
 .btn img {
   width: 30px;
   height: 30px;
-} 
-.form-select
-{
+}
+.form-select {
   font-size: 15px;
 }
 </style>

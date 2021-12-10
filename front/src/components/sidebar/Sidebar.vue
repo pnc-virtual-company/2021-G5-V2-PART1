@@ -5,27 +5,26 @@
         <img src="@/assets/man_icon.png" alt="username" />
       </span>
       <span v-else>
-        <h1 class="text-uppercase p-4">{{username}}</h1>
-        <hr>
+        <h1 class="text-uppercase p-3">【 {{ username }} 】</h1>
+        <hr />
       </span>
     </h1>
-<div class="menu">
-    <route-link to="/home" icon="fas fa-home">Home</route-link>
-    <route-link to="/my-event" icon="fas fa-calendar">My Event</route-link>
-    <route-link to="/all-event" icon="far fa-calendar-plus"
-      >All Event</route-link
-    >
-    <route-link to="/categories" icon="fas fa-calendar-times">
-      Categories
-    </route-link>
-    <route-link to="/users" icon="fas fa-user">Users</route-link>
-    <route-link to="/images" icon="fas fa-image">Images</route-link>
-    <hr class="hr-1" />
-    <route-link to="" icon="fas fa-sign-out-alt" @click="singout()"
-      >Sign Out</route-link
-    >
-
-</div>
+    <div class="menu">
+      <route-link to="/home" icon="fas fa-home">Home</route-link>
+      <route-link to="/my-event" icon="fas fa-calendar">My Event</route-link>
+      <route-link to="/all-event" icon="far fa-calendar-plus"
+        >All Event</route-link
+      >
+      <route-link to="/categories" icon="fas fa-calendar-times">
+        Categories
+      </route-link>
+      <route-link to="/users" icon="fas fa-user">Users</route-link>
+      <route-link to="/images" icon="fas fa-image">Images</route-link>
+      <hr class="hr-1" />
+      <route-link to="" icon="fas fa-sign-out-alt" @click="singout()"
+        >Sign Out</route-link
+      >
+    </div>
     <span
       class="collapse-icon"
       :class="{ 'rotate-180': collapsed }"
@@ -48,20 +47,20 @@ export default {
   data() {
     return {
       username: null,
-      name: null
-    }
+      name: null,
+    };
   },
   components: { "route-link": route_link },
   methods: {
-    singout(){
+    singout() {
       localStorage.removeItem("signin");
-      this.$emit("action", "signin")
-    }
+      this.$emit("action", "signin");
+    },
   },
   mounted() {
-    let u = localStorage.getItem("signin")
-    this.name = JSON.parse(u)
-    this.username = this.name.user.first_name
+    let u = localStorage.getItem("signin");
+    this.name = JSON.parse(u);
+    this.username = this.name.user.first_name;
     console.log(u);
   },
 };
@@ -94,11 +93,15 @@ export default {
   width: 25%;
   font-family: "Roboto Slab", serif;
 }
+.text-uppercase {
+  text-align: center;
+  font-size: 35px;
+}
 .sidebar img {
   width: 70px;
   height: 70px;
+  margin-left: 13px;
 }
-
 
 .collapse-icon {
   position: absolute;
@@ -127,5 +130,12 @@ hr.hr-1 {
     rgb(247, 244, 244),
     rgba(0, 0, 0, 0)
   );
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~|~RESPONSIVE~|~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media (max-width: 880px) {
+  .sidebar {
+    background: #f96233;
+    transition: calc(1.1s);
+  }
 }
 </style>

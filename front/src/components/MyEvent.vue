@@ -1,29 +1,200 @@
 <template>
   <!--========================|-NAVBAR SEARCH-|=======================-->
   <section>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar">
       <div class="container-fluid">
         <form class="d-flex">
-          <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" v-model="eventName" v-on:keyup.prevent="searchEvent"/>
+          <input
+            class="form-control me-2"
+            type="text"
+            placeholder="Search"
+            aria-label="Search"
+            v-model="eventName"
+            v-on:keyup.prevent="searchEvent"
+          />
           <button class="btn btn-warning" type="button">
             <img src="@/assets/search_searching_icon.png" />
           </button>
-          <button class="btn btn-warning ms-2" type="button" data-bs-toggle="modal" data-bs-target="#create-myevent">
+          <button
+            class="btn btn-warning ms-2"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#create-myevent"
+          >
             <img src="@/assets/create_new_plus_icon.png" />
           </button>
         </form>
         <!--========================|-MODAL CREATE-|=======================-->
-          <modal id="create-myevent">
-            <template v-slot:modal-title>
-              Create New Event
-            </template>
+        <modal id="create-myevent">
+          <template v-slot:modal-title> Create New Event </template>
+          <template v-slot:modal-body>
+            <form @submit.prevent="handleSubmit">
+              <div class="mb-3 mt-3">
+                <input
+                  type="text"
+                  placeholder="Enter title..."
+                  class="form-control"
+                  v-model="title"
+                />
+              </div>
+              <div class="mb-3 mt-3">
+                <select
+                  name="category"
+                  id="category"
+                  class="form-control"
+                  v-model="category_id"
+                >
+                  <option value="" selected disabled hidden>Category</option>
+                  <option value="1">Game</option>
+                  <option value="2">Meeting</option>
+                  <option value="3">Comunication</option>
+                  <option value="4">Education</option>
+                </select>
+              </div>
+              <div class="mb-3 mt-3">
+                <input
+                  type="file"
+                  accept="image/*"
+                  class="form-control"
+                  @change="handleImageSelected"
+                />
+              </div>
+              <div class="dateTime mb-3 mt-3">
+                <input
+                  type="date"
+                  placeholder="Start date..."
+                  class="form-control"
+                  v-model="start_date"
+                />
+                <input
+                  type="time"
+                  placeholder="At..."
+                  class="form-control"
+                  v-model="start_at"
+                />
+              </div>
+              <div class="dateTime" mb-3 mt-3>
+                <input
+                  type="date"
+                  placeholder="End date..."
+                  class="form-control"
+                  v-model="end_date"
+                />
+                <input
+                  type="time"
+                  placeholder="At..."
+                  class="form-control"
+                  v-model="end_at"
+                />
+              </div>
+              <div class="mb-3 mt-3">
+                <input
+                  type="text"
+                  placeholder="link join..."
+                  class="form-control"
+                  v-model="link_join"
+                />
+              </div>
+              <div class="mb-3 mt-3">
+                <div class="datalist-holder">
+                  <input
+                    list="country"
+                    name="country"
+                    class="datalist-input form-control"
+                    v-model="city"
+                  />
+                  <datalist id="country">
+                    <option value="Yemen" />
+                    <option value="Zambia" />
+                    <option value="Zimbabwe" />
+                  </datalist>
+                </div>
+              </div>
+              <div class="mb-3 mt-3">
+                <input
+                  type="text"
+                  placeholder="Description..."
+                  class="form-control"
+                  v-model="body"
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-outline-light"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-outline-warning"
+                  data-bs-dismiss="modal"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </template>
+        </modal>
+      </div>
+    </nav>
+    <!--========================|-CARD STYLE-|=======================-->
+    <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
+      <card v-for="event of My_Events" :key="event.id">
+        <template v-slot:card-header>
+          <img
+            :src="url_image_upload + event.image"
+            class="card-img-top"
+            alt=""
+          />
+        </template>
+        <template v-slot:card-body>
+          <h5 class="card-title">{{ event.title }}</h5>
+          <p class="card-text">{{ event.body }}</p>
+        </template>
+        <template v-slot:card-footer>
+          <input type="hidden" v-model="eventID" />
+          <small>{{ event.start_date }}/{{ event.end_date }}</small>
+
+          <button
+            class="btn-event-edit ms-5"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#edit-myevent"
+            @click="getID(event.id)"
+          >
+            Edit <i class="fa fa-edit" aria-hidden="true"></i>
+          </button>
+          <button
+            class="btn-event-remove ms-2"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#remove-myevent"
+            @click="getID(event.id)"
+          >
+            Delete <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+          <!--========================|-MODAL EDIT-|=======================-->
+          <modal id="edit-myevent">
+            <template v-slot:modal-title> Update Event </template>
             <template v-slot:modal-body>
-              <form @submit.prevent="handleSubmit">
+              <form @submit.prevent="UpdateEvent">
                 <div class="mb-3 mt-3">
-                  <input type="text" placeholder="Enter title..." class="form-control" v-model="title"/>
+                  <input
+                    type="text"
+                    placeholder="Enter title..."
+                    class="form-control"
+                    v-model="title_edit"
+                  />
                 </div>
                 <div class="mb-3 mt-3">
-                  <select name="category" id="category" class="form-control" v-model="category_id">
+                  <select
+                    name="category_edit"
+                    id="category_edit"
+                    class="form-control"
+                    v-model="category_id_edit"
+                  >
                     <option value="" selected disabled hidden>Category</option>
                     <option value="1">Game</option>
                     <option value="2">Meeting</option>
@@ -32,130 +203,118 @@
                   </select>
                 </div>
                 <div class="mb-3 mt-3">
-                  <input type="file" accept="image/*" class="form-control" @change="handleImageSelected"/>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    class="form-control"
+                    @change="handleImageSelected"
+                  />
                 </div>
                 <div class="dateTime mb-3 mt-3">
-                  <input type="date" placeholder="Start date..." class="form-control" v-model="start_date"/>
-                  <input type="time" placeholder="At..." class="form-control" v-model="start_at"/>
+                  <input
+                    type="date"
+                    placeholder="Start date..."
+                    class="form-control"
+                    v-model="start_date_edit"
+                  />
+                  <input
+                    type="time"
+                    placeholder="At..."
+                    class="form-control"
+                    v-model="start_at"
+                  />
                 </div>
                 <div class="dateTime" mb-3 mt-3>
-                  <input type="date" placeholder="End date..." class="form-control" v-model="end_date"/>
-                  <input type="time" placeholder="At..." class="form-control" v-model="end_at"/>
+                  <input
+                    type="date"
+                    placeholder="End date..."
+                    class="form-control"
+                    v-model="end_date_edit"
+                  />
+                  <input
+                    type="time"
+                    placeholder="At..."
+                    class="form-control"
+                    v-model="end_at_edit"
+                  />
                 </div>
                 <div class="mb-3 mt-3">
-                  <input type="text" placeholder="link join..." class="form-control" v-model="link_join"/>
+                  <input
+                    type="text"
+                    placeholder="link join..."
+                    class="form-control"
+                    v-model="link_join_edit"
+                  />
                 </div>
                 <div class="mb-3 mt-3">
-                  <div class="datalist-holder">
-                    <input list="country" name="country" class="datalist-input form-control" v-model="city"/>
-                      <datalist id="country">
-                        <option value="Yemen" />
-                        <option value="Zambia" />
-                        <option value="Zimbabwe" />
-                      </datalist>
-                  </div>
+                  <select
+                    name="city_edit"
+                    id="city_edit"
+                    class="form-control"
+                    v-model="city_id_edit"
+                  >
+                    <option value="" selected disabled hidden>City</option>
+                    <option value="phnom penh">Phnom Penh</option>
+                    <option value="jakata">Jakata</option>
+                    <option value="seoul">Seoul</option>
+                    <option value="paris">Paris</option>
+                  </select>
                 </div>
                 <div class="mb-3 mt-3">
-                  <input type="text" placeholder="Description..." class="form-control" v-model="body"/>
+                  <input
+                    type="text"
+                    placeholder="Description..."
+                    class="form-control"
+                    v-model="body_edit"
+                  />
                 </div>
-                <div class="modal-footer" >
-                  <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-outline-warning" data-bs-dismiss="modal">Submit</button>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-light"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-outline-warning"
+                    data-bs-dismiss="modal"
+                  >
+                    Submit
+                  </button>
                 </div>
               </form>
             </template>
           </modal>
-      </div>
-    </nav>
-    <!--========================|-CARD STYLE-|=======================-->
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        <card v-for="event of My_Events" :key="event.id" >
-          <template v-slot:card-header>
-            <img src="@/assets/category_icon.png" class="card-img-top" alt="" />
-          </template>
-          <template v-slot:card-body>
-            <h5 class="card-title">{{ event.title }}</h5>
-            <p class="card-text">{{ event.body }}</p>
-          </template>
-          <template v-slot:card-footer>
-            <input type="hidden" v-model="eventID">
-            <small>{{ event.start_date }}/{{ event.end_date }}</small>
-            <button class="btn-event-edit ms-5" type="button" data-bs-toggle="modal" data-bs-target="#edit-myevent" @click="getID(event.id)">
-                Edit <i class="fa fa-edit" aria-hidden="true"></i>
-            </button>
-            <button class="btn-event-remove ms-2" type="button" data-bs-toggle="modal" data-bs-target="#remove-myevent" @click="getID(event.id)">
-                Delete <i class="fa fa-trash" aria-hidden="true" ></i>
-            </button>
-            <!--========================|-MODAL EDIT-|=======================-->
-            <modal id="edit-myevent">
-              <template v-slot:modal-title>
-                Update Event
-              </template>
-              <template v-slot:modal-body>
-                <form @submit.prevent="UpdateEvent">
-                  <div class="mb-3 mt-3">
-                    <input type="text" placeholder="Enter title..." class="form-control" v-model="title_edit"/>
-                  </div>
-                  <div class="mb-3 mt-3">
-                    <select name="category_edit" id="category_edit" class="form-control" v-model="category_id_edit">
-                      <option value="" selected disabled hidden>Category</option>
-                      <option value="1">Game</option>
-                      <option value="2">Meeting</option>
-                      <option value="3">Comunication</option>
-                      <option value="4">Education</option>
-                    </select>
-                  </div>
-                  <div class="mb-3 mt-3">
-                    <input type="file" accept="image/*" class="form-control" @change="handleImageSelected"/>
-                  </div>
-                  <div class="dateTime mb-3 mt-3">
-                    <input type="date" placeholder="Start date..." class="form-control" v-model="start_date_edit"/>
-                    <input type="time" placeholder="At..." class="form-control" v-model="start_at"/>
-                  </div>
-                  <div class="dateTime" mb-3 mt-3>
-                    <input type="date" placeholder="End date..." class="form-control" v-model="end_date_edit"/>
-                    <input type="time" placeholder="At..." class="form-control" v-model="end_at_edit"/>
-                  </div>
-                  <div class="mb-3 mt-3">
-                    <input type="text" placeholder="link join..." class="form-control" v-model="link_join_edit"/>
-                  </div>
-                  <div class="mb-3 mt-3">
-                    <select name="city_edit" id="city_edit" class="form-control" v-model="city_id_edit">
-                      <option value="" selected disabled hidden>City</option>
-                      <option value="phnom penh">Phnom Penh</option>
-                      <option value="jakata">Jakata</option>
-                      <option value="seoul">Seoul</option>
-                      <option value="paris">Paris</option>
-                    </select>
-                  </div>
-                  <div class="mb-3 mt-3">
-                    <input type="text" placeholder="Description..." class="form-control" v-model="body_edit"/>
-                  </div>
-                  <div class="modal-footer" >
-                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-outline-warning" data-bs-dismiss="modal">Submit</button>
-                  </div>
-                </form>
-              </template>
-            </modal>
-            <!--========================|-MODAL DELETE-|=======================-->
-            <modal id="remove-myevent">
-              <template v-slot:modal-title>
-                Remove Event
-              </template>
-              <template v-slot:modal-body>
-                <form @submit.prevent="deleteEvent()">
-                  <div class="mb-3 mt-3">You want to remove this event?</div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-outline-warning" data-bs-dismiss="modal">Remove</button>
-                  </div>
-                </form>
-              </template>
-            </modal>
-          </template>
-        </card>
-    </div> 
+          <!--========================|-MODAL DELETE-|=======================-->
+          <modal id="remove-myevent">
+            <template v-slot:modal-title> Remove Event </template>
+            <template v-slot:modal-body>
+              <form @submit.prevent="deleteEvent()">
+                <div class="mb-3 mt-3">You want to remove this event?</div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-light"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-outline-warning"
+                    data-bs-dismiss="modal"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </form>
+            </template>
+          </modal>
+        </template>
+      </card>
+    </div>
   </section>
 </template>
 <script>
@@ -163,11 +322,11 @@
 import axios from "axios";
 import Modal from "./Modal/modal.vue";
 import Card from "./Card/Card.vue";
-const url = "http://localhost:8000/api/events"
+const url = "http://localhost:8000/api/events";
 export default {
   components: {
-    "modal": Modal,
-    "card": Card,
+    modal: Modal,
+    card: Card,
   },
   data() {
     return {
@@ -197,22 +356,25 @@ export default {
       link_join_edit: "",
       body_edit: "",
       city_edit: "",
-      
+
+      url_image_upload: "http://localhost:8000/storage/image/",
     };
   },
   methods: {
     // **************|-GET EVENT-|************** //
-    getEvents(){
-      axios.get(url).then((res) => {
-        this.My_Events = res.data;
-      })
-      .catch((err) => {
-        console.log(err.response.data.message);
-      });
+    getEvents() {
+      axios
+        .get(url)
+        .then((res) => {
+          this.My_Events = res.data;
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
     },
-    getID(id){
+    getID(id) {
       this.eventID = id;
-      console.log(id)
+      console.log(id);
     },
     handleImageSelected(event) {
       const image = event.target.files[0];
@@ -245,22 +407,21 @@ export default {
       });
     },
     searchEvent() {
-      if(this.eventName !== '') {
-        axios.get(url + "/search/" + this.eventName).then(res => {
-        this.My_Events = res.data;
-        })
-      }else {
+      if (this.eventName !== "") {
+        axios.get(url + "/search/" + this.eventName).then((res) => {
+          this.My_Events = res.data;
+        });
+      } else {
         this.getEvents();
       }
-      
     },
-    deleteEvent(){
+    deleteEvent() {
       axios.delete(url + "/" + this.eventID).then((res) => {
         console.log(res.data);
         this.getEvents();
-      }) 
+      });
     },
-    UpdateEvent(){
+    UpdateEvent() {
       let fileUpload = new FormData();
       fileUpload.append("image", this.imageFile);
       fileUpload.append("user_id", this.user_id_edit);
@@ -274,44 +435,24 @@ export default {
       fileUpload.append("end_at", this.end_at_edit);
       fileUpload.append("end_date", this.end_date_edit);
       console.log(fileUpload);
-      axios.put(url+"/" + this.eventID, fileUpload).then(res=>{
+      axios.put(url + "/" + this.eventID, fileUpload).then((res) => {
         console.log(res.data);
         this.getEvents();
-      })
-      
-    }
+      });
+    },
   },
   mounted() {
     this.getEvents();
   },
 };
 </script>
-
-<!--========================|-STYLE CSS-|=======================-->
 <style scoped>
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-NAVBAR BAR SEARCH STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
 */
 .navbar {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: #004f6c;
 }
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* 
-| -=-=-=-=-=-=-=-=-=-=-=|-BG LINEAR GRADIENT-|-=-=-=-=-=-=-=-=-=-=-= |
-*/
 .btn img {
   width: 30px;
   height: 30px;
@@ -319,6 +460,11 @@ export default {
 
 .dateTime {
   display: flex;
+}
+.row img {
+  width: 100%;
+  height: 300px;
+  box-sizing: border-box;
 }
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-CARD STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
@@ -341,9 +487,10 @@ export default {
 }
 .btn-event-edit:hover {
   background: #066588;
+  color: #fff;
 }
 .btn-event-remove:hover {
   background: #ff0000;
+  color: #fff;
 }
-
 </style>

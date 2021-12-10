@@ -40,14 +40,18 @@ class EventController extends Controller
         ]);
         $event = new Event();
 
-        if($request->file('image') !== null){
-            $event->image = $request->file('image')->hashName();
-            $request->file('image')->store('public/images/events');
-        }
-        else{
-            $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
-            $event->image = $img;
-        }
+        // if($request->file('image') !== null){
+        //     $event->image = $request->file('image')->hashName();
+        //     $request->file('image')->store('public/images/events');
+        // }
+        // else{
+        //     $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
+        //     $event->image = $img;
+        // }
+
+//------------------------------------------------------------------ //
+        $request->file('image')->store('public/image');
+//------------------------------------------------------------------ //
 
         // Move image to storage
 
@@ -62,6 +66,10 @@ class EventController extends Controller
         $event->start_date = $request->start_date;
         $event->end_at = $request->end_at;
         $event->end_date = $request->end_date;
+//------------------------------------------------------------------ //
+        $event->image = $request->file('image')->hashName();
+//------------------------------------------------------------------ //
+
         $event->save();
 
         return response()->json(['events'=>$event,'message' => 'Events created successfull'], 201);
