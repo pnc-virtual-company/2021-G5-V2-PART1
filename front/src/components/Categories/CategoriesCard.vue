@@ -55,7 +55,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <input type="text" v-model="name" placeholder="Enter hear..." />
+            <input type="text" v-model="name" placeholder="Category name..." />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">

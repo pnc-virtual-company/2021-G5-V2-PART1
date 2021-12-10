@@ -31,7 +31,7 @@
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <card v-for="event of My_Events" :key="event.id" >
           <template v-slot:card-header>
-            <img src="@/assets/category_icon.png" class="card-img-top" alt="" />
+            <img src="" class="card-img-top" alt="" />
           </template>
           <template v-slot:card-body>
             <h5 class="card-title">{{ event.title }}</h5>

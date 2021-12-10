@@ -67,7 +67,6 @@ export default {
 
     createCategory(name) {
       const addCat = {
-        id: new Date().toISOString(),
         name: name,
       };
       axios.post(url, addCat).then((response) => {

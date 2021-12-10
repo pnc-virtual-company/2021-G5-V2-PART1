@@ -72,7 +72,7 @@ class EventsController extends Controller
     public function show($id)
     {
         //
-        return Events::with(['users', 'categories'])->findOrFail($id);
+        return Events::with(['user', 'categories'])->findOrFail($id);
     }
     function search($title)
     {
@@ -107,7 +107,7 @@ class EventsController extends Controller
             'end_at'=>'required',
             'end_date'=>'required',
         ]);
-        $event = Events::with(['users', 'categories'])->findOrFail($id);
+        $event = Events::with(['user', 'categories'])->findOrFail($id);
         if($request->image !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
@@ -141,7 +141,7 @@ class EventsController extends Controller
     public function destroy($id)
     {
         //
-        $event = Events::with(['users', 'categories'])->destroy($id);
+        $event = Events::with(['user', 'categories'])->destroy($id);
        
         if ($event === 1) {
             return response()->json(['message' => 'deleted successfully'], 200);
