@@ -63,7 +63,6 @@ export default {
     let u = localStorage.getItem("signin")
     this.name = JSON.parse(u)
     this.username = this.name.user.first_name
-    console.log(u);
   },
 };
 </script>

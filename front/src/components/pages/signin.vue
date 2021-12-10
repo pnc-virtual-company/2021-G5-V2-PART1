@@ -76,14 +76,14 @@ export default {
         email: this.email,
         password: this.password,
       };
-      console.log(user);
+     
       if (this.email === "" || this.password === "") {
         this.signin_warning("noData");
       } else {
         axios
           .post("http://127.0.0.1:8000/api/signin", user)
           .then((res) => {
-            console.log(res.data);
+         
             this.$router.push('/home')
             localStorage.setItem('signin', JSON.stringify(res.data))
             this.$emit("action","myView")

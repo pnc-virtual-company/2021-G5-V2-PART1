@@ -29,7 +29,6 @@
 <script>
 import Sidebar from "@/components/sidebar/Sidebar";
 import { sidebarWidth } from "@/components/sidebar/state";
-
 export default {
   setup() {
     return { sidebarWidth };
@@ -37,6 +36,7 @@ export default {
   data() {
     return {
       start: "welcome",
+      path: null,
     };
   },
   components: { Sidebar },
@@ -46,15 +46,15 @@ export default {
     },
   },
   mounted() {
-    if (localStorage.getItem("signin") !== null) {
+    if (localStorage.getItem("signin") !==null) {
       this.action("myView");
     }
   },
+
 };
 </script>
-
 <style>
-#app{
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
