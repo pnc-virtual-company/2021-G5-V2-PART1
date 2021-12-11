@@ -38,7 +38,6 @@
   </header>
 </template>
 
-
 <!--~~~~~~~~~~~~~~~~~~~~~~~~|~SCRIPT~|~~~~~~~~~~~~~~~~~~~~~~~~-->
 <script>
 import axios from "axios";

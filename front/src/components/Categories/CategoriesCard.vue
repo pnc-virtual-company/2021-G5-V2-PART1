@@ -20,6 +20,7 @@
             type="button"
             data-bs-toggle="modal"
             data-bs-target="#remove-category"
+            @click="getID(category.id)"
           >
             Remove
             <i
@@ -89,7 +90,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">
-              Remove Categories y
+              Remove Categories
             </h5>
             <button
               type="button"
@@ -173,7 +174,7 @@ export default {
     return {
       name: "",
       id_update: 0,
-      id_delete: 0,
+     categoriesId: null
     };
   },
   methods: {
@@ -188,16 +189,17 @@ export default {
       console.log(this.id_update);
       console.log(this.name);
     },
+    getID(id){
+      this.categoriesId = id;
+      console.log(id)
+    },
 
     editCategory(id, name) {
       this.$emit("editCategory", id, name);
       console.log(id);
       this.name = "";
     },
-    getId(id) {
-      this.id_delete = id;
-      console.log(id);
-    },
+    
   },
 };
 </script>
