@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Events;
 use Illuminate\Http\Request;
 
@@ -38,7 +36,12 @@ class EventsController extends Controller
             'end_date'=>'required',
         ]);
         $event = new Events();
-        if($request->file('image') !== null){
+
+
+        // Move image to storage
+
+        // Add to database
+        if($request->image !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }

@@ -84,7 +84,7 @@ export default {};
 .hrs {
   border: 30px;
   width: 80%;
-  height: 2px;
+  height: 1px;
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0.219),
@@ -188,9 +188,9 @@ h1 {
   position: absolute;
   top: 5vh;
   font-family: "Roboto Slab", serif;
-  text-shadow: 0 13.36px 8.896px #1c351e, 0 -2px 1px #d4fcd6;
+  text-shadow: 0 13.36px 8.896px #1c351e, 0 -2px 1px #20de20;
   letter-spacing: 2px;
-  color: #62b668;
+  color: #fff;
 }
 .descriptions {
   font-family: "Roboto Slab", serif;
