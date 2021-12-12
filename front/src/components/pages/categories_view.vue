@@ -101,17 +101,16 @@ export default {
   components: {DialogEditCategory},
   data() {
     return {
-      isShowdialog: false,
       categoryInfo: "",
       name: "",
-      categories: [],
-      id: 0,
-      counter: 0,
-      alert_me: false,
       alert_act: "",
+      categories: [],
+      alert_me: false,
+      isShowdialog: false,
     };
   },
   methods: {
+
     create() {
       let cate_name = {
         name: this.name,
@@ -120,9 +119,9 @@ export default {
         axios
           .post("http://127.0.0.1:8000/api/categories", cate_name)
           .then((res) => {
-            this.alert_act = "create";
-            this.categories = res.data.categories;
-            console.log(res.data.message);
+            this.alert_act = "created";
+            console.log(res.data);
+            this.getCategory();
             setInterval(() => {
               if (this.counter < 3) {
                 this.counter++;
@@ -161,18 +160,24 @@ export default {
     cancel(){
       this.isShowdialog = false;
     },
-  updateCategory(id,categories,hideForm){
-    this.isShowdialog = hideForm;
-    axios.put("http://127.0.0.1:8000/api/categories/" + id , categories).then(res => {
-      console.log(res.data);
 
-    })
-  }
+    updateCategory(id,category,hideForm){
+      console.log(category + " | " + id + " | " + hideForm);
+      axios.put("http://127.0.0.1:8000/api/categories/" + id , category).then(res => {
+        console.log(res.data);
+        this.getCategory();
+        this.isShowdialog = hideForm;
+      })
+
+    },
+    getCategory(){
+      axios.get("http://127.0.0.1:8000/api/categories").then((res) => {
+        this.categories = res.data;
+      });
+    },
   },
   mounted() {
-    axios.get("http://127.0.0.1:8000/api/categories").then((res) => {
-      this.categories = res.data;
-    });
+    this.getCategory();
   },
 };
 </script>

@@ -4,11 +4,13 @@
 
 <script>
 import EventMe from "@/components/EventMe.vue";
+// import MyEvent from '@/components/MyEvent.vue'
 
 export default {
   name: "Home",
   components: {
     EventMe,
+    // MyEvent,
   },
 };
 </script>

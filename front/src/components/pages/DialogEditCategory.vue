@@ -4,7 +4,6 @@
         <div class="dialog__content">
           <p style="text-align:center;">Do you want to update?</p>
           <input type="text" v-model="categoryName">
-          <p class="dialog__description">{{data.description}}</p>
         </div><hr />
 
         <div class="dialog__footer">
@@ -18,7 +17,7 @@
 <script>
 export default {
     props: ['data'],
-    emits:['delete', 'cancel'],
+    emits:['update', 'cancel'],
     data(){
       return{
         categoryName: "",
@@ -27,7 +26,7 @@ export default {
     methods:{
       update(){
         this.$emit('update',this.data.id,this.categoryName, false);
-        console.log(this.categoryName);
+
       },
       cancel(){
         this.$emit('cancel', false);
@@ -38,8 +37,6 @@ export default {
     }
 }
 </script>
-
-
 
 <style scoped>
   .dialog {

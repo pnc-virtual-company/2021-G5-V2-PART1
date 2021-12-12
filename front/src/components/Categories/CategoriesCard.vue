@@ -1,37 +1,5 @@
 <template>
   <header>
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">{{ category.name }}</h5>
-        </div>
-        <div class="card-footer">
-          <button
-            class="action-edit ms-4"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#update-category"
-            @click="editAction(category.id, category.name)"
-          >
-            Edit <i class="fa fa-edit"></i>
-          </button>
-          <button
-            class="action-remove ms-2"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#remove-category"
-            @click="getID(category.id)"
-          >
-            Remove
-            <i
-              class="fa fa-trash"
-              aria-hidden="true"
-              @click="getId(category.id)"
-            ></i>
-          </button>
-        </div>
-      </div>
-    </div>
     <!--================================|-MODAL-CREATE-|================================-->
     <div
       class="modal fade"
@@ -56,7 +24,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <input type="text" v-model="name" placeholder="Category name..." />
+            <input type="text" v-model="name" placeholder="Enter hear..." />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">
@@ -74,6 +42,9 @@
         </div>
       </div>
     </div>
+
+    <!--================================|-MODAL-REMOVE-|================================-->
+  
     <!--================================|-MODAL-REMOVE-|================================-->
     <div
       class="modal fade"
@@ -98,7 +69,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            Are you sure that yout want to remove category?
+            Are you sure that you want to remove category?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">
@@ -215,7 +186,7 @@ export default {
     return {
       name: "",
       id_update: 0,
-     categoriesId: null
+      id_delete: 0,
     };
   },
   methods: {
@@ -230,20 +201,21 @@ export default {
       console.log(this.id_update);
       console.log(this.name);
     },
-    getID(id){
-      this.categoriesId = id;
-      console.log(id)
-    },
 
     editCategory(id, name) {
       this.$emit("editCategory", id, name);
       console.log(id);
       this.name = "";
     },
-    
+    getId(id) {
+      this.id_delete = id;
+      console.log(id);
+    },
   },
 };
 </script>
+
+
 <style scoped>
 .wrapper {
   display: flex;
