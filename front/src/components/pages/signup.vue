@@ -108,7 +108,7 @@
         </div>
         <div class="add">
           <a href="#" class="login text-center btn fs-5 float-end">
-            <Base-btn :btn_name="btn_name" @click="user_signup()"></Base-btn>
+            <Base-btn  @click="user_signup()">Submit</Base-btn>
           </a>
         </div>
       </form>
@@ -125,7 +125,11 @@
       </Base-warning>
     </section>
     <section class="text-warning text-center" v-else-if="warning === 'created'">
+<<<<<<< HEAD
       <Base-warning :action="warning" @noData="signup_warning">
+=======
+      <Base-warning :action="warning" @signin="signin">
+>>>>>>> 1b603cf7d6fda9e726c4ab2786771b78af5ea77b
         <h3 class="text-center">Your account was created!</h3>
         <div class="txt d-flex">
           <h5 class="text-start">Username</h5>
@@ -163,6 +167,9 @@ export default {
     signup_warning(warn) {
       this.warning = warn;
     },
+    signin(signin){
+      this.$emit("action", signin)
+    },
     user_signup() {
       if (
         this.first_name === "" ||
@@ -182,7 +189,6 @@ export default {
           email: this.email,
           password: this.password,
         };
-        console.log(user);
         axios
           .post("http://127.0.0.1:8000/api/signup", user)
           .then((res) => {

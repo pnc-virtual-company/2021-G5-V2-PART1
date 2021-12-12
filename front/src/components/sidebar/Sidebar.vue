@@ -5,14 +5,14 @@
         <img src="@/assets/man_icon.png" alt="username" />
       </span>
       <span v-else>
-        <h1 class="text-uppercase p-3">【 {{ username }} 】</h1>
+        <h1 class="text-uppercase p-3" username:username>【 {{ username }} 】</h1>
         <hr />
       </span>
     </h1>
     <div class="menu">
       <route-link to="/home" icon="fas fa-home">Home</route-link>
-      <route-link to="/my-event" icon="fas fa-calendar">My Event</route-link>
-      <route-link to="/all-event" icon="far fa-calendar-plus"
+      <route-link to="/my-events" icon="fas fa-calendar">My Event</route-link>
+      <route-link to="/all-events" icon="far fa-calendar-plus"
         >All Event</route-link
       >
       <route-link to="/categories" icon="fas fa-calendar-times">

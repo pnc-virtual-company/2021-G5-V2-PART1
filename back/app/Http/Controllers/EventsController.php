@@ -36,6 +36,7 @@ class EventsController extends Controller
             'end_date'=>'required',
         ]);
         $event = new Events();
+<<<<<<< HEAD
 
         // if($request->file('image') !== null){
         //     $event->image = $request->file('image')->hashName();
@@ -53,6 +54,16 @@ class EventsController extends Controller
         // Move image to storage
 
         // Add to database
+=======
+        if($request->image !== null){
+            $event->image = $request->file('image')->hashName();
+            $request->file('image')->store('public/images/events');
+        }
+        else{
+            $img = 'https://res.cloudinary.com/eventboost/image/upload/v1594282851/website/wp/eventboost-twitter-card-home.jpg';
+            $event->image = $img;
+        }
+>>>>>>> 1b603cf7d6fda9e726c4ab2786771b78af5ea77b
         $event->user_id = $request->user_id;
         $event->categories_id = $request->categories_id;
         $event->title = $request->title;
@@ -63,9 +74,7 @@ class EventsController extends Controller
         $event->start_date = $request->start_date;
         $event->end_at = $request->end_at;
         $event->end_date = $request->end_date;
-//------------------------------------------------------------------ //
-        $event->image = $request->file('image')->hashName();
-//------------------------------------------------------------------ //
+
 
         $event->save();
 
@@ -81,7 +90,7 @@ class EventsController extends Controller
     public function show($id)
     {
         //
-        return Events::with(['users', 'categories'])->findOrFail($id);
+        return Events::with(['user', 'categories'])->findOrFail($id);
     }
     function search($title)
     {
@@ -116,7 +125,7 @@ class EventsController extends Controller
             'end_at'=>'required',
             'end_date'=>'required',
         ]);
-        $event = Events::with(['users', 'categories'])->findOrFail($id);
+        $event = Events::with(['user', 'categories'])->findOrFail($id);
         if($request->image !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
@@ -150,7 +159,7 @@ class EventsController extends Controller
     public function destroy($id)
     {
         //
-        $event = Events::with(['users', 'categories'])->destroy($id);
+        $event = Events::with(['user', 'categories'])->destroy($id);
        
         if ($event === 1) {
             return response()->json(['message' => 'deleted successfully'], 200);
