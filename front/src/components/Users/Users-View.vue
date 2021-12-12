@@ -1,7 +1,7 @@
 <template>
   <section>
     <!--========================|-NAVBAR SEARCH-|=======================-->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar">
       <div class="container-fluid">
         <form class="d-flex">
           <input
@@ -61,6 +61,7 @@ export default {
       if (this.user_name !== "") {
         axios.get(Users_URL + "/search/" + this.user_name).then((res) => {
           this.Users = res.data;
+          console.log(res.data);
         });
       } else {
         this.getUsers();
@@ -80,20 +81,7 @@ export default {
 | -=-=-=-=-=-=-=-=-=-=-=|-NAVBAR BAR SEARCH STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
 */
 .navbar {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  background: #066588;
 }
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-BG LINEAR GRADIENT-|-=-=-=-=-=-=-=-=-=-=-= |

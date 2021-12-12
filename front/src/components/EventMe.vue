@@ -1,295 +1,264 @@
 <template>
   <section>
-    <!--========================|-NAVBAR SEARCH-|=======================-->
-    <nav class="navbar navbar-light">
-      <div class="container-fluid">
-        <!-- <a class="navbar-brand">Home</a> -->
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-warning" type="submit">
-            <img src="@/assets/search_searching_icon.png" />
-          </button>
-        </form>
-      </div>
-    </nav>
-
     <!--========================|-CARD STYLE-|=======================-->
+    <div class="page-container">
+      <h1>ＷＥＬＣＯＭＥ</h1>
+      <p class="descriptions">
+        Ｐｌｅａｓｅｓ Ｅｎｊｏｙ Ｏｕｒ Ｗｅｂｓｉｔｅ💗
+      </p>
+      <br />
+      <!--~~~~~~~~~~~~~~~~~~~|BORDER|~~~~~~~~~~~~~~~~~~~-->
+      <div class="hr"></div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card-1">
-          <img
-            src="@/assets/event_month_icon.png"
-            class="card-img-top mt-2"
-            alt=""
-          />
-          <div class="card-body">
-            <h5 class="card-title">My Event</h5>
-            <p class="card-text">Hello World.</p>
+      <!--~~~~~~~~~~~~~~~~~~~|CARD|~~~~~~~~~~~~~~~~~~~-->
+      <div class="page">
+        <div class="card-container" onclick="moveF()">
+          <div class="card" id="card1">
+            <ion-icon name="code-slash-outline"></ion-icon>
+            <h6>My Event</h6>
+            <p>
+              Event is defined as a particular contest which is part of a
+              program of contests.
+            </p>
+            <button class="more">More</button>
+          </div>
+          <div class="card" id="card2">
+            <ion-icon name="calendar-number-outline"></ion-icon>
+            <h6>All Event</h6>
+            <p>
+              Are occurrences that can be measured and change a business'
+              financial position.
+            </p>
+            <button class="more">More</button>
+          </div>
+          <div class="card" id="card3">
+            <ion-icon name="duplicate-outline"></ion-icon>
+            <h6>Categories</h6>
+            <p>
+              Is any sort of division or class. An example of category is food
+              that is made from grains.
+            </p>
+            <button class="more">More</button>
+          </div>
+          <div class="card" id="card4">
+            <ion-icon name="people-outline"></ion-icon>
+            <h6>Users</h6>
+            <p>
+              Unit for Social and Environmental Research. Governmental »
+              Environmental -- and more
+            </p>
+            <button class="more">More</button>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card-2">
-          <img
-            src="@/assets/event_month_icon.png"
-            class="card-img-top mt-2"
-            alt=""
-          />
-          <div class="card-body">
-            <h5 class="card-title">All Event</h5>
-            <p class="card-text">Hello World.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card-3">
-          <img
-            src="@/assets/category_settings_icon.png"
-            class="card-img-top mt-2"
-            alt=""
-          />
-          <div class="card-body">
-            <h5 class="card-title">Categories</h5>
-            <p class="card-text">Hello World.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card-4">
-          <img src="@/assets/users_icon.png" class="card-img-top mt-2" alt="" />
-          <div class="card-body">
-            <h5 class="card-title">User</h5>
-            <p class="card-text">Hello World.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card-5">
-          <img
-            src="@/assets/members_team_icon.png"
-            class="card-img-top mt-2"
-            alt=""
-          />
-          <div class="card-body">
-            <h5 class="card-title">Members</h5>
-            <p class="card-text">Hello World.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card-6">
-          <img
-            src="@/assets/action_icon.png"
-            class="card-img-top mt-2"
-            alt=""
-          />
-          <div class="card-body">
-            <h5 class="card-title">Action</h5>
-            <p class="card-text">Hello World.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card-7">
-          <img src="@/assets/image_icon.png" class="card-img-top mt-2" alt="" />
-          <div class="card-body">
-            <h5 class="card-title">Images</h5>
-            <p class="card-text">Hello World.</p>
-          </div>
-        </div>
-      </div>
+      <div class="hrs"></div>
+      <button onclick="moveB()" id="btn">Cancel</button>
     </div>
   </section>
-  <!--========================|-STYLE CSS-|=======================-->
 </template>
-
-
 <script>
-export default {
-  // name: 'HelloWorld'
-  // props: {
-  //   msg: String
-  // }
-};
+export default {};
 </script>
 
 <!--========================|-STYLE CSS-|=======================-->
 <style scoped>
 /* 
-| -=-=-=-=-=-=-=-=-=-=-=|-NAVBAR BAR SEARCH STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
+| -=-=-=-=-=-=-=-=-=-=-=|-STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
 */
-.navbar {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+.hr {
+  border: 30px;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.5),
+    #fff,
+    rgba(255, 255, 255, 0.5)
+  );
+}
+.hrs {
+  border: 30px;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.219),
+    #fff,
+    rgba(255, 255, 255, 0.219)
+  );
+}
+.page-container {
+  width: 100%;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../assets/greateone.jpg) center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.page-container .page {
+  width: 100%;
+  height: 400px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.page-container .page .card-container {
+  height: 350px;
+  position: relative;
+}
+.card-container .card {
+  width: 18vw;
+  height: 40vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: all 0.8s ease-in-out;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  padding: 20px 5px;
+  cursor: pointer;
+  border: solid 3px #fff;
+}
+.card ion-icon {
+  font-size: 50px;
+  color: #20de20;
+}
+.card-container .card:first-child {
+  transform: translate(-50%, -50%) rotate(10deg);
+  background: url(https://cdn.pixabay.com/photo/2016/11/27/21/42/stock-1863880__340.jpg)
+    center;
+  background-size: cover;
+}
+.card-container .card:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(5deg);
+  background: url(https://cdn.pixabay.com/photo/2015/07/28/22/01/office-865091_960_720.jpg)
+    center;
+  background-size: cover;
+}
+.card-container .card:nth-child(3) {
+  transform: translate(-50%, -50%) rotate(-5deg);
+  background: url(https://cdn.pixabay.com/photo/2019/07/12/18/48/code-4333398_960_720.jpg)
+    center;
+  background-size: cover;
+}
+.card-container .card:last-child {
+  transform: translate(-50%, -50%) rotate(-10deg);
+  background: url(https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_960_720.jpg)
+    center;
+  background-size: cover;
+  /* opacity: 0.5; */
+}
+.card-container:hover .card {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.animation {
+  background: white;
+  width: 100vw;
+  display: flex;
+  transition: all 1s ease;
+}
+
+#btn {
+  width: 100px;
+  height: 50px;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  display: none;
+  position: absolute;
+  bottom: 5vh;
+}
+h1 {
+  position: absolute;
+  top: 5vh;
+  font-family: "Roboto Slab", serif;
+  text-shadow: 0 13.36px 8.896px #1c351e, 0 -2px 1px #20de20;
+  letter-spacing: 2px;
+  color: #fff;
+}
+.descriptions {
+  font-family: "Roboto Slab", serif;
+  font-size: 25px;
+  background: linear-gradient(to right, #fff, #86848d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h6 {
+  font-size: 30px;
+  color: #fff;
+  font-weight: 900;
+  text-align: center;
+  font-family: "Roboto Slab", serif;
+}
+p {
+  font-size: 0.9em;
+  color: #fff;
+  font-weight: 500;
+  font-family: "Roboto Slab", serif;
+  text-align: center;
+}
+h1,
+h6,
+p {
+  user-select: none;
+}
+.more {
+  background: transparent;
+  border: 1px solid #fff;
+  color: white;
+  padding: 3px 0.9em;
+}
+.more:hover,
+#btn:hover {
+  background: white;
+  color: gray;
+  cursor: pointer;
+}
+ion-icon {
+  color: white;
+  font-size: 20px;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~|~RESPONSIVE~|~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media screen and (max-width: 650px) {
+  div.card {
+    width: 30vw !important;
+    height: 35vh !important;
   }
-  50% {
-    background-position: 100% 50%;
+  .card ion-icon {
+    font-size: 35px;
   }
-  100% {
-    background-position: 0% 50%;
+  .descriptions {
+    font-size: 15px;
+  }
+  h6 {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 10px;
   }
 }
 
-/* 
-| -=-=-=-=-=-=-=-=-=-=-=|-CARD STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
-*/
-.row {
-  background-image: url(../assets/best-bg.jpg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  height: 100vh;
-}
-.card-body .card-title {
-  font-weight: 800;
-}
-.col {
-  font-family: "Roboto Slab", serif;
-  color: #fff;
-}
-.card-1 {
-  background: #417fbd;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-  border: 2px solid #fff;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 0px 15px 0px 15px;
-  transition: all 1.2s ease;
-  box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
-    rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
-}
-.card-2 {
-  background: #417fbd;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-  border: 2px solid #fff;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 0px 15px 0px 15px;
-  transition: all 1.2s ease;
-  box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
-    rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
-}
-.card-3 {
-  background: #417fbd;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-  border: 2px solid #fff;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 0px 15px 0px 15px;
-  transition: all 1.2s ease;
-  box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
-    rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
-}
-.card-4 {
-  background: #417fbd;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-  border: 2px solid #fff;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 0px 15px 0px 15px;
-  transition: all 1.2s ease;
-  box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
-    rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
-}
-.card-5 {
-  background: #417fbd;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-  border: 2px solid #fff;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 0px 15px 0px 15px;
-  transition: all 1.2s ease;
-  box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
-    rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
-}
-.card-6 {
-  margin-top: 15px;
-  background: #417fbd;
-  margin-left: 15px;
-  margin-right: 15px;
-  border: 2px solid #fff;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 0px 15px 0px 15px;
-  transition: all 1.2s ease;
-  box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
-    rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
-}
-.card-7 {
-  background: #417fbd;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-  border: 2px solid #fff;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 0px 15px 0px 15px;
-  transition: all 1.2s ease;
-  box-shadow: rgba(19, 16, 16, 0.25) 0px 50px 100px -20px,
-    rgba(9, 10, 9, 0.3) 0px 30px 60px -30px;
-}
-.card-1:hover {
-  transform: scale(1.1);
-  background: #004f6c;
-  color: aliceblue;
-}
-.card-2:hover {
-  transform: scale(1.1);
-  background: #004f6c;
-  color: aliceblue;
-}
-.card-3:hover {
-  transform: scale(1.1);
-  background: #004f6c;
-  color: aliceblue;
-}
-.card-4:hover {
-  transform: scale(1.1);
-  background: #004f6c;
-  color: aliceblue;
-}
-.card-5:hover {
-  transform: scale(1.1);
-  background: #004f6c;
-  color: aliceblue;
-}
-.card-6:hover {
-  transform: scale(1.1);
-  background: #004f6c;
-  color: aliceblue;
-}
-.card-7:hover {
-  transform: scale(1.1);
-  background: #004f6c;
-  color: aliceblue;
-}
-.col img {
-  width: 10%;
-  height: 10%;
-}
-.btn img {
-  width: 30px;
-  height: 30px;
-}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~|BUTTON SHOW MORE|~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~|BUTTON SHOW MORE|~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 </style>
+

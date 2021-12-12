@@ -1,7 +1,7 @@
 <template>
   <section>
     <!--========================|-NAVBAR SEARCH-|=======================-->
-    <nav class="navbar navbar-light bg-light mb-4">
+    <nav class="navbar mb-4">
       <div class="container-fluid">
         <form class="d-flex">
           <input
@@ -91,21 +91,9 @@ export default {
 | -=-=-=-=-=-=-=-=-=-=-=|-NAVBAR BAR SEARCH STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
 */
 .navbar {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: #004f6c;
 }
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+
 .btn img {
   width: 30px;
   height: 30px;

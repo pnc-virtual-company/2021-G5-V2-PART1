@@ -1,56 +1,50 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\FileController;
-
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\EventsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Categories
+Route::get('/categories', [CategoriesController::class, 'index']);
+Route::post('/categories', [CategoriesController::class, 'store']);
 
-// Route users================================================================
-// public
-Route::get("/users", [UserController::class, 'users']);
-Route::get("/users/{id}", [UserController::class, 'show']);
-Route::get("/users/search/{name}", [UserController::class, 'searchUser']);
-// prave
-Route::post("/signup", [UserController::class, 'signup']);
-Route::post("/signin", [UserController::class, 'login']);
-//==============================================================================
+Route::get('/categories/{id}', [CategoriesController::class, 'show']);
+Route::put('/categories/{id}', [CategoriesController::class, 'update']);
+Route::delete('/categories/{id}', [CategoriesController::class, 'destroy']);
+Route::get('/categories/search/{name}', [CategoriesController::class, 'search']);
 
-// Public route events==========================================================
-Route::get("/events", [EventController::class, 'index']);
-Route::get("/events/{id}", [EventController::class, 'show']);
-Route::get("/events/search/{title}", [EventController::class, 'search']);
-//==============================================================================
+// Events
+Route::get('/events', [EventsController::class, 'index']);
+Route::post('/events', [EventsController::class, 'store']);
 
-// Route Category
-    // Public route Category
-    Route::get("/categories", [CategoryController::class, 'index']);
-    Route::get("/categories/{id}", [CategoryController::class, 'show']);
-    Route::get("/categories/search/{name}", [CategoryController::class, 'search']);
-//================================================================================
+Route::get('/events/{id}', [EventsController::class, 'show']);
+Route::put('/events/{id}', [EventsController::class, 'update']);
+Route::delete('/events/{id}', [EventsController::class, 'destroy']);
+Route::get('/events/search/{title}', [EventsController::class, 'search']);
 
-    // Route events
-    // Praivate route events
-    Route::post("/events", [EventController::class, 'store']);
-    Route::put("/events/{id}", [EventController::class, 'update']);
-    Route::delete("/events/{id}", [EventController::class, 'destroy']);
+// Users
+Route::get('/users', [UsersController::class, 'users']);
+Route::post('/signup', [UsersController::class, 'signup']);
+Route::post("/signin", [UsersController::class, 'signin']);
 
-    // Praivate route Category
-    Route::post("/categories", [CategoryController::class, 'store']);
-    Route::put("/categories/{id}", [CategoryController::class, 'update']);
-    Route::delete("/categories/{id}", [CategoryController::class, 'destroy']);
+Route::get('/users/{id}', [UsersController::class, 'show']);
+Route::put('/users/{id}', [UsersController::class, 'update']);
+Route::delete('/users/{id}', [UsersController::class, 'destroy']);
 
-    // Route::post('/signout', [UserController::class, 'signout']);
 
