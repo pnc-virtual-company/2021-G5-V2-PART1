@@ -15,8 +15,17 @@
         <strong class="text-danger">The category already exist can not create!</strong>
       </Base-alert>
     </section>
-
-    <Base-search>
+    
+    
+    <Base-search >
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Searched"
+          aria-label="Search"
+          v-model="name"
+          v-on:keyup.prevent="search"
+        />
       <Base-btn
         class="btn btn-outline-primary float-end ms-5"
         data-bs-toggle="modal"
@@ -88,11 +97,13 @@
           >
         </template>
       </Base-card>
+
       <dialog-edit-category v-if="isShowdialog"
         :data = "categoryInfo"
         @cancel = "cancel" 
         @update = "updateCategory"
       />
+      
     </section>
   </div>
 </template>
@@ -164,8 +175,9 @@ export default {
       this.isShowdialog = false;
     },
 
+    
+
     updateCategory(id,category,hideForm){
-      console.log(category + " | " + id + " | " + hideForm);
       axios.put("http://127.0.0.1:8000/api/categories/" + id , category).then(res => {
         console.log(res.data);
         this.getCategory();
@@ -173,6 +185,17 @@ export default {
       })
 
     },
+
+    search() {
+      if (this.name !== "") {
+        axios.get("http://127.0.0.1:8000/api/categories" + "/search/" + this.name).then((res) => {
+          this.categories = res.data;
+        });
+      } else {
+        this.getCategory();
+      }
+    },
+    
     getCategory(){
       axios.get("http://127.0.0.1:8000/api/categories").then((res) => {
         this.categories = res.data;
