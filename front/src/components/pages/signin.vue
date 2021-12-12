@@ -32,7 +32,7 @@
       </div>
       <div class="add">
           <a href="#" class="text-center btn fs-5 float-end">
-            <Base-btn :btn_name="btn_name" @click="user_signin()"></Base-btn>
+            <Base-btn @click="user_signin()">Login</Base-btn>
           </a>
       </div>
     </form>
@@ -54,11 +54,6 @@
 import axios from "axios";
 export default {
   emits: ["action"],
-  computed: {
-    btn_name(){
-      return "Login"
-    } 
-  },
   data() {
     return {
       email: "",

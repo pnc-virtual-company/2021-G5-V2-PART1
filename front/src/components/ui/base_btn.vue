@@ -1,11 +1,12 @@
 <template>
   <div>
-    <small class="text-white mt-5">{{ btn_name }}</small>
+    <small class="text-white mt-5">
+      <slot></slot>
+      </small>
   </div>
 </template>
 <script>
 export default {
-  props: ["btn_name"],
   data() {
     return {};
   },

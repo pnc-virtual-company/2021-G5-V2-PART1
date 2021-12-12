@@ -29,7 +29,7 @@ class CategoriesController extends Controller
         //
         $request->validate([
             'name' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
+            
         ]);
         
         if(Categories::where('name', $request->name)->exists()){
@@ -49,7 +49,7 @@ class CategoriesController extends Controller
             $cate->name = $request->name;
             $cate->save();
     
-            return response()->json([ 'message'=>'Categories created successfully!', 'categories'=>$cate],201);
+            return response()->json([ 'message'=>'Categories created successfully!', 'categories'=>$this->index()],201);
 
         }
     }
@@ -87,11 +87,11 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $cate =Categories::with('events')->findOrFail($id);
+        $cate = Categories::findOrFail($id);
         $cate->name = $request->name;
         $cate->save();
 
-        return response()->json([ 'message'=>'Categories updated successfully!', 'categories'=>$cate],200);
+        return response()->json([ 'message'=>'Categories updated successfully!', 'categories'=> $this],200);
 
     }
 
@@ -104,10 +104,10 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
-        $cate = Categories::with('events')-> destroy($id);
+        $cate = Categories::destroy($id);
        
         if ($cate === 1) {
-            return response()->json(['message' => 'deleted successfully'], 200);
+            return response()->json(['message' => 'deleted successfully','categories'=>$this->index()], 200);
         } else {
             return response()->json(['message' => 'Cannot deleted no id'], 404);
         }

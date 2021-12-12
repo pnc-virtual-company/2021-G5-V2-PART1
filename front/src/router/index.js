@@ -14,29 +14,29 @@ const routes = [
   },
 
   {
-    path: '/my-event',
+    path: '/my-events',
     name: 'MyEvent',
-    component: () => import('../components/MyEvent.vue')
+    // component: () => import('@/components/MyEvent.vue')
   },
   {
-    path: '/all-event',
+    path: '/all-events',
     name: 'AllEvent',
-    component: () => import('../components/AllEvent/AllEvent-View.vue')
+    component:() =>import('@/components/pages/all_events.vue')
   },
   {
     path: '/categories',
     name: 'Categories',
-    component: () => import('../components/Categories/CategoriesView.vue')
+    component: () => import('@/components/pages/categories_view.vue')
   },
   {
     path: '/users',
     name: 'Users',
-    component: () => import('../components/Users/Users-View.vue')
+    component: () => import('@/components/Users/Users-View.vue')
   },
   {
     path: '/images',
     name: 'Images',
-    component: () => import('../components/Images/Images.vue')
+    component: () => import('@/components/Images/Images.vue')
   },
   {
     path: '/:catchAll(.*)*',
