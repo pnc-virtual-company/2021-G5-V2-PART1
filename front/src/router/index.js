@@ -34,11 +34,6 @@ const routes = [
     component: () => import('@/components/Users/Users-View.vue')
   },
   {
-    path: '/images',
-    name: 'Images',
-    component: () => import('@/components/Images/Images.vue')
-  },
-  {
     path: '/:catchAll(.*)*',
     name: "PageNotFound",
     component: ()=>import('@/components/pages/404page.vue'),

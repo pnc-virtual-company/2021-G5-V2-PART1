@@ -19,7 +19,6 @@
         Categories
       </route-link>
       <route-link to="/users" icon="fas fa-user">Users</route-link>
-      <route-link to="/images" icon="fas fa-image">Images</route-link>
       <hr class="hr-1" />
       <route-link to="" icon="fas fa-sign-out-alt" @click="singout()"
         >Sign Out</route-link

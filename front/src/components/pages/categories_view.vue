@@ -10,17 +10,21 @@
         <strong class="text-danger">Your category delete successfully!</strong>
       </Base-alert>
     </section>
+    <section v-else-if="alert_act === 'exist'">
+      <Base-alert v-if="alert_me" class="alert-danger alert">
+        <strong class="text-danger">The category already exist can not create!</strong>
+      </Base-alert>
+    </section>
 
     <Base-search>
-        <Base-btn
-          class="btn btn-outline-primary float-end ms-5"
-          data-bs-toggle="modal"
-          data-bs-target="#create_modal"
-          >Create</Base-btn
-        >
-
+      <Base-btn
+        class="btn btn-outline-primary float-end ms-5"
+        data-bs-toggle="modal"
+        data-bs-target="#create_modal"
+        >Create</Base-btn
+      >
     </Base-search>
-  
+
     <section>
       <!-- Modal create category  -->
       <Base-modal id="create_modal">
@@ -69,7 +73,7 @@
         </template>
         <template #card-footer>
           <!-- Modal edit category  -->
-   
+
           <Base-btn
             class="btn btn-sm btn-danger float-end"
             @click="delete_cate(category.id)"
@@ -94,7 +98,6 @@
 </template>
 
 <script>
-
 import axios from "axios";
 import DialogEditCategory from './DialogEditCategory.vue';
 export default {
@@ -183,10 +186,4 @@ export default {
 </script>
 
 <style scoped>
-.search {
-  background: var(--sidebar-bg-color);
-}
-.search .search--btn {
-  background: var(--sidebar-item-active);
-}
 </style>

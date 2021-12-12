@@ -58,7 +58,7 @@ class EventsController extends Controller
 
         $event->save();
 
-        return response()->json(['events'=>$event,'message' => 'Events created successfully'], 201);
+        return response()->json(['events'=>$this->index(),'message' => 'Events created successfully'], 201);
     }
 
     /**
@@ -106,7 +106,7 @@ class EventsController extends Controller
             'end_date'=>'required',
         ]);
         $event = Events::with(['user', 'categories'])->findOrFail($id);
-        if($request->image !== null){
+        if($request->file('image') !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
@@ -127,7 +127,7 @@ class EventsController extends Controller
         $event->end_date = $request->end_date;
         $event->save();
 
-        return response()->json(['events'=>$event,'message' => 'Events updated successfully'], 200);
+        return response()->json(['events'=>$this->index(),'message' => 'Events updated successfully'], 200);
     }
 
     /**
@@ -142,7 +142,7 @@ class EventsController extends Controller
         $event = Events::with(['user', 'categories'])->destroy($id);
        
         if ($event === 1) {
-            return response()->json(['message' => 'deleted successfully'], 200);
+            return response()->json(['events'=>$this->index(),'message' => 'deleted successfully'], 200);
         } else {
             return response()->json(['message' => 'Cannot deleted no id'], 404);
         }

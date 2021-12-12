@@ -1,40 +1,27 @@
 <template>
   <div>
-    <section v-for="(event, id) in all_events" :key="id">
-      <Base-card 
-      v-if="event.user.first_name !== username"
-      >
+    <Base-search></Base-search>
+    <section
+      class="cate--card row row-cols-1 row-cols-md-2 g-3 m-2"
+      v-for="(event, id) in all_events"
+      :key="id"
+    >
+      <Base-card v-if="event.user.email !== email">
         <template #card-body>
-          <h4 class="mb-5">{{ }}</h4>
+          <h4 class="mb-5">{{}}</h4>
         </template>
-        <template #card-footer>
-          <!-- Modal edit category  -->
-
-          <Base-btn
-            class="btn btn-sm btn-danger float-end"
-            @click="delete_cate(event.id)"
-            >Delete</Base-btn
-          >
-          <Base-btn
-            class="btn btn-sm btn-primary float-end me-2"
-            data-bs-dismiss="modal"
-            data-bs-target="#create_modal"
-            >Edit</Base-btn
-          >
-        </template>
+        <template #card-footer></template>
       </Base-card>
     </section>
   </div>
 </template>
 
 <script>
-
 import axios from "axios";
 export default {
-
   data() {
     return {
-      username: null,
+      email: null,
       name: null,
       all_events: [],
     };
@@ -43,7 +30,7 @@ export default {
   mounted() {
     let u = localStorage.getItem("signin");
     this.name = JSON.parse(u);
-    this.username = this.name.user.first_name;
+    this.email = this.name.user.email;
     axios.get("http://127.0.0.1:8000/api/events").then((res) => {
       this.all_events = res.data;
     });
