@@ -14,9 +14,8 @@
       </p>
       <a href="#" class="login text-center btn fs-4 w-100">
         <Base-btn
-          :btn_name="btn_name"
           @click="$emit('action', 'signin')"
-        ></Base-btn>
+        >Login</Base-btn>
       </a>
     </div>
   </section>
@@ -25,11 +24,6 @@
 <script>
 export default {
   emits: ["action"],
-  computed: {
-    btn_name() {
-      return "Login";
-    },
-  },
 };
 </script>
 <style scoped>
