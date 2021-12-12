@@ -1,17 +1,17 @@
 <script>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-import { collapsed } from './state'
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+import { collapsed } from "./state";
 
 export default {
   props: {
     to: { type: String, required: true },
-    icon: { type: String, required: true }
+    icon: { type: String, required: true },
   },
   setup(props) {
     const route = useRoute()
     const isActive = computed(() => route.path === props.to)
-    return { isActive, collapsed }
+    return { isActive, collapsed, }
   }
 }
 </script>
@@ -50,12 +50,11 @@ export default {
   height: 1.5em;
   color: white;
   text-decoration: none;
-  margin: 2px 10px;
+  margin: 13px;
 }
 
 .link:hover {
   background-color: var(--sidebar-item-hover);
- 
 }
 
 .link.active {

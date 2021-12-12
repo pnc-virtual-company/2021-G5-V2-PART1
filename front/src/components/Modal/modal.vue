@@ -1,29 +1,38 @@
 <template>
-<!-- The Modal -->
-<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!-- The Modal -->
+  <div
+    class="modal fade"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
-        <div class="modal-content">
+      <div class="modal-content">
         <!-- Modal Header -->
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">
-                    <slot name="modal-title"></slot>
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-        <!-- Modal body -->
-            <div class="modal-body">
-                <slot name="modal-body"></slot>
-            </div>
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">
+            <slot name="modal-title"></slot>
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <slot name="modal-body"></slot>
+        </div>
+      </div>
     </div>
-</div>
-
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>

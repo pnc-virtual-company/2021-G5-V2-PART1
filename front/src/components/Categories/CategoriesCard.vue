@@ -32,7 +32,6 @@
         </div>
       </div>
     </div>
-
     <!--================================|-MODAL-CREATE-|================================-->
     <div
       class="modal fade"
@@ -57,7 +56,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <input type="text" v-model="name" placeholder="Enter hear..." />
+            <input type="text" v-model="name" placeholder="Category name..." />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">
@@ -75,7 +74,6 @@
         </div>
       </div>
     </div>
-
     <!--================================|-MODAL-REMOVE-|================================-->
     <div
       class="modal fade"
@@ -100,7 +98,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            Are you sure that you want to remove category?
+            Are you sure that yout want to remove category?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">
@@ -114,13 +112,56 @@
             >
               Remove
             </button>
+        </div>
+      </div>
+
+      <!--================================|-MODAL-REMOVE-|================================-->
+      <div
+        class="modal fade"
+        id="remove-category"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Remove Categories
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              Are you sure that you want to remove category?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-bs-dismiss="modal">
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn"
+                data-bs-dismiss="modal"
+                @click="$emit('delete-categories', category.id)"
+              >
+                Remove
+              </button>
+            </div>
           </div>
         </div>
+
 
         <!--================================|-MODAL-UPDATE-|================================-->
       </div>
     </div>
-
+    </div>
     <!--================================|-MODAL-UPDATE-|================================-->
     <div
       class="modal fade"

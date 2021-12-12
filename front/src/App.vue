@@ -1,34 +1,65 @@
-<script>
-import Sidebar from "@/components/sidebar/Sidebar";
-import { sidebarWidth } from "@/components/sidebar/state";
-
-export default {
-  data() {
-    return {};
-  },
-  components: { Sidebar },
-  methods: {},
-  setup() {
-    return { sidebarWidth };
-  },
-};
-</script>
-<template>
+  <template>
   <section>
-    <Sidebar />
-    <div :style="{ 'margin-left': sidebarWidth }">
-      <router-view />
-    </div>
+    <section v-if="start === 'welcome'">
+      <base-pnc>
+        <start-page @action="action"></start-page>
+      </base-pnc>
+    </section>
+    <section v-else-if="start === 'signin'">
+      <base-pnc>
+        <signin-form @action="action"> </signin-form>
+      </base-pnc>
+    </section>
+    <section v-else-if="start === 'signup'">
+      <base-pnc>
+        <signup-form @action="action"></signup-form>
+      </base-pnc>
+    </section>
+    <section v-else-if="start === 'myView'">
+      <Sidebar @action="action"> </Sidebar>
+      <div :style="{ 'margin-left': sidebarWidth }">
+        <router-view />
+      </div>
+    </section>
   </section>
 </template>
 
+
+
+<script>
+import Sidebar from "@/components/sidebar/Sidebar";
+import { sidebarWidth } from "@/components/sidebar/state";
+export default {
+  setup() {
+    return { sidebarWidth };
+  },
+  data() {
+    return {
+      start: "welcome",
+      path: null,
+    };
+  },
+  components: { Sidebar },
+  methods: {
+    action(act) {
+      this.start = act;
+    },
+  },
+  mounted() {
+    if (localStorage.getItem("signin") !==null) {
+      this.action("myView");
+    }
+  },
+
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  overflow-x: hidden;
 }
 
 #nav {

@@ -1,7 +1,7 @@
 <template>
   <!--~~~~~~~~~~~~~~~~~~~~~~~|=HTML=|~~~~~~~~~~~~~~~~~~~~~~~-->
   <div class="box-container">
-    <div class="box">
+    <div class="box mb-3">
       <div class="box-content">
         <div class="profile-box">
           <img
@@ -122,11 +122,10 @@ export default {
   background: #8db8e29a;
   overflow: hidden;
   border-radius: var(--radius);
-  box-shadow: 12px 3px 8px 3px rgba(0, 0, 0, 0.3);
   transition: 0.3s ease-in-out;
 }
 .box:hover {
-  box-shadow: 12px 3px 6px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 6px 4px rgba(0, 0, 0, 0.308);
   transform: scale(1.01);
 }
 
