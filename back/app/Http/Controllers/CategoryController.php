@@ -83,6 +83,7 @@ class CategoryController extends Controller
 
         // Add to database
         $category->name = $request->name;
+        
         $category->save();
 
         return response()->json(['category' => $category,'message' => 'categories updated successfully'], 201);

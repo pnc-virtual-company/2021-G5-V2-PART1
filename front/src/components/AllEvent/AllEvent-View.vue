@@ -41,13 +41,13 @@
 </template>
 
 <script>
-// ~~~~~~~~~~~~~~~~~~~~~|-IMPORT AXIOS-|~~~~~~~~~~~~~~~~~~~~~ //
+// ~~~~~~~~~~~~~~~~~~~~|-IMPORT AXIOS-|~~~~~~~~~~~~~~~~~~~~ //
 import axios from "axios";
 
-// ~~~~~~~~~~~~~~~~~~~~~|-IMPORT ALL EVENT CARD-|~~~~~~~~~~~~~~~~~~~~~ //
+// ~~~~~~~~~~~~~~~~~~~~|-IMPORT ALL EVENT CARD-|~~~~~~~~~~~~~~~~~~~~ //
 import AllEventView from "./AllEvent-Card.vue";
 
-// ~~~~~~~~~~~~~~~~~~~~~|-ALL EVENT URL-|~~~~~~~~~~~~~~~~~~~~~ //
+// ~~~~~~~~~~~~~~~~~~~~|-ALL EVENT URL-|~~~~~~~~~~~~~~~~~~~~ //
 const All_Event_URL = "http://127.0.0.1:8000/api/events";
 
 export default {
@@ -61,13 +61,13 @@ export default {
     };
   },
   methods: {
-    // *************|-GET ALL EVENT-|************* //
+    // ************|-GET ALL EVENT-|************ //
     getAllEvent() {
       axios.get(All_Event_URL).then((res) => {
         this.All_Events = res.data;
       });
     },
-    // *************|-SEARCH ALL EVENT-|************* //
+    // ************|-SEARCH ALL EVENT-|************ //
     searchAllEvent() {
       if (this.all_Event !== "") {
         axios.get(All_Event_URL + "/search/" + this.all_Event).then((res) => {

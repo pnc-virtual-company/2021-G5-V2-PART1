@@ -67,7 +67,7 @@
                 type="button"
                 class="btn"
                 data-bs-dismiss="modal"
-                @click="addCategory"
+                @click="createCategory"
               >
                 Submit
               </button>
@@ -107,7 +107,7 @@
                 Cancel
               </button>
               <button
-                type="button"
+                type="button" 
                 class="btn"
                 data-bs-dismiss="modal"
                 @click="$emit('delete-categories', category.id)"

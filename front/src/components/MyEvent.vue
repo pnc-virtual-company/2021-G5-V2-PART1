@@ -24,11 +24,9 @@
                 </div>
                 <div class="mb-3 mt-3">
                   <select name="category" id="category" class="form-control" v-model="category_id">
-                    <option value="" selected disabled hidden>Category</option>
-                    <option value="1">Game</option>
-                    <option value="2">Meeting</option>
-                    <option value="3">Comunication</option>
-                    <option value="4">Education</option>
+
+                    <option v-for="category of categoryList" :key="category.id" :value= category.id>{{category.name}}</option>
+
                   </select>
                 </div>
                 <div class="mb-3 mt-3">
@@ -71,7 +69,7 @@
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <card v-for="event of My_Events" :key="event.id" >
           <template v-slot:card-header>
-            <img src="@/assets/category_icon.png" class="card-img-top" alt="" />
+            <img :src="url + event.image" class="card-img-top" alt="" />
           </template>
           <template v-slot:card-body>
             <h5 class="card-title">{{ event.title }}</h5>
@@ -79,13 +77,14 @@
           </template>
           <template v-slot:card-footer>
             <input type="hidden" v-model="eventID">
-            <small>{{ event.start_date }}/{{ event.end_date }}</small>
-            <button class="btn-event-edit ms-5" type="button" data-bs-toggle="modal" data-bs-target="#edit-myevent" @click="getID(event.id)">
+            <small>{{ event.start_date }}--{{ event.end_date }}</small>
+            <button class="btn-event-edit ms-5" type="button" data-bs-toggle="modal" data-bs-target="#edit-myevent" @click="displayUpdate(event)">
                 Edit <i class="fa fa-edit" aria-hidden="true"></i>
             </button>
             <button class="btn-event-remove ms-2" type="button" data-bs-toggle="modal" data-bs-target="#remove-myevent" @click="getID(event.id)">
                 Delete <i class="fa fa-trash" aria-hidden="true" ></i>
             </button>
+
             <!--========================|-MODAL EDIT-|=======================-->
             <modal id="edit-myevent">
               <template v-slot:modal-title>
@@ -94,7 +93,7 @@
               <template v-slot:modal-body>
                 <form @submit.prevent="UpdateEvent">
                   <div class="mb-3 mt-3">
-                    <input type="text" placeholder="Enter title..." class="form-control" v-model="title_edit"/>
+                    <input type="text" placeholder="Enter title..." class="form-control" v-model="event.title"/>
                   </div>
                   <div class="mb-3 mt-3">
                     <select name="category_edit" id="category_edit" class="form-control" v-model="category_id_edit">
@@ -120,20 +119,14 @@
                     <input type="text" placeholder="link join..." class="form-control" v-model="link_join_edit"/>
                   </div>
                   <div class="mb-3 mt-3">
-                    <select name="city_edit" id="city_edit" class="form-control" v-model="city_id_edit">
-                      <option value="" selected disabled hidden>City</option>
-                      <option value="phnom penh">Phnom Penh</option>
-                      <option value="jakata">Jakata</option>
-                      <option value="seoul">Seoul</option>
-                      <option value="paris">Paris</option>
-                    </select>
+                    <input type="text" class="form-control" v-model="city_edit"> 
                   </div>
                   <div class="mb-3 mt-3">
                     <input type="text" placeholder="Description..." class="form-control" v-model="body_edit"/>
                   </div>
                   <div class="modal-footer" >
                     <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-outline-warning" data-bs-dismiss="modal">Submit</button>
+                    <button type="submit" class="btn btn-outline-warning" @click="UpdateEvent" data-bs-dismiss="modal">Submit</button>
                   </div>
                 </form>
               </template>
@@ -163,7 +156,7 @@
 import axios from "axios";
 import Modal from "./Modal/modal.vue";
 import Card from "./Card/Card.vue";
-const url = "http://localhost:8000/api/events"
+const url = "http://localhost:8000/api/"
 export default {
   components: {
     "modal": Modal,
@@ -187,6 +180,7 @@ export default {
       body: "",
       city: "",
 
+
       user_id_edit: 1,
       title_edit: "",
       category_id_edit: null,
@@ -198,21 +192,40 @@ export default {
       body_edit: "",
       city_edit: "",
       
+      updateEvent:[],
+      categoryList:[],
+      url: "http://localhost:8000/storage/image/",
     };
   },
   methods: {
     // **************|-GET EVENT-|************** //
     getEvents(){
-      axios.get(url).then((res) => {
+      axios.get(url + "events").then((res) => {
         this.My_Events = res.data;
       })
       .catch((err) => {
         console.log(err.response.data.message);
       });
     },
-    getID(id){
-      this.eventID = id;
-      console.log(id)
+    getCategories(){
+      axios.get(url + "categories").then(res => {
+        console.log(res.data);
+        this.categoryList = res.data
+      })
+    },
+    displayUpdate(event){
+      
+      this.user_id_edit = event.user_id;
+      this.title_edit = event.title
+      this.category_id_edit = event.category_id
+      this.start_at_edit = event.start_at
+      this.end_at_edit = event.end_at
+      this.start_date_edit = event.start_date;
+      this.end_date_edit = event.end_date;
+      this.link_join_edit = event.link_join;
+      this.city_edit = event.city;
+      this.body_edit = event.body;
+     
     },
     handleImageSelected(event) {
       const image = event.target.files[0];
@@ -237,7 +250,6 @@ export default {
       fileUpload.append("start_date", this.start_at);
       fileUpload.append("end_at", this.end_at);
       fileUpload.append("end_date", this.end_date);
-      console.log(fileUpload);
 
       axios.post(url, fileUpload).then((response) => {
         console.log(response.data);
@@ -260,29 +272,30 @@ export default {
         this.getEvents();
       }) 
     },
+
     UpdateEvent(){
-      let fileUpload = new FormData();
-      fileUpload.append("image", this.imageFile);
-      fileUpload.append("user_id", this.user_id_edit);
-      fileUpload.append("category_id", this.category_id_edit);
-      fileUpload.append("title", this.title_edit);
-      fileUpload.append("body", this.body_edit);
-      fileUpload.append("city", this.city_edit);
-      fileUpload.append("link_join", this.link_join_edit);
-      fileUpload.append("start_at", this.start_at_edit);
-      fileUpload.append("start_date", this.start_at_edit);
-      fileUpload.append("end_at", this.end_at_edit);
-      fileUpload.append("end_date", this.end_date_edit);
-      console.log(fileUpload);
-      axios.put(url+"/" + this.eventID, fileUpload).then(res=>{
+
+      let newUpdate = {
+        title: this.title_edit,
+        start_date: this.start_date_edit,
+        end_date: this.end_date_edit,
+        link_join: this.link_join_edit,
+        city: this.city_edit,
+        body: this.body_edit
+      }
+      
+      axios.put(url+"/" + this.event.id, newUpdate).then(res=>{
         console.log(res.data);
         this.getEvents();
       })
       
     }
+
   },
   mounted() {
     this.getEvents();
+    this.getCategories();
+
   },
 };
 </script>
