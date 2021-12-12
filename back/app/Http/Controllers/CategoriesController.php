@@ -28,16 +28,16 @@ class CategoriesController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required',
+            'name' => 'required', //|unique:Categories
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
         ]);
         
         if(Categories::where('name', $request->name)->exists()){
-            return response()->json(['message' => 'The category name ' . $request->name . ' is already exist!']);
+            return response()->json(['message' => 'exist', "categories"=>$this->index()]);
         }
         else{
             $cate = new Categories();
-            if($request->image !== null){
+            if($request->file('image') !== null){
                 $cate->image = $request->file('image')->hashName();
                 $request->file('image')->store('public/images/categories');
             }
@@ -88,6 +88,11 @@ class CategoriesController extends Controller
     {
         //
         $cate =Categories::with('events')->findOrFail($id);
+        if($request->file('image') !== null){
+            $cate->image = $request->file('image')->hashName();
+            $request->file('image')->store('public/images/categories');
+        }
+
         $cate->name = $request->name;
         $cate->save();
 

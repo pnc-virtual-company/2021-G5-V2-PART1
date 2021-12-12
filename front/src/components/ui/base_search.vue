@@ -12,3 +12,12 @@
       </form>
    </section>
 </template>
+
+<style scoped>
+.search {
+  background: var(--sidebar-bg-color);
+}
+.search .search--btn {
+  background: var(--sidebar-item-active);
+}
+</style>

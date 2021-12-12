@@ -10,17 +10,21 @@
         <strong class="text-danger">Your category delete successfully!</strong>
       </Base-alert>
     </section>
+    <section v-else-if="alert_act === 'exist'">
+      <Base-alert v-if="alert_me" class="alert-danger alert">
+        <strong class="text-danger">The category already exist can not create!</strong>
+      </Base-alert>
+    </section>
 
     <Base-search>
-        <Base-btn
-          class="btn btn-outline-primary float-end ms-5"
-          data-bs-toggle="modal"
-          data-bs-target="#create_modal"
-          >Create</Base-btn
-        >
-
+      <Base-btn
+        class="btn btn-outline-primary float-end ms-5"
+        data-bs-toggle="modal"
+        data-bs-target="#create_modal"
+        >Create</Base-btn
+      >
     </Base-search>
-  
+
     <section>
       <!-- Modal create category  -->
       <Base-modal id="create_modal">
@@ -69,7 +73,7 @@
         </template>
         <template #card-footer>
           <!-- Modal edit category  -->
-   
+
           <Base-btn
             class="btn btn-sm btn-danger float-end"
             @click="delete_cate(category.id)"
@@ -79,7 +83,6 @@
             class="btn btn-sm btn-primary float-end me-2"
             data-bs-dismiss="modal"
             data-bs-target="#create_modal"
-           
             >Edit</Base-btn
           >
         </template>
@@ -89,11 +92,9 @@
 </template>
 
 <script>
-
 import axios from "axios";
 
 export default {
-
   data() {
     return {
       name: "",
@@ -113,18 +114,27 @@ export default {
         axios
           .post("http://127.0.0.1:8000/api/categories", cate_name)
           .then((res) => {
-            this.alert_act = "create";
-            this.categories = res.data.categories;
-            console.log(res.data.message);
-            setInterval(() => {
-              if (this.counter < 3) {
-                this.counter++;
-                this.alert_me = true;
-              } else {
-                this.alert_me = false;
-              }
-            }, 1000);
-            this.counter = 0;
+          
+            if (res.data.message === "exist") {
+              this.alert_act = "exist";
+              console.log(res.data.message);
+              this.categories = res.data.categories;
+  
+            } else {
+              this.alert_act = "create";
+              console.log(res.data.message);
+                this.categories = res.data.categories;
+              
+            }
+              setInterval(() => {
+                if (this.counter < 3) {
+                  this.counter++;
+                  this.alert_me = true;
+                } else {
+                  this.alert_me = false;
+                }
+              }, 1000);
+              this.counter = 0;
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -160,10 +170,4 @@ export default {
 </script>
 
 <style scoped>
-.search {
-  background: var(--sidebar-bg-color);
-}
-.search .search--btn {
-  background: var(--sidebar-item-active);
-}
 </style>
