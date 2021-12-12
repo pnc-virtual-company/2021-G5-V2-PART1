@@ -31,12 +31,7 @@ const routes = [
   {
     path: '/users',
     name: 'Users',
-    component: () => import('@/components/Users/Users-View.vue')
-  },
-  {
-    path: '/images',
-    name: 'Images',
-    component: () => import('@/components/Images/Images.vue')
+    component: () => import('@/components/pages/users.vue')
   },
   {
     path: '/:catchAll(.*)*',

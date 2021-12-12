@@ -46,5 +46,6 @@ Route::post("/signin", [UsersController::class, 'signin']);
 Route::get('/users/{id}', [UsersController::class, 'show']);
 Route::put('/users/{id}', [UsersController::class, 'update']);
 Route::delete('/users/{id}', [UsersController::class, 'destroy']);
+Route::get('/users/search/{name}', [UsersController::class, 'search']);
 
 

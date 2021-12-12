@@ -47,35 +47,19 @@ class EventsController extends Controller
         $event = new Event();
 =======
         $event = new Events();
-<<<<<<< HEAD
-
-        // if($request->file('image') !== null){
-        //     $event->image = $request->file('image')->hashName();
-        //     $request->file('image')->store('public/images/events');
-        // }
-        // else{
-        //     $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
-        //     $event->image = $img;
-        // }
-
-//------------------------------------------------------------------ //
-        $request->file('image')->store('public/image');
-//------------------------------------------------------------------ //
-
-        // Move image to storage
-
-        // Add to database
-=======
-        if($request->image !== null){
+        if($request->file('image') !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
         else{
-            $img = 'https://res.cloudinary.com/eventboost/image/upload/v1594282851/website/wp/eventboost-twitter-card-home.jpg';
+            $img = 'https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png';
             $event->image = $img;
         }
+<<<<<<< HEAD
 >>>>>>> 1b603cf7d6fda9e726c4ab2786771b78af5ea77b
 >>>>>>> f88522905dce92bcf6d2db2275bfc28f9236418e:back/app/Http/Controllers/EventsController.php
+=======
+>>>>>>> 37e2b69a5fafa01d4572f44ff54dacee108d5d51
         $event->user_id = $request->user_id;
         $event->categories_id = $request->categories_id;
         $event->title = $request->title;
@@ -94,7 +78,7 @@ class EventsController extends Controller
 >>>>>>> f88522905dce92bcf6d2db2275bfc28f9236418e:back/app/Http/Controllers/EventsController.php
         $event->save();
 
-        return response()->json(['events'=>$event,'message' => 'Events created successfully'], 201);
+        return response()->json(['events'=>$this->index(),'message' => 'Events created successfully'], 201);
     }
 
     
@@ -143,12 +127,12 @@ class EventsController extends Controller
             'end_date'=>'required',
         ]);
         $event = Events::with(['user', 'categories'])->findOrFail($id);
-        if($request->image !== null){
+        if($request->file('image') !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
         else{
-            $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
+            $img = 'https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png';
             $event->image = $img;
         }
 
@@ -164,7 +148,7 @@ class EventsController extends Controller
         $event->end_date = $request->end_date;
         $event->save();
 
-        return response()->json(['events'=>$event,'message' => 'Events updated successfully'], 200);
+        return response()->json(['events'=>$this->index(),'message' => 'Events updated successfully'], 200);
     }
 
     /**
@@ -176,10 +160,10 @@ class EventsController extends Controller
     public function destroy($id)
     {
         //
-        $event = Events::with(['user', 'categories'])->destroy($id);
+        $event = Events::destroy($id);
        
         if ($event === 1) {
-            return response()->json(['message' => 'deleted successfully'], 200);
+            return response()->json(['events'=>$this->index(),'message' => 'deleted successfully'], 200);
         } else {
             return response()->json(['message' => 'Cannot deleted no id'], 404);
         }

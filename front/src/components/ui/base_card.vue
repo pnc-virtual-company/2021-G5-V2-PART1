@@ -15,3 +15,13 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+.card {
+    background: var(--sidebar-item-active);
+    
+}
+.card-footer {
+    border-top: 1px solid #fff;
+}
+</style>
