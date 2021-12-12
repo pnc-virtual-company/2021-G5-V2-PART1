@@ -36,11 +36,6 @@ class EventsController extends Controller
             'end_date'=>'required',
         ]);
         $event = new Events();
-
-
-        // Move image to storage
-
-        // Add to database
         if($request->image !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');

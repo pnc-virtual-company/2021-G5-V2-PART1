@@ -81,29 +81,37 @@
             class="btn btn-sm btn-primary float-end me-2"
             data-bs-dismiss="modal"
             data-bs-target="#create_modal"
+            @click="editCategory(category)"
             >Edit</Base-btn
           >
         </template>
       </Base-card>
+      <dialog-edit-category v-if="isShowdialog"
+        :data = "categoryInfo"
+        @cancel = "cancel" 
+        @update = "updateCategory"
+      />
     </section>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
+import DialogEditCategory from './DialogEditCategory.vue';
 export default {
+  components: {DialogEditCategory},
   data() {
     return {
+      categoryInfo: "",
       name: "",
-      categories: [],
-      id: 0,
-      counter: 0,
-      alert_me: false,
       alert_act: "",
+      categories: [],
+      alert_me: false,
+      isShowdialog: false,
     };
   },
   methods: {
+
     create() {
       let cate_name = {
         name: this.name,
@@ -132,6 +140,7 @@ export default {
                 }
               }, 1000);
               this.categories = res.data.categories;
+              this.getCategory()
               this.counter = 0;
           })
           .catch((err) => {
@@ -155,13 +164,31 @@ export default {
         this.counter = 0;
       });
     },
-    
+    editCategory(categoryInfo) {
+      this.isShowdialog = true;
+      this.categoryInfo = categoryInfo
+    },
+    cancel(){
+      this.isShowdialog = false;
+    },
+
+    updateCategory(id,category,hideForm){
+      console.log(category + " | " + id + " | " + hideForm);
+      axios.put("http://127.0.0.1:8000/api/categories/" + id , category).then(res => {
+        console.log(res.data);
+        this.getCategory();
+        this.isShowdialog = hideForm;
+      })
+
+    },
+    getCategory(){
+      axios.get("http://127.0.0.1:8000/api/categories").then((res) => {
+        this.categories = res.data;
+      });
+    },
   },
   mounted() {
-    axios.get("http://127.0.0.1:8000/api/categories").then((res) => {
-      this.categories = res.data;
-      
-    });
+    this.getCategory();
   },
 };
 </script>
