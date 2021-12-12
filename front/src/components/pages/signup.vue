@@ -99,7 +99,7 @@
         </div>
         <div class="add">
           <a href="#" class="login text-center btn fs-5 float-end">
-            <Base-btn :btn_name="btn_name" @click="user_signup()"></Base-btn>
+            <Base-btn  @click="user_signup()">Submit</Base-btn>
           </a>
         </div>
       </form>

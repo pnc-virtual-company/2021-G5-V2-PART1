@@ -49,7 +49,7 @@ class CategoriesController extends Controller
             $cate->name = $request->name;
             $cate->save();
     
-            return response()->json([ 'message'=>'Categories created successfully!', 'categories'=>$cate],201);
+            return response()->json([ 'message'=>'Categories created successfully!', 'categories'=>$this->index()],201);
 
         }
     }
@@ -91,7 +91,7 @@ class CategoriesController extends Controller
         $cate->name = $request->name;
         $cate->save();
 
-        return response()->json([ 'message'=>'Categories updated successfully!', 'categories'=>$cate],200);
+        return response()->json([ 'message'=>'Categories updated successfully!', 'categories'=>$this->index()],200);
 
     }
 
@@ -104,10 +104,10 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
-        $cate = Categories::with('events')-> destroy($id);
+        $cate = Categories::destroy($id);
        
         if ($cate === 1) {
-            return response()->json(['message' => 'deleted successfully'], 200);
+            return response()->json(['message' => 'deleted successfully','categories'=>$this->index()], 200);
         } else {
             return response()->json(['message' => 'Cannot deleted no id'], 404);
         }

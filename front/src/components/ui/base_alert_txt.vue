@@ -1,0 +1,24 @@
+<template>
+  <div
+      class="
+      alert-dismissible
+        fade
+        show
+        position-absolute
+        end-0
+        m-auto
+        w-75
+        me-4
+        mt-2
+      "
+      role="alert"
+    >
+      <slot></slot>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+</template>
