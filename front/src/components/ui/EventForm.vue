@@ -4,8 +4,8 @@
             <input type="text" placeholder="Enter title..." class="form-control" v-model="title"/>
         </div>
         <div class="mb-3 mt-3">
-            <select name="category" id="category" class="form-control" v-model="category_id">
-                <option value="" selected disabled hidden>Category</option>
+            <select id="category" name="category" class="form-control" v-model="category_id">
+                <option value="" disabled selected hidden>Category</option>
                 <option value="1">Game</option>
                 <option value="2">Meeting</option>
                 <option value="3">Comunication</option>
@@ -27,21 +27,19 @@
             <input type="text" placeholder="link join..." class="form-control" v-model="link_join"/>
         </div>
         <div class="mb-3 mt-3">
-            <div class="datalist-holder">
-            <input list="country" name="country" class="datalist-input form-control" v-model="city"/>
-                <datalist id="country">
-                <option value="Yemen" />
-                <option value="Zambia" />
-                <option value="Zimbabwe" />
-                </datalist>
-            </div>
+            <select id="country" name="country" class="form-control" v-model="city">
+                <option value="" disabled selected hidden>Country</option>
+                <option value="cambodia">Cambodia</option>
+                <option value="china">China</option>
+                <option value="america">America</option>
+            </select>
         </div>
         <div class="mb-3 mt-3">
             <input type="text" placeholder="Description..." class="form-control" v-model="body"/>
         </div>
         <div class="modal-footer" >
-            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" @click.prevent="clearForm">Cancel</button>
-            <button type="submit" class="btn btn-outline-warning" data-bs-dismiss="modal" @click.prevent="handleDataInput(action)">Submit</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" @click.prevent="clearForm">Cancel</button>
+            <button type="submit" class="btn btn-outline-primary" data-bs-dismiss="modal" @click.prevent="handleDataInput(action)">Submit</button>
         </div>
     </section>
 </template>
@@ -57,7 +55,7 @@ export default {
             imageFile: null,
             user_id: 1,
             title: "",
-            category_id: null,
+            category_id: "",
             start_at: "",
             end_at: "",
             start_date: "",

@@ -125,11 +125,7 @@
       </Base-warning>
     </section>
     <section class="text-warning text-center" v-else-if="warning === 'created'">
-<<<<<<< HEAD
-      <Base-warning :action="warning" @noData="signup_warning">
-=======
       <Base-warning :action="warning" @signin="signin">
->>>>>>> 1b603cf7d6fda9e726c4ab2786771b78af5ea77b
         <h3 class="text-center">Your account was created!</h3>
         <div class="txt d-flex">
           <h5 class="text-start">Username</h5>

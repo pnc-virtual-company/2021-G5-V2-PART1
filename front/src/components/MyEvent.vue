@@ -73,7 +73,7 @@
                   v-model="start_at"
                 />
               </div>
-              <div class="dateTime" mb-3 mt-3>
+              <div class="dateTime mb-3 mt-3" >
                 <input
                   type="date"
                   placeholder="End date..."
@@ -104,9 +104,9 @@
                     v-model="city"
                   />
                   <datalist id="country">
-                    <option value="Yemen" />
-                    <option value="Zambia" />
-                    <option value="Zimbabwe" />
+                    <option value="Cambodia" />
+                    <option value="Chaina" />
+                    <option value="USA" />
                   </datalist>
                 </div>
               </div>
