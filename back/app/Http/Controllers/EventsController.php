@@ -36,12 +36,12 @@ class EventsController extends Controller
             'end_date'=>'required',
         ]);
         $event = new Events();
-        if($request->image !== null){
+        if($request->file('image') !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
         else{
-            $img = 'https://res.cloudinary.com/eventboost/image/upload/v1594282851/website/wp/eventboost-twitter-card-home.jpg';
+            $img = 'https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png';
             $event->image = $img;
         }
         $event->user_id = $request->user_id;
@@ -111,7 +111,7 @@ class EventsController extends Controller
             $request->file('image')->store('public/images/events');
         }
         else{
-            $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
+            $img = 'https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png';
             $event->image = $img;
         }
 
@@ -139,7 +139,7 @@ class EventsController extends Controller
     public function destroy($id)
     {
         //
-        $event = Events::with(['user', 'categories'])->destroy($id);
+        $event = Events::destroy($id);
        
         if ($event === 1) {
             return response()->json(['events'=>$this->index(),'message' => 'deleted successfully'], 200);

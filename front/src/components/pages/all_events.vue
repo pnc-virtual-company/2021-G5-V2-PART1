@@ -1,18 +1,21 @@
 <template>
   <div>
+    <section>
     <Base-search></Base-search>
-    <section
+
+    </section>
+    <div
       class="cate--card row row-cols-1 row-cols-md-2 g-3 m-2"
       v-for="(event, id) in all_events"
       :key="id"
     >
       <Base-card v-if="event.user.email !== email">
         <template #card-body>
-          <h4 class="mb-5">{{}}</h4>
+          <h4 class="mb-5">{{event.title}}</h4>
         </template>
         <template #card-footer></template>
       </Base-card>
-    </section>
+    </div>
   </div>
 </template>
 
@@ -33,6 +36,7 @@ export default {
     this.email = this.name.user.email;
     axios.get("http://127.0.0.1:8000/api/events").then((res) => {
       this.all_events = res.data;
+      console.log(res.data);
     });
   },
 };
