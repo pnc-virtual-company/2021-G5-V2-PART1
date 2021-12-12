@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Events;
 use Illuminate\Http\Request;
 
@@ -38,6 +36,25 @@ class EventsController extends Controller
             'end_date'=>'required',
         ]);
         $event = new Events();
+<<<<<<< HEAD
+
+        // if($request->file('image') !== null){
+        //     $event->image = $request->file('image')->hashName();
+        //     $request->file('image')->store('public/images/events');
+        // }
+        // else{
+        //     $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
+        //     $event->image = $img;
+        // }
+
+//------------------------------------------------------------------ //
+        $request->file('image')->store('public/image');
+//------------------------------------------------------------------ //
+
+        // Move image to storage
+
+        // Add to database
+=======
         if($request->image !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
@@ -46,6 +63,7 @@ class EventsController extends Controller
             $img = 'https://res.cloudinary.com/eventboost/image/upload/v1594282851/website/wp/eventboost-twitter-card-home.jpg';
             $event->image = $img;
         }
+>>>>>>> 1b603cf7d6fda9e726c4ab2786771b78af5ea77b
         $event->user_id = $request->user_id;
         $event->categories_id = $request->categories_id;
         $event->title = $request->title;

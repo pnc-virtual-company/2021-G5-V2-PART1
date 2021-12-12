@@ -42,8 +42,7 @@ export default {
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },
-  props: {
-  },
+  props: {},
   emits: ["action"],
   data() {
     return {
@@ -59,9 +58,10 @@ export default {
     },
   },
   mounted() {
-    let u = localStorage.getItem("signin")
-    this.name = JSON.parse(u)
-    this.username = this.name.user.first_name
+    let u = localStorage.getItem("signin");
+    this.name = JSON.parse(u);
+    this.username = this.name.user.first_name;
+    console.log(u);
   },
 };
 </script>
@@ -95,7 +95,7 @@ export default {
 }
 .text-uppercase {
   text-align: center;
-  font-size: 35px;
+  font-size: 30px;
 }
 .sidebar img {
   width: 70px;
@@ -134,7 +134,7 @@ hr.hr-1 {
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~|~RESPONSIVE~|~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 @media (max-width: 880px) {
   .sidebar {
-    background: #f96233;
+    background: #F96233;
     transition: calc(1.1s);
   }
 }
