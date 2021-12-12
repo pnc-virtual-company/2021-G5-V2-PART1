@@ -4,11 +4,7 @@
       <h1><i class="fas fa-exclamation"></i></h1>
       <h4>All input is required.</h4>
       <slot></slot>
-      <Base-btn
-        :btn_name="btn_name"
-        class="float-end btn btn-warning mt-4 me-2"
-        @click="$emit('noData', false)"
-      ></Base-btn>
+      <Base-btn :btn_name="btn_name" class="float-end btn btn-warning mt-4 me-2" @click="$emit('noData', false)"></Base-btn>
     </section>
     <section class="mt-3" v-if="action === 'incorrect'">
       <h1><i class="far fa-times-circle"></i></h1>
@@ -25,7 +21,7 @@
       <Base-btn
         :btn_name="btn_name"
         class="float-end btn btn-warning mt-4 me-2"
-        @click="$emit('action', 'signin')"
+         @click="$emit('action', 'signin')"
       ></Base-btn>
     </section>
     <section v-if="action === 'exist'">
@@ -42,7 +38,7 @@
 <script>
 export default {
   props: ["action"],
-  emits: ["noData", "incorrect", "action"],
+  emits: ["noData", "incorrect"],
   data() {
     return {};
   },
@@ -56,3 +52,6 @@ export default {
 
 <style scoped>
 </style>
+
+
+

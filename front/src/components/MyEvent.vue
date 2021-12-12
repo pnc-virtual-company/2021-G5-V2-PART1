@@ -140,14 +140,10 @@
       </div>
     </nav>
     <!--========================|-CARD STYLE-|=======================-->
-    <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
       <card v-for="event of My_Events" :key="event.id">
         <template v-slot:card-header>
-          <img
-            :src="url_image_upload + event.image"
-            class="card-img-top"
-            alt=""
-          />
+          <img :src="url_image_upload + event.image" class="card-img-top" alt="" />
         </template>
         <template v-slot:card-body>
           <h5 class="card-title">{{ event.title }}</h5>
@@ -156,7 +152,6 @@
         <template v-slot:card-footer>
           <input type="hidden" v-model="eventID" />
           <small>{{ event.start_date }}/{{ event.end_date }}</small>
-
           <button
             class="btn-event-edit ms-5"
             type="button"
@@ -251,7 +246,7 @@
                     name="city_edit"
                     id="city_edit"
                     class="form-control"
-                    v-model="city_id_edit"
+                    v-model="city_edit"
                   >
                     <option value="" selected disabled hidden>City</option>
                     <option value="phnom penh">Phnom Penh</option>
@@ -356,8 +351,8 @@ export default {
       link_join_edit: "",
       body_edit: "",
       city_edit: "",
-
-      url_image_upload: "http://localhost:8000/storage/image/",
+      
+      url_image_upload: 'http://localhost:8000/storage/image/'
     };
   },
   methods: {
@@ -384,7 +379,6 @@ export default {
       };
       reader.readAsDataURL(image);
       this.imageFile = image;
-      // console.log(this.imageFile);
     },
     handleSubmit() {
       let fileUpload = new FormData();
@@ -446,13 +440,23 @@ export default {
   },
 };
 </script>
+
+<!--========================|-STYLE CSS-|=======================-->
 <style scoped>
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-NAVBAR BAR SEARCH STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
 */
 .navbar {
-  background: #004f6c;
+  background: #066588;
 }
+
+.row img {
+  width: 100%;
+  height: 300px;
+}
+/* 
+| -=-=-=-=-=-=-=-=-=-=-=|-BG LINEAR GRADIENT-|-=-=-=-=-=-=-=-=-=-=-= |
+*/
 .btn img {
   width: 30px;
   height: 30px;
@@ -460,11 +464,6 @@ export default {
 
 .dateTime {
   display: flex;
-}
-.row img {
-  width: 100%;
-  height: 300px;
-  box-sizing: border-box;
 }
 /* 
 | -=-=-=-=-=-=-=-=-=-=-=|-CARD STYLE-|-=-=-=-=-=-=-=-=-=-=-= |
@@ -487,10 +486,8 @@ export default {
 }
 .btn-event-edit:hover {
   background: #066588;
-  color: #fff;
 }
 .btn-event-remove:hover {
   background: #ff0000;
-  color: #fff;
 }
 </style>

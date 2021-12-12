@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Events;
 use Illuminate\Http\Request;
 
@@ -37,8 +35,7 @@ class EventsController extends Controller
             'end_at'=>'required',
             'end_date'=>'required',
         ]);
-<<<<<<< HEAD:back/app/Http/Controllers/EventController.php
-        $event = new Event();
+        $event = new Events();
 
         // if($request->file('image') !== null){
         //     $event->image = $request->file('image')->hashName();
@@ -56,17 +53,6 @@ class EventsController extends Controller
         // Move image to storage
 
         // Add to database
-=======
-        $event = new Events();
-        if($request->image !== null){
-            $event->image = $request->file('image')->hashName();
-            $request->file('image')->store('public/images/events');
-        }
-        else{
-            $img = 'https://res.cloudinary.com/eventboost/image/upload/v1594282851/website/wp/eventboost-twitter-card-home.jpg';
-            $event->image = $img;
-        }
->>>>>>> 64eefafb77d844e15cad0d6165adfb10e4dc3e41:back/app/Http/Controllers/EventsController.php
         $event->user_id = $request->user_id;
         $event->categories_id = $request->categories_id;
         $event->title = $request->title;

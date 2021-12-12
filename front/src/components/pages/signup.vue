@@ -77,6 +77,15 @@
             </div>
           </div>
         </div>
+        <!-- <div class="mb-3">
+        <input
+          type="file"
+          @change="fileImg"
+          ref="file"
+          class="form-control"
+          id="file"
+        />
+      </div> -->
         <div class="mb-3">
           <input
             type="email"
@@ -111,12 +120,12 @@
     </section>
     <section class="text-center text-warning" v-else-if="warning === 'exist'">
       <Base-warning :action="warning" @noData="signup_warning">
-        <h3>Can not create an account.</h3>
-        <h5 class="text mt-4">Email: {{ email }} aleady exist!</h5>
+      <h3>Can not create an account.</h3>
+          <h5 class="text mt-4">Email: {{ email }} aleady exist!</h5>
       </Base-warning>
     </section>
     <section class="text-warning text-center" v-else-if="warning === 'created'">
-      <Base-warning :action="warning" @click="$emit('action', 'signin')">
+      <Base-warning :action="warning" @noData="signup_warning">
         <h3 class="text-center">Your account was created!</h3>
         <div class="txt d-flex">
           <h5 class="text-start">Username</h5>
@@ -177,11 +186,10 @@ export default {
         axios
           .post("http://127.0.0.1:8000/api/signup", user)
           .then((res) => {
-            if (
-              res.data.message === "This mali chum@gmail.com is already exist!"
-            ) {
+            if(res.data.message === "This mali chum@gmail.com is already exist!"){
               this.signup_warning("exist");
-            } else {
+            }
+            else{
               this.signup_warning("created");
             }
           })

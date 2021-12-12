@@ -10,8 +10,7 @@
           />
           <div class="profile-name">
             <span class="name">
-              {{ allevent.title }} (<strong>{{ allevent.category.name }}</strong
-              >)
+              {{ allevent.title }}
             </span>
             <small class="location"
               ><i class="fa fa-map-marker"></i> {{ allevent.city }}

@@ -20,10 +20,7 @@
             <img src="@/assets/search_searching_icon.png" />
           </button>
           <!--========================|-SORT BY-|=======================-->
-          <select
-            class="form-select ms-2 w-55"
-            aria-label="Default select example"
-          >
+          <select class="form-select ms-2 w-55" aria-label="Default select example">
             <option selected>SORT BY:</option>
             <option value="1">ID</option>
             <option value="2">TITLE</option>
@@ -33,11 +30,13 @@
       </div>
     </nav>
     <!--========================|-LOOP DATA CARD-|=======================-->
-    <all-event-card
-      v-for="allevent of All_Events"
-      :key="allevent.id"
-      :allevent="allevent"
-    ></all-event-card>
+  
+      <all-event-card
+        v-for="allevent of All_Events"
+        :key="allevent.id"
+        :allevent="allevent"
+      ></all-event-card>
+
   </section>
 </template>
 
@@ -94,11 +93,13 @@ export default {
 .navbar {
   background: #004f6c;
 }
+
 .btn img {
   width: 30px;
   height: 30px;
-}
-.form-select {
+} 
+.form-select
+{
   font-size: 15px;
 }
 </style>
