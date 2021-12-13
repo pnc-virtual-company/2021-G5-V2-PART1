@@ -1,11 +1,17 @@
 <template>
   <div class="u">
-    <Base-search></Base-search>
-    <div class="position-relative">
+        <Base-search>
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search..."
+        v-model="search_user"
+      />
+      <Base-btn class="btn search--btn text-white">Search</Base-btn>
+    </Base-search>
 
-  <div class="position-absolute top-0 start-50 translate-middle-x w-50">
+    <div class="cate--card row row-cols-1 row-cols-md-1 g-3 m-3 w-75 m-auto">
     <section
-      class="cate--card row row-cols-1 row-cols-md-2 g-3 m-3"
       v-for="(user, id) in users"
       :key="id"
     > 
@@ -16,22 +22,25 @@
           <img
             :src="user.image"
             alt=""
-            width="90"
-            height="90"
+            width="110"
+            height="110"
             class="profile__picture"
           />
-          <h2 class="mb-5 text-white mt-5">{{ user.first_name }}</h2>
+          <div class="user mt-5">
+          <h3 class="text-white"><i class="fas fa-user mx-2 mb-3"></i> {{ user.first_name }} {{user.last_name}}</h3>
+          <h3 class="text-white"><i class="fas fa-envelope mx-2 mb-3"></i> {{ user.email }}</h3>
+          <h3 class="text-white"><i class="fas fa-birthday-cake mx-2"></i> {{ user.date_of_birth }}</h3>
+
+          </div>
         </template>
         <template #card-footer>
-          <Base-btn class="btn float-end user--bg">More details</Base-btn>
+          <Base-btn class="btn float-end bg-warning">More details</Base-btn>
         </template>
       </Base-card>
+      
     </section>
 
-
-  </div>
-  
-</div>
+    </div>
   </div>
 </template>
 
@@ -50,7 +59,7 @@ export default {
   mounted() {
     axios.get("http://127.0.0.1:8000/api/users").then((res) => {
       this.users = res.data;
-      console.log(res.data);
+    
     });
     let u = localStorage.getItem("signin");
     this.name = JSON.parse(u);
@@ -63,16 +72,12 @@ export default {
 .card .profile__picture {
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-20%, -60%);
   border-radius: 50%;
   border: 6px solid var(--sidebar-item-active);
   background: #fff;
 }
-.btn {
-  background: var(--sidebar-bg-color);
-}
-.u {
-  width: 100%;
-  height: 100vh;
+.search--btn {
+  background: var(--sidebar-item-active);
 }
 </style>

@@ -61,7 +61,6 @@ class EventsController extends Controller
         $event->start_date = $request->start_date;
         $event->end_at = $request->end_at;
         $event->end_date = $request->end_date;
-        $event->image = $request->file('image')->hashName();
         $event->save();
 
         return response()->json(['events'=>$this->index(),'message' => 'Events created successfully'], 201);

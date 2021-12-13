@@ -3,12 +3,11 @@
       <div class="dialog">
         <div class="dialog__content">
           <p style="text-align:center;">Do you want to update?</p>
-          <input type="text" v-model="categoryName">
-        </div><hr />
-
+          <input type="text" class="form-control" v-model="categoryName">
+        </div>
         <div class="dialog__footer">
-          <button @click="cancel" class="dialog__cancel">Cancel</button>
-          <button @click="update" class="dialog__confirm">update</button>
+          <button @click="cancel" class="btn btn-sm btn-danger">Cancel</button>
+          <button @click="update" class="btn btn-sm btn-success ms-2">update</button>
         </div>
       </div>
   </div>
@@ -80,11 +79,5 @@ export default {
     border-radius: 20px;
     cursor: pointer;
   }
-  .dialog__cancel {
-    margin-right: 3%;
-    background: rgba(0, 0, 255, 0.719);
-  } 
-  .dialog__confirm {
-    background: rgba(252, 0, 0, 0.671);
-  } 
+  
 </style>

@@ -77,13 +77,13 @@ export default {
         axios
           .post("http://127.0.0.1:8000/api/signin", user)
           .then((res) => {
-            console.log(res.data.message);
+         
             this.$router.push('/home')
             localStorage.setItem('signin', JSON.stringify(res.data))
             this.$emit("action","myView")
           })
-          .catch((err) => {
-            console.log(err.response.data.message);
+          .catch(() => {
+            
             this.signin_warning("incorrect");
           });
       }

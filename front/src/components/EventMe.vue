@@ -14,20 +14,11 @@
       <div class="page">
         <div class="card-container" onclick="moveF()">
           <div class="card" id="card1">
-            <ion-icon name="code-slash-outline"></ion-icon>
+            <ion-icon name="calendar-number-outline"></ion-icon>
             <h6>My Event</h6>
             <p>
               Event is defined as a particular contest which is part of a
               program of contests.
-            </p>
-            <button class="more">More</button>
-          </div>
-          <div class="card" id="card2">
-            <ion-icon name="calendar-number-outline"></ion-icon>
-            <h6>All Event</h6>
-            <p>
-              Are occurrences that can be measured and change a business'
-              financial position.
             </p>
             <button class="more">More</button>
           </div>
@@ -37,6 +28,15 @@
             <p>
               Is any sort of division or class. An example of category is food
               that is made from grains.
+            </p>
+            <button class="more">More</button>
+          </div>
+          <div class="card" id="card2">
+            <ion-icon name="calendar-number-outline"></ion-icon>
+            <h6>All Event</h6>
+            <p>
+              Are occurrences that can be measured and change a business'
+              financial position.
             </p>
             <button class="more">More</button>
           </div>

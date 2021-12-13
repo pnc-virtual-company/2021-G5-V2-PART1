@@ -90,7 +90,7 @@
             >Delete</Base-btn
           >
           <Base-btn
-            class="btn btn-sm btn-primary float-end me-2"
+            class="btn btn-sm btn-warning float-end me-2"
             @click="editCategory(category)"
             >Edit</Base-btn
           >
@@ -124,9 +124,6 @@ export default {
     };
   },
   methods: {
-    ed() {
-      console.log("edit");
-    },
     search() {
       if (this.search_cate !== "") {
         axios
@@ -157,40 +154,40 @@ export default {
         axios
           .post("http://127.0.0.1:8000/api/categories", cate_name)
           .then((res) => {
+            
             if (res.status === 201) {
-              this.alert_act = "deleted";
+              this.alert_act = "created";
             } else {
               this.alert_act = "exist";
             }
             setInterval(() => {
-              if (this.counter < 5) {
+              if (this.counter < 4) {
                 this.counter++;
                 this.alert_me = true;
               } else {
                 this.alert_me = false;
               }
             }, 1000);
-            this.categories = res.data
+            this.getCategory()
             this.counter = 0;
           })
-          .catch((err) => {
-            console.log(err.response.data.message);
-          });
+          
         this.name = "";
       }
     },
     delete_cate(id) {
-      axios.delete("http://127.0.0.1:8000/api/categories/" + id).then((res) => {
+      axios.delete("http://127.0.0.1:8000/api/categories/" + id).then(() => {
+       
         this.alert_act = "deleted";
         setInterval(() => {
-          if (this.counter < 5) {
+          if (this.counter < 4) {
             this.counter++;
             this.alert_me = true;
           } else {
             this.alert_me = false;
           }
         }, 1000);
-         this.categories = res.data
+        this.getCategory()
         this.counter = 0;
       });
     },
@@ -204,8 +201,8 @@ export default {
     updateCategory(id, category, hideForm) {
       axios
         .put("http://127.0.0.1:8000/api/categories/" + id, category)
-        .then((res) => {
-          console.log(res.data);
+        .then(() => {
+         
           this.getCategory();
           this.isShowdialog = hideForm;
         });
