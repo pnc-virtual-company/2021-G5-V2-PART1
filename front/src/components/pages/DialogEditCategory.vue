@@ -25,7 +25,10 @@ export default {
     },
     methods:{
       update(){
-        this.$emit('update',this.data.id,this.categoryName, false);
+        let updateCategory = {
+          name: this.categoryName
+        }
+        this.$emit('update',this.data.id,updateCategory, false);
 
       },
       cancel(){

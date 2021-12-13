@@ -34,9 +34,12 @@ class EventsController extends Controller
             'end_date'=>'required',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
         ]);
+
+
         // Add to database
         $event = new Events();
         if($request->file('image') !== null){
+            // Move image to storage
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
@@ -44,6 +47,10 @@ class EventsController extends Controller
             $img = 'https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png';
             $event->image = $img;
         }
+
+        
+
+        // Add to database
         $event->user_id = $request->user_id;
         $event->categories_id = $request->categories_id;
         $event->title = $request->title;

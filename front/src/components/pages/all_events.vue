@@ -4,8 +4,12 @@
       <Base-search @search="search">
       </Base-search>
     </section>
-    <section class="cate--card row row-cols-1 row-cols-md-2 g-3 m-2">
-      <Base-card v-for="event of all_events" :key="event.id">
+    <div
+      class="cate--card row row-cols-1 row-cols-md-2 g-3 m-2"
+      v-for="(event, id) in all_events"
+      :key="id"
+    >
+      <Base-card v-if="event.user.email !== email">
         <template #card-body>
           <span
             v-if="email === null"
@@ -66,8 +70,9 @@
           <h5 class="text-primary mb-2">6 Joined</h5>
           <span class="btn btn-primary btn-sm"> Show </span>
         </template>
+       
       </Base-card>
-    </section>
+    </div>
   </div>
 </template>
 

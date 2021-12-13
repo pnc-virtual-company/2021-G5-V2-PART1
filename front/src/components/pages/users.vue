@@ -1,21 +1,37 @@
 <template>
-  <div>
+  <div class="u">
     <Base-search></Base-search>
-    <section class="cate--card row row-cols-1 row-cols-md-2 g-3 m-2">
-      <Base-card
-        v-for="user of users" :key="user.id"
-        class="mt-5"
+    <div class="position-relative">
+
+  <div class="position-absolute top-0 start-50 translate-middle-x w-50">
+    <section
+      class="cate--card row row-cols-1 row-cols-md-2 g-3 m-3"
+      v-for="(user, id) in users"
+      :key="id"
+    > 
+      <Base-card v-if="user.email !== email" 
+      class="w-100 mt-5"
       >
         <template #card-body class="mt-5">
-          <img alt="user" :src="user.image" width="90" height="90" class="profile__picture" />
-          <h2 class="mb-5 text-white mt-5">{{user.first_name}}</h2>
+          <img
+            :src="user.image"
+            alt=""
+            width="90"
+            height="90"
+            class="profile__picture"
+          />
+          <h2 class="mb-5 text-white mt-5">{{ user.first_name }}</h2>
         </template>
-
         <template #card-footer>
-          <Base-btn class="btn btn-warning float-end user--bg">More details</Base-btn>
+          <Base-btn class="btn float-end user--bg">More details</Base-btn>
         </template>
       </Base-card>
     </section>
+
+
+  </div>
+  
+</div>
   </div>
 </template>
 
@@ -32,16 +48,13 @@ export default {
     };
   },
   mounted() {
+    axios.get("http://127.0.0.1:8000/api/users").then((res) => {
+      this.users = res.data;
+      console.log(res.data);
+    });
     let u = localStorage.getItem("signin");
     this.name = JSON.parse(u);
     this.email = this.name.user.email;
-    axios.get("http://127.0.0.1:8000/api/users").then((res) => {
-      res.data.forEach(element => {
-        if(element.email !== this.email){
-          this.users.push(element)
-        }
-      });
-    });
   },
 };
 </script>
@@ -54,5 +67,12 @@ export default {
   border-radius: 50%;
   border: 6px solid var(--sidebar-item-active);
   background: #fff;
+}
+.btn {
+  background: var(--sidebar-bg-color);
+}
+.u {
+  width: 100%;
+  height: 100vh;
 }
 </style>
