@@ -24,24 +24,31 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'title' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
             'body'=>'required',
             'link_join'=>'required',
             'start_at'=>'required',
             'start_date'=>'required',
             'end_at'=>'required',
             'end_date'=>'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
         ]);
+<<<<<<< HEAD
         $event = new Events();
         if($request->image !== null){
+=======
+        $request->file('image')->store('public/image');
+
+        // Add to database
+        $event = new Events();
+        if($request->file('image') !== null){
+>>>>>>> 62a615692ea7c89225e82b0b1ce160ea40b54771
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
         else{
-            $img = 'https://res.cloudinary.com/eventboost/image/upload/v1594282851/website/wp/eventboost-twitter-card-home.jpg';
+            $img = 'https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png';
             $event->image = $img;
         }
         $event->user_id = $request->user_id;
@@ -54,13 +61,13 @@ class EventsController extends Controller
         $event->start_date = $request->start_date;
         $event->end_at = $request->end_at;
         $event->end_date = $request->end_date;
-
-
+        $event->image = $request->file('image')->hashName();
         $event->save();
 
-        return response()->json(['events'=>$event,'message' => 'Events created successfully'], 201);
+        return response()->json(['events'=>$this->index(),'message' => 'Events created successfully'], 201);
     }
 
+    
     /**
      * Display the specified resource.
      *
@@ -106,12 +113,12 @@ class EventsController extends Controller
             'end_date'=>'required',
         ]);
         $event = Events::with(['user', 'categories'])->findOrFail($id);
-        if($request->image !== null){
+        if($request->file('image') !== null){
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
         else{
-            $img = 'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png';
+            $img = 'https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png';
             $event->image = $img;
         }
 
@@ -127,7 +134,7 @@ class EventsController extends Controller
         $event->end_date = $request->end_date;
         $event->save();
 
-        return response()->json(['events'=>$event,'message' => 'Events updated successfully'], 200);
+        return response()->json(['events'=>$this->index(),'message' => 'Events updated successfully'], 200);
     }
 
     /**
@@ -139,10 +146,10 @@ class EventsController extends Controller
     public function destroy($id)
     {
         //
-        $event = Events::with(['user', 'categories'])->destroy($id);
+        $event = Events::destroy($id);
        
         if ($event === 1) {
-            return response()->json(['message' => 'deleted successfully'], 200);
+            return response()->json(['events'=>$this->index(),'message' => 'deleted successfully'], 200);
         } else {
             return response()->json(['message' => 'Cannot deleted no id'], 404);
         }

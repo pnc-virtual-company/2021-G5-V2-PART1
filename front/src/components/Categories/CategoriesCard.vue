@@ -1,37 +1,5 @@
 <template>
   <header>
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">{{ category.name }}</h5>
-        </div>
-        <div class="card-footer">
-          <button
-            class="action-edit ms-4"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#update-category"
-            @click="editAction(category.id, category.name)"
-          >
-            Edit <i class="fa fa-edit"></i>
-          </button>
-          <button
-            class="action-remove ms-2"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#remove-category"
-          >
-            Remove
-            <i
-              class="fa fa-trash"
-              aria-hidden="true"
-              @click="getId(category.id)"
-            ></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
     <!--================================|-MODAL-CREATE-|================================-->
     <div
       class="modal fade"
@@ -209,7 +177,6 @@
     </div>
   </header>
 </template>
-
 
 <script>
 export default {
