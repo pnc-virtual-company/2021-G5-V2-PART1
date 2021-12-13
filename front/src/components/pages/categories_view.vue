@@ -16,7 +16,17 @@
       </Base-alert>
     </section>
 
-    <Base-search>
+    <Base-search >
+    <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search..."
+          v-model="search_cate"
+          @keyup.prevent="search"
+        />
+        <Base-btn class="btn search--btn text-white">Search</Base-btn>
+
+     
       <Base-btn
         class="btn btn-outline-primary float-end ms-5"
         data-bs-toggle="modal"
@@ -59,6 +69,7 @@
           >
         </template>
       </Base-modal>
+       <span class="text-danger ms-3 mt-2" v-if="search_err">Categories name not found!</span>
     </section>
     <section class="cate--card row row-cols-1 row-cols-md-2 g-3 m-2">
       <Base-card
@@ -102,8 +113,10 @@ export default {
   components: {DialogEditCategory},
   data() {
     return {
+      search_cate: "",
       categoryInfo: "",
       name: "",
+      search_err: false,
       alert_act: "",
       categories: [],
       alert_me: false,
@@ -111,6 +124,27 @@ export default {
     };
   },
   methods: {
+    search(){
+     
+      if(this.search_cate !== ""){
+        axios.get("http://127.0.0.1:8000/api/categories/search/"+this.search_cate)
+            .then(res=>{
+              this.categories = res.data
+              this.search_err = false
+            })
+            .catch(err=>{
+              if(err.response.status === 404){
+                
+                this.search_err = true
+                this.categories = []
+              }
+            })
+      }
+      else{
+        this.search_err = false
+        this.getCategory()
+      }
+    },
 
     create() {
       let cate_name = {
@@ -194,4 +228,7 @@ export default {
 </script>
 
 <style scoped>
+.search--btn {
+  background: var(--sidebar-item-active);
+}
 </style>
