@@ -15,10 +15,8 @@
         <strong class="text-danger">The category already exist can not create!</strong>
       </Base-alert>
     </section>
-    
-    
     <Base-search >
-        <input
+        <input 
           class="form-control me-2"
           type="search"
           placeholder="Searched"
@@ -33,7 +31,6 @@
         >Create</Base-btn
       >
     </Base-search>
-
     <section>
       <!-- Modal create category  -->
       <Base-modal id="create_modal">
@@ -70,7 +67,6 @@
       </Base-modal>
     </section>
     <section></section>
-
     <section class="cate--card row row-cols-1 row-cols-md-2 g-3 m-2">
       <Base-card
         v-for="category of categories"
@@ -82,7 +78,6 @@
         </template>
         <template #card-footer>
           <!-- Modal edit category  -->
-
           <Base-btn
             class="btn btn-sm btn-danger float-end"
             @click="delete_cate(category.id)"
@@ -103,11 +98,9 @@
         @cancel = "cancel" 
         @update = "updateCategory"
       />
-      
     </section>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 import DialogEditCategory from './DialogEditCategory.vue';
@@ -124,7 +117,6 @@ export default {
     };
   },
   methods: {
-
     create() {
       let cate_name = {
         name: this.name,
@@ -174,18 +166,13 @@ export default {
     cancel(){
       this.isShowdialog = false;
     },
-
-    
-
     updateCategory(id,category,hideForm){
       axios.put("http://127.0.0.1:8000/api/categories/" + id , category).then(res => {
         console.log(res.data);
         this.getCategory();
         this.isShowdialog = hideForm;
       })
-
     },
-
     search() {
       if (this.name !== "") {
         axios.get("http://127.0.0.1:8000/api/categories" + "/search/" + this.name).then((res) => {
@@ -194,8 +181,7 @@ export default {
       } else {
         this.getCategory();
       }
-    },
-    
+    }, 
     getCategory(){
       axios.get("http://127.0.0.1:8000/api/categories").then((res) => {
         this.categories = res.data;
@@ -207,6 +193,5 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 </style>
