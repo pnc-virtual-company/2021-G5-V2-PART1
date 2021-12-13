@@ -16,4 +16,8 @@ class Events extends Model
     public function categories(){
         return $this->belongsTo(Categories::class);
     }
+    public function joins(){
+        return $this->hasMany(Joins::class);
+    }
+
 }
