@@ -143,7 +143,11 @@
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <card v-for="event of My_Events" :key="event.id">
         <template v-slot:card-header>
-          <img :src="url_image_upload + event.image" class="card-img-top" alt="" />
+          <img
+            :src="url_image_upload + event.image"
+            class="card-img-top"
+            alt=""
+          />
         </template>
         <template v-slot:card-body>
           <h5 class="card-title">{{ event.title }}</h5>
@@ -316,12 +320,12 @@
 // ~~~~~~~~~~~~~~~~~~~~~~|-IMPORT AXIOS-|~~~~~~~~~~~~~~~~~~~~~~ //
 import axios from "axios";
 import Modal from "./Modal/modal.vue";
-import Card from "./Card/Card.vue";
-const url = "http://localhost:8000/api/events";
+// import Card from "./Card/Card.vue";
+const url = "http://127.0.0.1:8000/api/events";
 export default {
   components: {
     modal: Modal,
-    card: Card,
+    // card: Card,
   },
   data() {
     return {
@@ -351,8 +355,8 @@ export default {
       link_join_edit: "",
       body_edit: "",
       city_edit: "",
-      
-      url_image_upload: 'http://localhost:8000/storage/image/'
+
+      url_image_upload: "http://localhost:8000/storage/image/",
     };
   },
   methods: {
