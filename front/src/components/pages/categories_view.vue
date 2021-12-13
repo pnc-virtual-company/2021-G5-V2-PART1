@@ -25,7 +25,7 @@
           @keyup.prevent="search"
         />
         <Base-btn class="btn search--btn text-white">Search</Base-btn>
-
+        
      
       <Base-btn
         class="btn btn-outline-primary float-end ms-5"
