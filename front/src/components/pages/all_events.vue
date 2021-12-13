@@ -10,8 +10,10 @@
             >Create by: <i class="fas fa-user"></i>
             {{ event.user.first_name }}</span
           >
-
-          <h2 class="text-white ms-3 mt-3">{{ event.title }}</h2>
+          <div class="d-flex mb-3 ms-3">
+          <img :src="event.image" width="100" height="100" class="rounded" alt="">
+          <h2 class="text-white ms-3 mt-5">{{ event.title }}</h2>
+          </div>
           <div class="detail  text-warning">
             <h6><i class="fas fa-map-marker-alt mx-3"></i>{{ event.city }}</h6>
             <div class="start d-flex">
@@ -36,10 +38,13 @@
               </h6>
             </div>
           </div>
+          <small>{{event.id}}</small>
         </template>
 
         <template #card-footer>
-          <Base-btn class="btn btn-warning btn-sm float-end">
+          <Base-btn class="btn btn-warning btn-sm float-end"
+          @click="join()"
+          >
             <i class="fas fa-hand-point-right me-1"></i>Join now</Base-btn
           >
             <h5 class="text-primary mb-2">6 Joined</h5>
