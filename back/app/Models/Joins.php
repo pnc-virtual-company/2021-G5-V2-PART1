@@ -9,12 +9,13 @@ class Joins extends Model
 {
     use HasFactory;
     protected $fillable = ["user_id", 'events_id'];
+    protected $hidden = ["created_at","updated_at"];
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
     public function events()
     {
-        return $this->hasMany(Events::class);
+        return $this->belongsTo(Events::class);
     }
 }
