@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\JoninsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -48,4 +49,10 @@ Route::put('/users/{id}', [UsersController::class, 'update']);
 Route::delete('/users/{id}', [UsersController::class, 'destroy']);
 Route::get('/users/search/{name}', [UsersController::class, 'search']);
 
+// Join
+// Events
+Route::get('/joined', [JoninsController::class, 'index']);
+Route::post('/joined', [JoninsController::class, 'store']);
 
+
+Route::delete('/joined/{id}', [JoninsController::class, 'destroy']);

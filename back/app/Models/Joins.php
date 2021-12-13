@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categories extends Model
+class Joins extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'image'];
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $fillable = ["user_id", 'events_id'];
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
     public function events()
     {
         return $this->hasMany(Events::class);

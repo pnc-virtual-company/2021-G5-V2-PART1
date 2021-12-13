@@ -24,10 +24,6 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD:back/app/Http/Controllers/EventController.php
-=======
-        //
->>>>>>> f88522905dce92bcf6d2db2275bfc28f9236418e:back/app/Http/Controllers/EventsController.php
         $request->validate([
             'title' => 'required',
             'body'=>'required',
@@ -38,14 +34,9 @@ class EventsController extends Controller
             'end_date'=>'required',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
         ]);
-<<<<<<< HEAD:back/app/Http/Controllers/EventController.php
-    
-
         $request->file('image')->store('public/image');
 
         // Add to database
-        $event = new Event();
-=======
         $event = new Events();
         if($request->file('image') !== null){
             $event->image = $request->file('image')->hashName();
@@ -55,11 +46,6 @@ class EventsController extends Controller
             $img = 'https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png';
             $event->image = $img;
         }
-<<<<<<< HEAD
->>>>>>> 1b603cf7d6fda9e726c4ab2786771b78af5ea77b
->>>>>>> f88522905dce92bcf6d2db2275bfc28f9236418e:back/app/Http/Controllers/EventsController.php
-=======
->>>>>>> 37e2b69a5fafa01d4572f44ff54dacee108d5d51
         $event->user_id = $request->user_id;
         $event->categories_id = $request->categories_id;
         $event->title = $request->title;
@@ -70,12 +56,7 @@ class EventsController extends Controller
         $event->start_date = $request->start_date;
         $event->end_at = $request->end_at;
         $event->end_date = $request->end_date;
-<<<<<<< HEAD:back/app/Http/Controllers/EventController.php
         $event->image = $request->file('image')->hashName();
-=======
-
-
->>>>>>> f88522905dce92bcf6d2db2275bfc28f9236418e:back/app/Http/Controllers/EventsController.php
         $event->save();
 
         return response()->json(['events'=>$this->index(),'message' => 'Events created successfully'], 201);

@@ -22,6 +22,6 @@
     
 }
 .card-footer {
-    border-top: 1px solid #fff;
+    border-top: 2px solid #fff;
 }
 </style>
