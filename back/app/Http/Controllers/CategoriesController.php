@@ -15,7 +15,6 @@ class CategoriesController extends Controller
     {
         //
         return Categories::with('events')->latest()->get();
-
     }
 
     /**
@@ -26,45 +25,18 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'name' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
         ]);
-        
-        if(Categories::where('name', $request->name)->exists()){
-            return response()->json(['message' => 'The category name ' . $request->name . ' is already exist!']);
-        }
-        else{
-            $cate = new Categories();
-            if($request->image !== null){
-                $cate->image = $request->file('image')->hashName();
-                $request->file('image')->store('public/images/categories');
-            }
-            else{
-                $img = 'http://ocdn.eu/images/pulscms/MmI7MDA_/be72545f8adae32d3d98ce5b6755ae85.jpg';
-                $cate->image = $img;
-            }
-            
-            $cate->name = $request->name;
-            $cate->save();
+        $cate = new Categories;
+        $cate->name = $request->name;
+        $cate->save();
     
-            return response()->json([ 'message'=>'Categories created successfully!', 'categories'=>$this->index()],201);
-
-        }
+        return response()->json([ 'message'=>'Categories created successfully!', 'categories'=>$cate],201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-        return Categories::findOrFail($id);
-    }
+    // ========Search Category==========
+
     function search($name)
     {
         $result = Categories::where('name', 'LIKE', '%'. $name. '%')->get();
@@ -87,12 +59,11 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $cate =Categories::with('events')->findOrFail($id);
+        $cate = Categories::findOrFail($id);
         $cate->name = $request->name;
         $cate->save();
 
-        return response()->json([ 'message'=>'Categories updated successfully!', 'categories'=>$this->index()],200);
-
+        return response()->json([ 'message'=>'Categories updated successfully!', 'categories'=> $cate],200);
     }
 
     /**

@@ -19,9 +19,9 @@
             </template>
             <template v-slot:modal-body>
               <form   >
-                <event-dialog :action="action" @create-form="handleSubmit" >
+                <event-form :action="action" @event-form="handleSubmit" >
 
-                </event-dialog>
+                </event-form>
               </form>
             </template>
           </modal>
@@ -39,7 +39,7 @@
           </template>
           <template v-slot:card-footer>
             <small>{{ event.start_date }}/{{ event.end_date }}</small>
-            <button class="btn-event-edit ms-5" type="button" data-bs-toggle="modal" data-bs-target="#edit-myevent" @click.prevent="getAction('edit')" @click="getEvent(event)">
+            <button class="btn-event-edit ms-5" type="button" data-bs-toggle="modal" data-bs-target="#edit-myevent" @click.prevent="getEvent(event)">
                 Edit <i class="fa fa-edit" aria-hidden="true"></i>
             </button>
             <button class="btn-event-remove ms-2" type="button" data-bs-toggle="modal" data-bs-target="#remove-myevent" @click.prevent="getId(event.id)">
@@ -53,9 +53,9 @@
               <template v-slot:modal-body>
                 <!-- @submit.prevent="handleSubmit" -->
                 <form >
-                  <event-dialog  :event="event" :action="action" @edit-form="UpdateEvent">
+                  <event-form  :event="event" :action="action" @event-form="UpdateEvent">
 
-                  </event-dialog>
+                  </event-form>
                 </form>
               </template>
             </modal>
@@ -85,13 +85,13 @@ import axios from "axios";
 const url = "http://localhost:8000/api/events";
 import Modal from "../ui/base_modal.vue";
 import Card from "../ui/base_card.vue";
-import EventDialog from "../ui/EventForm.vue";
+import EventForm from "../ui/EventForm.vue";
 
 export default {
   components: {
     "modal": Modal,
     "card": Card,
-    "event-dialog": EventDialog,
+    "event-form": EventForm,
   },
   data() {
     return {
@@ -137,8 +137,7 @@ export default {
     getEvent(event){
       this.event = event;
       this.eventID = event.id;
-      console.log(event);
-      console.log(this.action);
+      this.action = 'edit';
     },
     deleteEvent(){
       axios.delete(url + "/" + this.eventID).then((res) => {
@@ -148,9 +147,9 @@ export default {
     },
 
     UpdateEvent(value){
+      console.log(value)
       axios.put(url+"/" + this.eventID, value).then(res=>{
         console.log(res.data);
-        this.clerForm();
         this.getEvents();
       })
       

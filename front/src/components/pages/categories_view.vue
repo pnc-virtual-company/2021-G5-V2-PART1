@@ -10,17 +10,21 @@
         <strong class="text-danger">Your category delete successfully!</strong>
       </Base-alert>
     </section>
+    <section v-else-if="alert_act === 'exist'">
+      <Base-alert v-if="alert_me" class="alert-danger alert">
+        <strong class="text-danger">The category already exist can not create!</strong>
+      </Base-alert>
+    </section>
 
     <Base-search>
-        <Base-btn
-          class="btn btn-outline-primary float-end ms-5"
-          data-bs-toggle="modal"
-          data-bs-target="#create_modal"
-          >Create</Base-btn
-        >
-
+      <Base-btn
+        class="btn btn-outline-primary float-end ms-5"
+        data-bs-toggle="modal"
+        data-bs-target="#create_modal"
+        >Create</Base-btn
+      >
     </Base-search>
-  
+
     <section>
       <!-- Modal create category  -->
       <Base-modal id="create_modal">
@@ -69,7 +73,7 @@
         </template>
         <template #card-footer>
           <!-- Modal edit category  -->
-   
+
           <Base-btn
             class="btn btn-sm btn-danger float-end"
             @click="delete_cate(category.id)"
@@ -79,32 +83,37 @@
             class="btn btn-sm btn-primary float-end me-2"
             data-bs-dismiss="modal"
             data-bs-target="#create_modal"
-           
+            @click="editCategory(category)"
             >Edit</Base-btn
           >
         </template>
       </Base-card>
+      <dialog-edit-category v-if="isShowdialog"
+        :data = "categoryInfo"
+        @cancel = "cancel" 
+        @update = "updateCategory"
+      />
     </section>
   </div>
 </template>
 
 <script>
-
 import axios from "axios";
-
+import DialogEditCategory from './DialogEditCategory.vue';
 export default {
-
+  components: {DialogEditCategory},
   data() {
     return {
+      categoryInfo: "",
       name: "",
-      categories: [],
-      id: 0,
-      counter: 0,
-      alert_me: false,
       alert_act: "",
+      categories: [],
+      alert_me: false,
+      isShowdialog: false,
     };
   },
   methods: {
+
     create() {
       let cate_name = {
         name: this.name,
@@ -113,9 +122,9 @@ export default {
         axios
           .post("http://127.0.0.1:8000/api/categories", cate_name)
           .then((res) => {
-            this.alert_act = "create";
-            this.categories = res.data.categories;
-            console.log(res.data.message);
+            this.alert_act = "created";
+            console.log(res.data);
+            this.getCategory();
             setInterval(() => {
               if (this.counter < 3) {
                 this.counter++;
@@ -147,23 +156,34 @@ export default {
         this.counter = 0;
       });
     },
-    edit(id) {
-      console.log(id);
+    editCategory(categoryInfo) {
+      this.isShowdialog = true;
+      this.categoryInfo = categoryInfo
+    },
+    cancel(){
+      this.isShowdialog = false;
+    },
+
+    updateCategory(id,category,hideForm){
+      console.log(category + " | " + id + " | " + hideForm);
+      axios.put("http://127.0.0.1:8000/api/categories/" + id , category).then(res => {
+        console.log(res.data);
+        this.getCategory();
+        this.isShowdialog = hideForm;
+      })
+
+    },
+    getCategory(){
+      axios.get("http://127.0.0.1:8000/api/categories").then((res) => {
+        this.categories = res.data;
+      });
     },
   },
   mounted() {
-    axios.get("http://127.0.0.1:8000/api/categories").then((res) => {
-      this.categories = res.data;
-    });
+    this.getCategory();
   },
 };
 </script>
 
 <style scoped>
-.search {
-  background: var(--sidebar-bg-color);
-}
-.search .search--btn {
-  background: var(--sidebar-item-active);
-}
 </style>

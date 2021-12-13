@@ -19,7 +19,6 @@
         Categories
       </route-link>
       <route-link to="/users" icon="fas fa-user">Users</route-link>
-      <route-link to="/images" icon="fas fa-image">Images</route-link>
       <hr class="hr-1" />
       <route-link to="" icon="fas fa-sign-out-alt" @click="singout()"
         >Sign Out</route-link
@@ -61,7 +60,6 @@ export default {
     let u = localStorage.getItem("signin");
     this.name = JSON.parse(u);
     this.username = this.name.user.first_name;
-    console.log(u);
   },
 };
 </script>
