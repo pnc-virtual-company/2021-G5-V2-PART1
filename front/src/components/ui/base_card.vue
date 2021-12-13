@@ -9,9 +9,9 @@
             </div>
             <div class="card-footer">
                 <slot name="card-footer"
-              
                 ></slot>
             </div>
+            <slot name="edit-modal"></slot>
         </div>
     </div>
 </template>

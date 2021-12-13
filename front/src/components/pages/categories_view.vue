@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section v-if="alert_act === 'create'">
+    <section v-if="alert_act === 'created'">
       <Base-alert v-if="alert_me" class="alert-success alert">
         <strong class="text-success">Your category create successfully!</strong>
       </Base-alert>
@@ -12,26 +12,22 @@
     </section>
     <section v-else-if="alert_act === 'exist'">
       <Base-alert v-if="alert_me" class="alert-danger alert">
-        <strong class="text-danger">The category already exist can not create!</strong>
+        <strong class="text-danger"
+          >The category already exist can not create!</strong
+        >
       </Base-alert>
     </section>
-<<<<<<< HEAD
-    <Base-search >
-        <input 
-=======
 
-    <Base-search >
-    <input
->>>>>>> 3fdd9e338c5171b864902ac0bed0d706b0f3e614
-          class="form-control me-2"
-          type="search"
-          placeholder="Search..."
-          v-model="search_cate"
-          @keyup.prevent="search"
-        />
-        <Base-btn class="btn search--btn text-white">Search</Base-btn>
+    <Base-search>
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search..."
+        v-model="search_cate"
+        @keyup.prevent="search"
+      />
+      <Base-btn class="btn search--btn text-white">Search</Base-btn>
 
-     
       <Base-btn
         class="btn btn-outline-primary float-end ms-5"
         data-bs-toggle="modal"
@@ -73,9 +69,11 @@
           >
         </template>
       </Base-modal>
-       <span class="text-danger ms-3 mt-2" v-if="search_err">Categories name not found!</span>
+      <span class="text-danger ms-3 mt-2" v-if="search_err"
+        >Categories name not found!</span
+      >
     </section>
-    <section></section>
+
     <section class="cate--card row row-cols-1 row-cols-md-2 g-3 m-2">
       <Base-card
         v-for="category of categories"
@@ -83,10 +81,9 @@
         :category="category"
       >
         <template #card-body>
-          <h4 class="mb-5">{{ category.name }}</h4>
+          <h3 class="mb-5 text-white">{{ category.name }}</h3>
         </template>
         <template #card-footer>
-          <!-- Modal edit category  -->
           <Base-btn
             class="btn btn-sm btn-danger float-end"
             @click="delete_cate(category.id)"
@@ -94,27 +91,26 @@
           >
           <Base-btn
             class="btn btn-sm btn-primary float-end me-2"
-            data-bs-dismiss="modal"
-            data-bs-target="#create_modal"
             @click="editCategory(category)"
             >Edit</Base-btn
           >
         </template>
       </Base-card>
 
-      <dialog-edit-category v-if="isShowdialog"
-        :data = "categoryInfo"
-        @cancel = "cancel" 
-        @update = "updateCategory"
+      <dialog-edit-category
+        v-if="isShowdialog"
+        :data="categoryInfo"
+        @cancel="cancel"
+        @update="updateCategory"
       />
     </section>
   </div>
 </template>
 <script>
 import axios from "axios";
-import DialogEditCategory from './DialogEditCategory.vue';
+import DialogEditCategory from "./DialogEditCategory.vue";
 export default {
-  components: {DialogEditCategory},
+  components: { DialogEditCategory },
   data() {
     return {
       search_cate: "",
@@ -128,31 +124,31 @@ export default {
     };
   },
   methods: {
-<<<<<<< HEAD
-=======
-    search(){
-     
-      if(this.search_cate !== ""){
-        axios.get("http://127.0.0.1:8000/api/categories/search/"+this.search_cate)
-            .then(res=>{
-              this.categories = res.data
-              this.search_err = false
-            })
-            .catch(err=>{
-              if(err.response.status === 404){
-                
-                this.search_err = true
-                this.categories = []
-              }
-            })
-      }
-      else{
-        this.search_err = false
-        this.getCategory()
+    ed() {
+      console.log("edit");
+    },
+    search() {
+      if (this.search_cate !== "") {
+        axios
+          .get(
+            "http://127.0.0.1:8000/api/categories/search/" + this.search_cate
+          )
+          .then((res) => {
+            this.categories = res.data;
+            this.search_err = false;
+          })
+          .catch((err) => {
+            if (err.response.status === 404) {
+              this.search_err = true;
+              this.categories = [];
+            }
+          });
+      } else {
+        this.search_err = false;
+        this.getCategory();
       }
     },
 
->>>>>>> 3fdd9e338c5171b864902ac0bed0d706b0f3e614
     create() {
       let cate_name = {
         name: this.name,
@@ -161,11 +157,14 @@ export default {
         axios
           .post("http://127.0.0.1:8000/api/categories", cate_name)
           .then((res) => {
-            this.alert_act = "created";
-            console.log(res.data);
-            this.getCategory();
+            if (res.status === 201) {
+              this.alert_act = "created";
+              this.getCategory();
+            } else {
+              this.alert_act = "exist";
+            }
             setInterval(() => {
-              if (this.counter < 3) {
+              if (this.counter < 5) {
                 this.counter++;
                 this.alert_me = true;
               } else {
@@ -183,45 +182,35 @@ export default {
     delete_cate(id) {
       axios.delete("http://127.0.0.1:8000/api/categories/" + id).then((res) => {
         this.alert_act = "deleted";
-        this.categories = res.data.categories;
         setInterval(() => {
-          if (this.counter < 3) {
+          if (this.counter < 5) {
             this.counter++;
             this.alert_me = true;
           } else {
             this.alert_me = false;
           }
         }, 1000);
+        this.categories = res.data.categories;
         this.counter = 0;
       });
     },
     editCategory(categoryInfo) {
       this.isShowdialog = true;
-      this.categoryInfo = categoryInfo
+      this.categoryInfo = categoryInfo;
     },
-    cancel(){
+    cancel() {
       this.isShowdialog = false;
     },
-    updateCategory(id,category,hideForm){
-      axios.put("http://127.0.0.1:8000/api/categories/" + id , category).then(res => {
-        console.log(res.data);
-        this.getCategory();
-        this.isShowdialog = hideForm;
-      })
-    },
-<<<<<<< HEAD
-    search() {
-      if (this.name !== "") {
-        axios.get("http://127.0.0.1:8000/api/categories" + "/search/" + this.name).then((res) => {
-          this.categories = res.data;
+    updateCategory(id, category, hideForm) {
+      axios
+        .put("http://127.0.0.1:8000/api/categories/" + id, category)
+        .then((res) => {
+          console.log(res.data);
+          this.getCategory();
+          this.isShowdialog = hideForm;
         });
-      } else {
-        this.getCategory();
-      }
-    }, 
-=======
->>>>>>> 3fdd9e338c5171b864902ac0bed0d706b0f3e614
-    getCategory(){
+    },
+    getCategory() {
       axios.get("http://127.0.0.1:8000/api/categories").then((res) => {
         this.categories = res.data;
       });
