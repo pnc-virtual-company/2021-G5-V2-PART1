@@ -105,11 +105,11 @@
               <button
                 type="button"
                 class="btn-close"
-                data-bs-dismiss="modal"
+                data-bs-dismiss=""
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body">modal
               Are you sure that you want to remove category?
             </div>
             <div class="modal-footer">
@@ -241,6 +241,7 @@ img {
 .nav-search {
   box-sizing: border-box;
   position: relative;
+  
 }
 ::placeholder {
   color: #c5ced8;

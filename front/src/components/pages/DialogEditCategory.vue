@@ -13,7 +13,6 @@
       </div>
   </div>
 </template>
-
 <script>
 export default {
     props: ['data'],
@@ -29,7 +28,6 @@ export default {
           name: this.categoryName
         }
         this.$emit('update',this.data.id,updateCategory, false);
-
       },
       cancel(){
         this.$emit('cancel', false);
@@ -40,14 +38,12 @@ export default {
     }
 }
 </script>
-
 <style scoped>
   .dialog {
       background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
       border-radius: 0.75rem;
       margin-left: auto;
       margin-right: auto;
-  
   }
   .overlay {
       position: fixed;
@@ -91,5 +87,4 @@ export default {
   .dialog__confirm {
     background: rgba(252, 0, 0, 0.671);
   } 
- 
 </style>
