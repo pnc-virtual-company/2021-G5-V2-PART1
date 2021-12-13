@@ -15,15 +15,23 @@
         <strong class="text-danger">The category already exist can not create!</strong>
       </Base-alert>
     </section>
+<<<<<<< HEAD
     <Base-search >
         <input 
+=======
+
+    <Base-search >
+    <input
+>>>>>>> 3fdd9e338c5171b864902ac0bed0d706b0f3e614
           class="form-control me-2"
           type="search"
-          placeholder="Searched"
-          aria-label="Search"
-          v-model="name"
-          v-on:keyup.prevent="search"
+          placeholder="Search..."
+          v-model="search_cate"
+          @keyup.prevent="search"
         />
+        <Base-btn class="btn search--btn text-white">Search</Base-btn>
+
+     
       <Base-btn
         class="btn btn-outline-primary float-end ms-5"
         data-bs-toggle="modal"
@@ -65,6 +73,7 @@
           >
         </template>
       </Base-modal>
+       <span class="text-danger ms-3 mt-2" v-if="search_err">Categories name not found!</span>
     </section>
     <section></section>
     <section class="cate--card row row-cols-1 row-cols-md-2 g-3 m-2">
@@ -108,8 +117,10 @@ export default {
   components: {DialogEditCategory},
   data() {
     return {
+      search_cate: "",
       categoryInfo: "",
       name: "",
+      search_err: false,
       alert_act: "",
       categories: [],
       alert_me: false,
@@ -117,6 +128,31 @@ export default {
     };
   },
   methods: {
+<<<<<<< HEAD
+=======
+    search(){
+     
+      if(this.search_cate !== ""){
+        axios.get("http://127.0.0.1:8000/api/categories/search/"+this.search_cate)
+            .then(res=>{
+              this.categories = res.data
+              this.search_err = false
+            })
+            .catch(err=>{
+              if(err.response.status === 404){
+                
+                this.search_err = true
+                this.categories = []
+              }
+            })
+      }
+      else{
+        this.search_err = false
+        this.getCategory()
+      }
+    },
+
+>>>>>>> 3fdd9e338c5171b864902ac0bed0d706b0f3e614
     create() {
       let cate_name = {
         name: this.name,
@@ -173,6 +209,7 @@ export default {
         this.isShowdialog = hideForm;
       })
     },
+<<<<<<< HEAD
     search() {
       if (this.name !== "") {
         axios.get("http://127.0.0.1:8000/api/categories" + "/search/" + this.name).then((res) => {
@@ -182,6 +219,8 @@ export default {
         this.getCategory();
       }
     }, 
+=======
+>>>>>>> 3fdd9e338c5171b864902ac0bed0d706b0f3e614
     getCategory(){
       axios.get("http://127.0.0.1:8000/api/categories").then((res) => {
         this.categories = res.data;
@@ -194,4 +233,7 @@ export default {
 };
 </script>
 <style scoped>
+.search--btn {
+  background: var(--sidebar-item-active);
+}
 </style>
