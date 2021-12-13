@@ -26,15 +26,34 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required',//unique:Categories
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
         ]);
         $cate = new Categories;
-        $cate->name = $request->name;
-        $cate->save();
+        if(Categories::where('name',$request->name)->exists()){
+            return response()->json(['message'=>'exist']);
+        }
+        else{
+            if($request->file('image') !== null){
+                $cate->image = $request->file('image')->hashName();
+                $request->file('image')->store('public/images/events');
+            }
+            else{
+                $img = 'https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png';
+                $cate->image = $img;
+            }
+            $cate->name = $request->name;
+            $cate->save();
+        }
+
     
         return response()->json([ 'message'=>'Categories created successfully!', 'categories'=>$cate],201);
     }
 
+    public function show($id)
+    {
+        return Categories::findOrfail($id);
+    }
     // ========Search Category==========
 
     function search($name)
@@ -60,8 +79,21 @@ class CategoriesController extends Controller
     {
         //
         $cate = Categories::findOrFail($id);
-        $cate->name = $request->name;
-        $cate->save();
+        if(Categories::where('name',$request->name)->exists()){
+            return response()->json(['message'=>'exist']);
+        }
+        else{
+            if($request->file('image') !== null){
+                $cate->image = $request->file('image')->hashName();
+                $request->file('image')->store('public/images/events');
+            }
+            else{
+                $img = 'https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png';
+                $cate->image = $img;
+            }
+            $cate->name = $request->name;
+            $cate->save();
+        }
 
         return response()->json([ 'message'=>'Categories updated successfully!', 'categories'=> $cate],200);
     }

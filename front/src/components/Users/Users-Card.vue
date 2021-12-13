@@ -18,7 +18,18 @@
       </div>
       <div class="contact">
         <hr />
-        <button>Details</button>
+        <button @click="showDetail()">
+          {{ detailsAreVisible ? "Hide" : "Show" }} Details
+        </button>
+        <div class="user-detail">
+          <ul v-if="detailsAreVisible">
+            <li><strong>First Name:</strong> {{ user.first_name }}</li>
+            <li><strong>Last Name:</strong> {{ user.last_name }}</li>
+            <li><strong>Gender:</strong> {{ user.gender }}</li>
+            <li><strong>Date of Birth:</strong> {{ user.date_of_birth }}</li>
+            <li><strong>Email:</strong> {{ user.email }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -27,6 +38,16 @@
 <script>
 export default {
   props: ["user"],
+  data() {
+    return {
+      detailsAreVisible: false,
+    };
+  },
+  methods: {
+    showDetail() {
+      this.detailsAreVisible = !this.detailsAreVisible;
+    },
+  },
 };
 </script>
 
@@ -109,5 +130,15 @@ hr {
   .text h3 {
     font-size: 1.2rem;
   }
+}
+
+.user-detail {
+  padding: 10px;
+  font-family: "Roboto Slab", serif;
+  justify-content: flex-start;
+  text-align: start;
+}
+.user-detail ul li {
+  list-style: none;
 }
 </style>

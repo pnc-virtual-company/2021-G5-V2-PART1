@@ -108,7 +108,7 @@
         </div>
         <div class="add">
           <a href="#" class="login text-center btn fs-5 float-end">
-            <Base-btn  @click="user_signup()">Submit</Base-btn>
+            <Base-btn @click="user_signup()">Submit</Base-btn>
           </a>
         </div>
       </form>
@@ -120,8 +120,8 @@
     </section>
     <section class="text-center text-warning" v-else-if="warning === 'exist'">
       <Base-warning :action="warning" @noData="signup_warning">
-      <h3>Can not create an account.</h3>
-          <h5 class="text mt-4">Email: {{ email }} aleady exist!</h5>
+        <h3>Can not create an account.</h3>
+        <h5 class="text mt-4">Email: {{ email }} aleady exist!</h5>
       </Base-warning>
     </section>
     <section class="text-warning text-center" v-else-if="warning === 'created'">
@@ -163,8 +163,8 @@ export default {
     signup_warning(warn) {
       this.warning = warn;
     },
-    signin(signin){
-      this.$emit("action", signin)
+    signin(signin) {
+      this.$emit("action", signin);
     },
     user_signup() {
       if (
@@ -188,10 +188,11 @@ export default {
         axios
           .post("http://127.0.0.1:8000/api/signup", user)
           .then((res) => {
-            if(res.data.message === "This mali chum@gmail.com is already exist!"){
+            if (
+              res.data.message === "This mali chum@gmail.com is already exist!"
+            ) {
               this.signup_warning("exist");
-            }
-            else{
+            } else {
               this.signup_warning("created");
             }
           })

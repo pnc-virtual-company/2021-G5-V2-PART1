@@ -60,8 +60,6 @@
         </template>
       </Base-modal>
     </section>
-    <section></section>
-
     <section class="cate--card row row-cols-1 row-cols-md-2 g-3 m-2">
       <Base-card
         v-for="category of categories"
@@ -69,7 +67,7 @@
         :category="category"
       >
         <template #card-body>
-          <h4 class="mb-5">{{ category.name }}</h4>
+          <h2 class="mb-5 text-white ms-3">{{ category.name }}</h2>
         </template>
         <template #card-footer>
           <!-- Modal edit category  -->
@@ -122,18 +120,28 @@ export default {
         axios
           .post("http://127.0.0.1:8000/api/categories", cate_name)
           .then((res) => {
-            this.alert_act = "created";
-            console.log(res.data);
-            this.getCategory();
-            setInterval(() => {
-              if (this.counter < 3) {
-                this.counter++;
-                this.alert_me = true;
-              } else {
-                this.alert_me = false;
-              }
-            }, 1000);
-            this.counter = 0;
+          
+            if (res.data.message === "exist") {
+              this.alert_act = "exist";
+              console.log(res.data.message);
+              
+  
+            } else {
+              this.alert_act = "create";
+              console.log(res.data.message);
+              
+            }
+              setInterval(() => {
+                if (this.counter < 5) {
+                  this.counter++;
+                  this.alert_me = true;
+                } else {
+                  this.alert_me = false;
+                }
+              }, 1000);
+              this.categories = res.data.categories;
+              this.getCategory()
+              this.counter = 0;
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -146,7 +154,7 @@ export default {
         this.alert_act = "deleted";
         this.categories = res.data.categories;
         setInterval(() => {
-          if (this.counter < 3) {
+          if (this.counter < 5) {
             this.counter++;
             this.alert_me = true;
           } else {

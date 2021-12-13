@@ -19,6 +19,18 @@ class UsersController extends Controller
         return User::all();
     }
 
+    function search($name)
+    {
+        $result = User::where('first_name', 'LIKE', '%'. $name. '%')->get();
+        if(count($result)){
+         return Response()->json($result);
+        }
+        else
+        {
+        return response()->json(['Result' => 'No Data not found'], 404);
+      }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -42,7 +54,7 @@ class UsersController extends Controller
         }
         else{
             $user = new User();
-            if($request->image !== null){
+            if($request->file('image') !== null){
                 $user->image = $request->file('image')->hashName();
                 $request->file('image')->store('public/images/users');
             }
