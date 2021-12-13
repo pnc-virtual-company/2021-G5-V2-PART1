@@ -34,11 +34,16 @@ class EventsController extends Controller
             'end_date'=>'required',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
         ]);
+<<<<<<< HEAD
+        $event = new Events();
+        if($request->image !== null){
+=======
         $request->file('image')->store('public/image');
 
         // Add to database
         $event = new Events();
         if($request->file('image') !== null){
+>>>>>>> 62a615692ea7c89225e82b0b1ce160ea40b54771
             $event->image = $request->file('image')->hashName();
             $request->file('image')->store('public/images/events');
         }
