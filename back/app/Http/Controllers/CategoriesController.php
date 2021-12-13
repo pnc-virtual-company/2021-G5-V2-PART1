@@ -29,7 +29,7 @@ class CategoriesController extends Controller
             'name' => 'required',//unique:Categories
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,jfif|max:1999',
         ]);
-        $cate = new Categories;
+        $cate = new Categories();
         if(Categories::where('name',$request->name)->exists()){
             return response()->json(['message'=>'exist']);
         }
