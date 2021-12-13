@@ -14,7 +14,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">
-              Create New Categories
+              Create New Categories categories
             </h5>
             <button
               type="button"
