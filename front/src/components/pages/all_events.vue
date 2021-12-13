@@ -119,7 +119,6 @@ export default {
                 this.joined_id.push(element.id);
                 this.nb_join = res.data[0].length
               });
-            console.log(this.nb_join);
             })
       
     }

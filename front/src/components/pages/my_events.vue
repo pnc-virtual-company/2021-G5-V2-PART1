@@ -294,7 +294,6 @@ export default {
               end_at: this.end_at,
               end_date: this.end_date,
             };
-            console.log(my_events);
             axios
               .post("http://127.0.0.1:8000/api/events", my_events)
               .then((res) => {
